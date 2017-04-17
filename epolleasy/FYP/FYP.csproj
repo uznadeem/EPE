@@ -419,7 +419,9 @@
     <Content Include="Scripts\i18n\grid.locale-vi.js" />
     <Content Include="Content\ui.jqgrid.min.css.map" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <None Include="Properties\PublishProfiles\epolleasy - FTP %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\epolleasy - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\epolleasy - Web Deploy %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\epolleasy - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
