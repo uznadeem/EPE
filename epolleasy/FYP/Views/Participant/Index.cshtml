@@ -1,0 +1,114 @@
+﻿@using Microsoft.AspNet.Identity
+@model IEnumerable<FYP.Models.Community>
+@{
+
+    Layout = "~/Views/Shared/_LayoutProject.cshtml";
+
+}
+
+<!-- SUB Banner -->
+<div class="profile-bnr sub-bnr user-profile-bnr">
+    <div class="position-center-center">
+        <div class="container">
+            <h2> </h2>
+        </div>
+    </div>
+</div>
+
+
+<div class="compny-profile">
+
+    <!-- Profile Company Content -->
+    <div class="profile-company-content" data-bg-color="fff">
+        <div class="container">
+            <div class="row">
+
+                <!-- SIDE BAR -->
+                <div class="col-md-4">
+                    <!-- Company Information -->
+                    <div class="sidebar">
+                        <h5 class="main-title">Uzair Nadeem</h5>
+                        <div class="sidebar-thumbnail"> <img src="~/images/avatar.jpg" alt=""> </div>
+                        <div class="sidebar-information">
+                            <div class="profile-usermenu">
+                                <ul class="nav nav-links">
+                                    <li class="active"> <a href="#."> <i class="fa fa-heart-o"></i> Network </a> </li>
+                                    <li> <a href="#."> <i class="fa fa-group"></i> Bookmarks </a> </li>
+                                    <li> <a href="#."> <i class="fa fa-plus-circle"></i> Upgrade My Account </a> </li>
+                                    <li> <a href="#."> <i class="fa fa-cog"></i> Account Settings </a> </li>
+                                    <li> <a href="#."> <i class="fa fa-cog"></i> Log out </a> </li>
+
+                                    @*@using (Html.BeginForm("LogOff", "Home", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                                        {
+                                            @Html.AntiForgeryToken()
+
+                                            <li>
+                                                <i class="fa fa-sign-out"></i><a href="javascript:document.getElementById('logoutForm').submit()">Sign Out</a>
+                                            </li>
+
+                                        }*@
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab Content -->
+                <div class="col-md-8">
+
+                    <h2>  Participant Dashboard</h2>
+
+
+
+
+                    <div class="network">
+
+                        <!-- Nav Tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a data-toggle="tab" href="#AcForms">Active Forms (2)</a></li>
+                            <li><a data-toggle="tab" href="#comm">Communities</a></li>
+                            <li><a data-toggle="tab" href="#sforms">Sealed Forms (103)</a></li>
+                        </ul>
+
+                        <!-- Tab Content -->
+                        <div class="tab-content">
+
+                            <div id="AcForms" class="tab-pane fade in active">
+                                <div class="net-work-in">
+                                    <h3> hello bravo</h3>
+                                </div>
+                            </div>
+
+                            <!-- Followers -->
+                            <div id="comm" class="tab-pane fade">
+
+
+                                <h3> My Community List</h3>
+
+                            </div>
+
+
+
+                            <div id="sforms" class="tab-pane fade in active">
+
+                                <div class="net-work-in">
+                                    <h3> hello jello</h3>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+

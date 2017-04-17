@@ -1,0 +1,27 @@
+﻿@model FYP.Models.Community
+@{
+    Layout = null;
+}
+<h2>Edit007</h2>
+@using (Html.BeginForm("edit", "admin", FormMethod.Post, new { id = "popupForm" }))
+{
+
+
+        @Html.HiddenFor(a => a.CommunityID);
+    
+        <div class="form-group">
+            <label>Community Name</label>
+            @Html.TextBoxFor(a => a.CommunityName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(a => a.CommunityName)
+        </div>
+        <div class="form-group">
+            <label>CommunityAbout</label>
+            @Html.TextBoxFor(a => a.CommunityAbout, new { @class = "form-control" })
+            @Html.ValidationMessageFor(a => a.CommunityAbout)
+        </div>
+        <div>
+            <input type="submit" value="Save" />
+        </div>
+    
+}
+

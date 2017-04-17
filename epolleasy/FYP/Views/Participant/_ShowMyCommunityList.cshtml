@@ -1,0 +1,89 @@
+﻿@model IEnumerable<FYP.Models.CommunityUser>
+
+<div class="net-work-in">
+
+
+    <!-- Members -->
+    <div class="main-mem">
+
+        <!-- Head -->
+        <div class="head">
+            <div class="row">
+                
+                <div class="col-sm-4">
+                    <form>
+                        <input type="search" placeholder="Search">
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
+                <div class="col-sm-4 pull-right">
+                    <select>
+                        <option>Alphabetical</option>
+                        <option>Date Created</option>
+                        <option>Latest First</option>
+                    </select>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Tittle -->
+        <div class="tittle">
+            <ul class="row">
+                <li class="col-xs-4"> <span>Community Name</span> </li>
+                <li class="col-xs-3"> <span>Members</span> </li>
+                <li class="col-xs-3"> <span>Forms</span> </li>
+                <li class="col-xs-2 n-p-r n-p-l"> <span>Active</span> </li>
+            </ul>
+        </div>
+
+        <!-- Tittle -->
+        <div class="folow-persons">
+
+            <ul>
+
+
+
+                <!-- COMMUNITY -->
+                <!--for each loop here-->
+
+                
+                <li>
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <!-- COMMUNITY TITLE -->
+                            <div class="fol-name">
+
+                                <!-- COMMUNITY Logo -->
+                                <div class="avatar"> <img src="images/sm-avatar.jpg" alt=""> </div>
+
+                                <!-- COMMUNITY Title -->
+                                <h6>FA13 BCS A</h6>
+
+                                <!-- COMMUNITY About -->
+                                <span>COMSATS FA13 session class discussion</span>
+                            </div>
+
+                        </div>
+
+                        <!-- Members -->
+                        <div class="col-xs-3 n-p-r n-p-l"> <span>52</span> </div>
+
+
+                        <!-- Total Forms -->
+                        <div class="col-xs-3 n-p-r"> <span>13</span></div>
+
+                        <!-- Active Forms -->
+                        <div class="col-xs-2 n-p-r n-p-l"> <span>2</span> </div>
+
+                    </div>
+                </li>
+
+
+
+            </ul>
+
+            
+        </div>
+    </div>
+</div>

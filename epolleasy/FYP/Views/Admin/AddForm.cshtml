@@ -1,0 +1,45 @@
+﻿@model FYP.Models.QForm
+@{
+    ViewBag.Title = "AddForm";
+    Layout = "~/Views/Shared/_LayoutProject.cshtml";
+}
+
+<h2>AddForm</h2>
+
+
+
+@using (Html.BeginForm("AddForm", "admin", new { id = ViewBag.id }, FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <label>Form Title</label>
+        @Html.TextBoxFor(a => a.FormTitle, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.FormTitle)
+    </div>
+    <div class="form-group">
+        <label>Form Detail</label>
+        @Html.TextBoxFor(a => a.FormDetail, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.FormDetail)
+    </div>
+    <div class="form-group">
+        
+        @*@Html.TextBoxFor(x => x.Creation_Time, new { @Value = @DateTime.Now.ToShortDateString() })*@
+
+        </div>
+    <div class="form-control ">
+        @Html.LabelFor(m => m.Expiry_Time, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Expiry_Time, "{0:MM/dd/yyyy HH:mm:ss}", new { @class = "form-control", type= "datetime-local" })
+        </div>
+    </div>
+
+    <button class="btn btn-primary" type="submit">Next</button>
+   
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

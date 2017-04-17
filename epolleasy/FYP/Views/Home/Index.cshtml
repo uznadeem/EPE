@@ -1,0 +1,195 @@
+﻿@model FYP.ViewModel.HomePageViewModel
+
+@{
+
+    Layout = "~/Views/Shared/_LayoutProject.cshtml";
+}
+
+
+<!doctype html>
+<html lang="en">
+<!-- Mirrored from new.uouapps.com/tiger-html/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 26 Nov 2016 10:00:50 GMT -->
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>TIGER - Social Network HTML Template</title>
+    <!-- Fonts Online -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800,300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <!-- Style Sheet -->
+    <link rel="stylesheet" href="~/Content/owl.carousel.css">
+    <link rel="stylesheet" href="~/Content/main-style.css">
+    <link rel="stylesheet" href="~/Content/style.css">
+
+    @*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">*@
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+
+
+<body>
+    <div id="main-wrapper">
+
+
+        <!-- HOME PRO-->
+        <div class="home-pro">
+
+            <!-- PRO BANNER HEAD -->
+            <div class="banr-head">
+                <div class="container">
+                    <div class="row">
+
+                        <!-- CONTENT -->
+                        <div class="col-sm-7">
+                            
+                        </div>
+
+                        <!-- FORM SECTION -->
+                        <div class="col-sm-5">
+                            <div class="login-sec">
+
+                                <!-- TABS -->
+                                <div class="uou-tabs">
+                                    <ul class="tabs">
+                                        <li><a href="#register">Register Now</a></li>
+                                        <li class="active"><a href="#log-in">Member Login</a></li>
+                                    </ul>
+
+                                    <!-- REGISTER -->
+                                    <div class="content">
+                                        <div id="register">
+                                            @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                                            {
+                                                @Html.AntiForgeryToken()
+                                                <hr />
+                                                    @Html.ValidationSummary("", new { @class = "text-danger" })
+                                                    <div class="form-group">
+                                                        @Html.LabelFor(m => m.Reg.FirstName, new { @class = "col-md-2 control-label" })
+                                                        <div class="col-md-4">
+                                                            @Html.TextBoxFor(m => m.Reg.FirstName, new { @class = "form-control" })
+                                                        </div>
+                                                        @Html.LabelFor(m => m.Reg.LastName, new { @class = "col-md-2 control-label" })
+                                                        <div class="col-md-4">
+                                                            @Html.TextBoxFor(m => m.Reg.LastName, new { @class = "form-control" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        @Html.LabelFor(m => m.Reg.UserName, new { @class = "col-md-2 control-label" })
+                                                        <div class="col-md-10">
+                                                            @Html.TextBoxFor(m => m.Reg.UserName, new { @class = "form-control" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        @Html.LabelFor(m => m.Reg.Email, new { @class = "col-md-2 control-label" })
+                                                        <div class="col-md-10">
+                                                            @Html.TextBoxFor(m => m.Reg.Email, new { @class = "form-control" })
+                                                        </div>
+                                                    </div>
+
+
+
+                                                    <div class="form-group">
+                                                        @Html.LabelFor(m => m.Reg.Gender, new { @class = "col-md-2 control-label" })
+                                                        <div class="col-md-10">
+                                                            @Html.RadioButtonFor(m => m.Reg.Gender, "Male", new { @class = "radio-inline" })@Html.Label("Male")
+                                                            @Html.RadioButtonFor(m => m.Reg.Gender, "Female", new { @class = "radio-inline" })@Html.Label("Female")
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        @Html.LabelFor(m => m.Reg.Password, new { @class = "col-md-2 control-label" })
+                                                        <div class="col-md-10">
+                                                            @Html.PasswordFor(m => m.Reg.Password, new { @class = "form-control" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        @Html.LabelFor(m => m.Reg.ConfirmPassword, new { @class = "col-md-2 control-label" })
+                                                        <div class="col-md-10">
+                                                            @Html.PasswordFor(m => m.Reg.ConfirmPassword, new { @class = "form-control" })
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        @Html.LabelFor(m => m.Reg.DOB, new { @class = "col-md-2 control-label" })
+                                                        <div class="col-md-10">
+                                                            @Html.TextBoxFor(m => m.Reg.DOB, new { @class = "form-control date", type = "date" })
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        @Html.Label("user Role", new { @class = "col-md-2 control-label" })
+                                                        <div class="col-md-10">
+                                                            @Html.RadioButtonFor(m => m.Reg.UserRole, "Admin", false)@Html.Label("Admin")
+                                                            @Html.RadioButtonFor(m => m.Reg.UserRole, "Participant", false)@Html.Label("Participant")
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="col-md-offset-2 col-md-10">
+                                                            <input type="submit" class="btn btn-default" value="Register" />
+                                                        </div>
+                                                    </div>
+                                            }
+                                        </div>
+
+                                        <!-- LOGIN -->
+                                        <div id="log-in" class="active">
+                                            @using (Html.BeginForm("Login", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                                            {
+                                                @Html.AntiForgeryToken()
+                                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                                <div class="form-group">
+                                                    @Html.LabelFor(u => u.Log.Email, new { @class = "col-md-2 control-label" })
+                                                    <div class="col-sm-6">
+                                                        @Html.TextBoxFor(u => u.Log.Email, new { @class = "form-control" })
+                                                        @Html.ValidationMessageFor(u => u.Log.Email, "", new { @class = "text-danger" })
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="form-group">
+                                                    @Html.LabelFor(u => u.Log.Password, new { @class = "col-md-2 control-label" })
+                                                    <div class="col-sm-6">
+                                                        @Html.PasswordFor(u => u.Log.Password, new { @class = "form-control" })
+                                                        @Html.ValidationMessageFor(u => u.Log.Password, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                                    <div class="form-group">
+                                                        <div class="col-md-offset-2 col-md-2">
+                                                            <input type="submit" value="Log in" class="btn btn-default" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                                                    </div>
+
+                                            }
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            
+            
+            </div>
+        </div>
+     </div>
+
+
+
+</body>
+<!-- Mirrored from new.uouapps.com/tiger-html/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 26 Nov 2016 10:01:54 GMT -->
+</html>

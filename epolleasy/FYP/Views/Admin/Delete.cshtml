@@ -1,0 +1,24 @@
+﻿@model FYP.Models.Community
+
+@{
+    Layout = null;
+}
+
+@using (Html.BeginForm("Delete", "admin", FormMethod.Post, new { id = "popupForm" }))
+{
+    
+        @Html.HiddenFor(a => a.CommunityID)
+        <div class="form-group">
+            <label>CommunityName</label>
+            <p>@Model.CommunityName</p>
+        </div>
+
+        <div class="form-group">
+            <label>Community Domain</label>
+            <p>@Model.CommunityDomain</p>
+        </div>
+
+        <div>
+        <input type="submit" value="Delete" />
+    </div>
+}

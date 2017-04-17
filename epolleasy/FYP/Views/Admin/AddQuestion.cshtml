@@ -1,0 +1,44 @@
+﻿@model FYP.ViewModel.QuestionAnswerViewModel
+@{
+    ViewBag.Title = "AddQuestion";
+    Layout = "~/Views/Shared/_LayoutProject.cshtml";
+}
+
+<h2>AddQuestion</h2>
+
+
+
+@using (Html.BeginForm("AddQuestion", "admin", new { id = ViewBag.qf_id }, FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <label>Question Statement</label>
+        @Html.TextBoxFor(a => a.Ques.QuestionString, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.Ques.QuestionString)
+    </div>
+
+    @*<div class="form-group">
+        <label>No. of option you want to add for this question </label>
+        <div class="col-md-4">
+         @{var val = @Html.TextBoxFor(a => a.counter, new { @class = "form-control" }); }
+
+
+        </div>
+    </div>
+             foreach(var item in val)
+             {
+
+                 @Html.TextBoxFor(a=>a.Ans.AnswerStatement)
+
+             }*@
+
+
+
+
+    <div>
+        <button class="btn btn-primary" type="submit">Add</button>
+       <button class="btn btn-success" href="/admin/">Publish</button> 
+   </div>
+}
+ 

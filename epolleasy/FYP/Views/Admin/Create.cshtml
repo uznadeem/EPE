@@ -1,0 +1,62 @@
+﻿
+@model FYP.Models.Community
+
+@{
+    Layout= null;
+}
+
+
+
+@using (Html.BeginForm("create", "admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+   @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            <label>Community Name</label>
+            @Html.TextBoxFor(a => a.CommunityName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(a => a.CommunityName)
+        </div>
+        <div class="form-group">
+            <label>CommunityAbout</label>
+            @Html.TextBoxFor(a => a.CommunityAbout, new { @class = "form-control" })
+            @Html.ValidationMessageFor(a => a.CommunityAbout)
+        </div>
+
+        <div class="form-group">
+            <label>CommunityDomain</label>
+            @Html.TextBoxFor(a => a.CommunityDomain, new { @class = "form-control" })
+            @Html.ValidationMessageFor(a => a.CommunityDomain)
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Privacy Level", new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+
+              @Html.RadioButtonFor(m => m.PrivacyID, "1" , new { @class = "radio-inline" })@Html.Label("Public")
+              @Html.RadioButtonFor(m => m.PrivacyID, "2" ,new { @class = "radio-inline" })@Html.Label("Private")  
+              
+             </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CommunityLogo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="file" accept="images/jpg" />
+                @Html.ValidationMessageFor(model => model.CommunityLogo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+                @*<div class="col-md-10">
+            
+                        <input type="file" name="file" accept="images/jpg" />
+                              
+                </div>*@
+            
+
+            <div>
+                <input type="submit" value="Create" />
+            </div>
+
+            }
+
