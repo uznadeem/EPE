@@ -182,29 +182,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201704130644212_April13.cs" />
-    <Compile Include="Migrations\201704130644212_April13.Designer.cs">
-      <DependentUpon>201704130644212_April13.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704130738556_April13B.cs" />
-    <Compile Include="Migrations\201704130738556_April13B.Designer.cs">
-      <DependentUpon>201704130738556_April13B.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704130743581_April13C.cs" />
-    <Compile Include="Migrations\201704130743581_April13C.Designer.cs">
-      <DependentUpon>201704130743581_April13C.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704130751216_April13E.cs" />
-    <Compile Include="Migrations\201704130751216_April13E.Designer.cs">
-      <DependentUpon>201704130751216_April13E.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704130755400_April13F.cs" />
-    <Compile Include="Migrations\201704130755400_April13F.Designer.cs">
-      <DependentUpon>201704130755400_April13F.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704130759074_April13G.cs" />
-    <Compile Include="Migrations\201704130759074_April13G.Designer.cs">
-      <DependentUpon>201704130759074_April13G.cs</DependentUpon>
+    <Compile Include="Migrations\201704171102114_April17.cs" />
+    <Compile Include="Migrations\201704171102114_April17.Designer.cs">
+      <DependentUpon>201704171102114_April17.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -521,23 +501,8 @@
     <Content Include="Views\Manage\EditProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201704130644212_April13.resx">
-      <DependentUpon>201704130644212_April13.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704130738556_April13B.resx">
-      <DependentUpon>201704130738556_April13B.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704130743581_April13C.resx">
-      <DependentUpon>201704130743581_April13C.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704130751216_April13E.resx">
-      <DependentUpon>201704130751216_April13E.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704130755400_April13F.resx">
-      <DependentUpon>201704130755400_April13F.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704130759074_April13G.resx">
-      <DependentUpon>201704130759074_April13G.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201704171102114_April17.resx">
+      <DependentUpon>201704171102114_April17.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
