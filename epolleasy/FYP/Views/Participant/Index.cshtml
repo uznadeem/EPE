@@ -1,5 +1,5 @@
 ﻿@using Microsoft.AspNet.Identity
-@model IEnumerable<FYP.Models.Community>
+@model FYP.ViewModel.ProfileDataViewModel
 @{
 
     Layout = "~/Views/Shared/_LayoutProject.cshtml";
@@ -27,7 +27,7 @@
                 <div class="col-md-4">
                     <!-- Company Information -->
                     <div class="sidebar">
-                        <h5 class="main-title">Uzair Nadeem</h5>
+                        <h5 class="main-title">@Model.User.FirstName @Model.User.LastName</h5>
                         <div class="sidebar-thumbnail"> <img src="~/images/avatar.jpg" alt=""> </div>
                         <div class="sidebar-information">
                             <div class="profile-usermenu">
@@ -82,9 +82,97 @@
                             <!-- Followers -->
                             <div id="comm" class="tab-pane fade">
 
+                            <div class="net-work-in"> 
+                    
+                    
+                            <!-- Members -->
+                            <div class="main-mem"> 
+                      
+                            <!-- Head -->
+                            <div class="head">
+                                <div class="row">
 
-                                <h3> My Community List</h3>
+                                    <div class="col-sm-4">
+                            
+                                    </div>
 
+
+                                    <div class="col-sm-4">
+                                        <form>
+                                            <input type="search" placeholder="Search">
+                                            <button type="submit"><i class="fa fa-search"></i></button>
+                                        </form>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <select>
+                                            <option>Alphabetical</option>
+                                            <option>Date Created</option>
+                                            <option>Latest First</option>
+                                        </select>
+                                    </div>
+						
+                                </div>
+                            </div>
+                      
+                            <!-- Tittle -->
+                            <div class="tittle">
+                                <ul class="row">
+                                    <li class="col-xs-4"> <span>Community Name</span> </li>
+                                    <li class="col-xs-3"> <span>Members</span> </li>
+                                    <li class="col-xs-3"> <span>Forms</span> </li>
+                                    <li class="col-xs-2 n-p-r n-p-l"> <span>Active</span> </li>
+                                </ul>
+                            </div>
+                      
+                            <!-- Tittle -->
+                            <div class="folow-persons">
+                            <ul>
+                          
+                                @foreach (var item in Model.CommunitiesList)
+                                {
+                                    <!-- COMMUNITY -->
+                                    <li>
+                                        <div class="row">
+                                            <div class="col-xs-4"> 
+                                                <!-- COMMUNITY TITLE -->
+                                                <div class="fol-name">
+									
+                                                    <!-- COMMUNITY Logo -->
+                                                    <div class="avatar"> <img src="~/CommunityImages/@item.Community.CommunityLogo" alt=""> </div>
+                                  
+                                                    <!-- COMMUNITY Title -->
+                                                    <h6>@item.Community.CommunityName</h6>
+									
+                                                    <!-- COMMUNITY About -->
+                                                    <span>@item.Community.CommunityAbout</span> </div>
+                              
+                                            </div>
+							  
+                                            <!-- Members -->
+                                            <div class="col-xs-3 n-p-r n-p-l"> <span>@item.Community.CommunityUsers.Count()</span> </div>
+                              
+							  
+                                            <!-- Total Forms -->
+                                            <div class="col-xs-3 n-p-r"> <span>13</span></div>
+                              
+                                            <!-- Active Forms -->
+                                            <div class="col-xs-2 n-p-r n-p-l"> <span>2</span> </div>
+							  
+                                        </div>
+                                    </li>
+                          
+                                }
+                          
+                          
+                            </ul>
+                            
+                            
+                            </div>
+                            </div>
+                            </div>
+                
+
+                                
                             </div>
 
 

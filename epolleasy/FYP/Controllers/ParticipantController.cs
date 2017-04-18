@@ -19,6 +19,16 @@ namespace FYP.Controllers
         // GET: Paticipant
         public ActionResult Index()
         {
+            var thisUser = db.Users.Where(u => u.UserName == User.Identity.Name).SingleOrDefault();
+
+            var myDashboard = new ProfileDataViewModel()
+            {
+                User = thisUser,
+                CommunitiesList = db.CommunityUsers.Include(x => x.Community).Where(u => u.UserID==thisUser.Id).ToList()
+
+            };
+
+
             return View();
         }
 
@@ -60,25 +70,25 @@ namespace FYP.Controllers
 
 
 
-        public ActionResult ShowMyCommunity()
-        {
-            var USiD = db.Users.Where(u => u.UserName == User.Identity.Name).SingleOrDefault().Id;
+        //public ActionResult ShowMyCommunity()
+        //{
+        //    var USiD = db.Users.Where(u => u.UserName == User.Identity.Name).SingleOrDefault().Id;
 
-            if (!String.IsNullOrEmpty(USiD))
-            {
+        //    if (!String.IsNullOrEmpty(USiD))
+        //    {
 
-                //var ShowCommunity = db.Communities.Include(x => x.CommunityUsers).Where(u => ).ToList();
-                var myCommunityList = db.CommunityUsers.Include(x => x.Community).Where(u => u.UserID == USiD).ToList();
-
-
-                return PartialView("_ShowMyCommunityList", myCommunityList);
-
-            }
-
-            return HttpNotFound();
+        //        //var ShowCommunity = db.Communities.Include(x => x.CommunityUsers).Where(u => ).ToList();
+        //        var myCommunityList = db.CommunityUsers.Include(x => x.Community).Where(u => u.UserID == USiD).ToList();
 
 
-        }
+        //        return PartialView("_ShowMyCommunityList", myCommunityList);
+
+        //    }
+
+        //    return HttpNotFound();
+
+
+        //}
 
 
 

@@ -19,7 +19,7 @@ namespace FYP.Models
 
         public virtual Community Community { get; set; }
 
-        public virtual ApplicationUser AppUser { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }
 
 
     }

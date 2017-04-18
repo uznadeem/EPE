@@ -182,9 +182,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201704171102114_April17.cs" />
-    <Compile Include="Migrations\201704171102114_April17.Designer.cs">
-      <DependentUpon>201704171102114_April17.cs</DependentUpon>
+    <Compile Include="Migrations\201704181639267_April18F.cs" />
+    <Compile Include="Migrations\201704181639267_April18F.Designer.cs">
+      <DependentUpon>201704181639267_April18F.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -206,6 +206,7 @@
     <Compile Include="system\web.cs" />
     <Compile Include="ViewModel\CommunityMemberViewModel.cs" />
     <Compile Include="ViewModel\HomePageViewModel.cs" />
+    <Compile Include="ViewModel\ProfileDataViewModel.cs" />
     <Compile Include="ViewModel\QuestionAnswerViewModel.cs" />
     <Compile Include="ViewModel\ViewDetailViewModel.cs" />
   </ItemGroup>
@@ -502,8 +503,8 @@
     <Content Include="Views\Manage\EditProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201704171102114_April17.resx">
-      <DependentUpon>201704171102114_April17.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201704181639267_April18F.resx">
+      <DependentUpon>201704181639267_April18F.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
