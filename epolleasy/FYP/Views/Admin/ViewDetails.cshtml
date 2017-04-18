@@ -1,4 +1,4 @@
-﻿@model FYP.Models.Community
+﻿@model FYP.ViewModel.ViewDetailViewModel
 @{
     ViewBag.Title = "ViewDetails";
     Layout = "~/Views/Shared/_LayoutProject.cshtml";
@@ -13,9 +13,9 @@
         <div class="right-top-bnr">
             <div class="connect">
                 <a href="#." data-toggle="modal" data-target="#myModal"><i class="fa fa-user-plus"></i> Add Member</a>
-               
-                <a href="/admin/AddForm/@ViewBag.id" ><i class="fa fa-user-plus"></i> Add Form</a>
- 
+
+                <a href="/admin/AddForm/@ViewBag.Id"><i class="fa fa-user-plus"></i> Add Form</a>
+
 
 
                 @*<a data-toggle="modal" data-target="#myModal"><i class="fa fa-user-plus"></i>Add Members</a>*@
@@ -44,7 +44,7 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-6">
-                            @using (Html.BeginForm("ViewDetails", "Admin", new { id = @ViewBag.id }, FormMethod.Post))
+                            @using(Html.BeginForm("ViewDetails", "Admin", new { id = ViewBag.Id }, FormMethod.Post))
                             {
                                 @Html.AntiForgeryToken()
                                 <hr />
@@ -52,9 +52,9 @@
                                 @*@Html.DisplayFor(m => m.com.CommunityID, new { @class = "col-md-2 control-label" })*@
 
                                 <div class="form-group">
-                                    <div class="editor-label">
-                                        @Html.LabelFor(u => u.AppUser)
-                                    </div>
+                                    @*<div class="editor-label">
+                                            <input name="AppUser[]">
+                                        </div>*@
 
                                     <div class="editor-field">
                                         @Html.ListBox("AppUser")
@@ -99,27 +99,27 @@
                     <h5 class="main-title">Community Details  </h5>
                     @*   @Html.ActionLink("Edit", "Edit", new { id = Model.CommunityID }, new { @class= "popup" })*@
                     <!--Community Logo-->
-                    <div class="sidebar-thumbnail"> <img src="~/CommunityImages/@Model.CommunityLogo"> </div>
+                    <div class="sidebar-thumbnail"> <img src="~/CommunityImages/@ViewBag.ComData.CommunityLogo"> </div>
 
                     <!--Information-->
                     <div class="sidebar-information">
-                            <ul class="single-category">
-                                <li class="row">
-                                    <h6 class="title col-xs-4">Name</h6>
-                                    <span class="subtitle col-xs-8"> @ViewBag.ComData.CommunityName </span>
-                                </li>
-                                <li class="row">
-                                    <h6 class="title col-xs-4">Community About</h6>
-                                    <span class="subtitle col-xs-8"> @ViewBag.ComData.CommunityAbout </span>
-                                </li>
-                                <li class="row">
-                                    <h6 class="title col-xs-4">Community Domain</h6>
-                                    <span class="subtitle col-xs-8"> @ViewBag.ComData.CommunityDomain </span>
-                                </li>
+                        <ul class="single-category">
+                            <li class="row">
+                                <h6 class="title col-xs-4">Name</h6>
+                                <span class="subtitle col-xs-8"> @ViewBag.ComData.CommunityName </span>
+                            </li>
+                            <li class="row">
+                                <h6 class="title col-xs-4">Community About</h6>
+                                <span class="subtitle col-xs-8"> @ViewBag.ComData.CommunityAbout </span>
+                            </li>
+                            <li class="row">
+                                <h6 class="title col-xs-4">Community Domain</h6>
+                                <span class="subtitle col-xs-8"> @ViewBag.ComData.CommunityDomain </span>
+                            </li>
 
-                            </ul>
+                        </ul>
 
-                        </div>
+                    </div>
                 </div>
 
 
@@ -145,8 +145,33 @@
                     <!-- Community Forms -->
                     <div id="commForms" class="tab-pane fade">
 
-                        <!--JQ Grid-->
+                        <table id="abc" width="80%">
 
+                            <thead>
+
+                                <tr>
+                                    <th>Form Title</th>
+                                    <th>Form About</th>
+                                    <th>End Date/Time</th>
+
+                                </tr>
+                            </thead>
+
+                            @foreach (var t in Model.fcom)
+                            {
+
+                                <tbody>
+
+                                    <tr>
+                                        <td>@t.QForms.FormTitle</td>
+                                        <td>@t.QForms.FormDetail</td>
+                                        <td>@t.QForms.Expiry_Time</td>
+                                    </tr>
+
+                                </tbody>
+
+                            }
+                        </table>
                     </div>
 
 
@@ -280,7 +305,7 @@
 
 
 
-   @* <p>*@
+@* <p>*@
 @*@Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |</p>*@
 @* @Html.ActionLink("Back to List", "Index")*@
 

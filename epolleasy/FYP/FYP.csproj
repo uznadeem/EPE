@@ -207,6 +207,7 @@
     <Compile Include="ViewModel\CommunityMemberViewModel.cs" />
     <Compile Include="ViewModel\HomePageViewModel.cs" />
     <Compile Include="ViewModel\QuestionAnswerViewModel.cs" />
+    <Compile Include="ViewModel\ViewDetailViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="CommunityImages\12021907_478010122379109_36242169_n.jpg" />

@@ -10,6 +10,7 @@ using System.IO;
 using System.Web.Hosting;
 using FYP.ViewModel;
 
+
 namespace FYP.Controllers
 {
     public class AdminController : Controller
@@ -28,6 +29,7 @@ namespace FYP.Controllers
         {
 
             var com = db.Communities.Where(u => u.CommunityAdmin.Equals(User.Identity.Name));
+
             //var user = User.Identity.Name;
             //var abc = db.Communities.Where(a => a.CommunityAdmin == user).FirstOrDefault();
 
@@ -37,13 +39,13 @@ namespace FYP.Controllers
             //          on c.CommunityID equals u.CommunityID
             //          select new
             //          {
-            //              member = u.UserID.Equals(abc.CommunityID).ToString(),
+            //              member = u.UserID.Where(c.CommunityID.Equals(abc.CommunityID)),
             //              nameCom = c.CommunityName.Equals(abc.CommunityName)
             //          };
 
 
 
-           
+
 
             var jsonData = new
             {
@@ -100,16 +102,16 @@ namespace FYP.Controllers
             //{
 
 
-                    //Edit 
-                    var v = db.Communities.Where(a => a.CommunityID == objcom.CommunityID).FirstOrDefault();
-                    if (v != null)
-                    {
-                        v.CommunityName = objcom.CommunityName;
-                        v.CommunityAbout = objcom.CommunityAbout;
-                        db.SaveChanges();
-                    }
-        //}
-            
+            //Edit 
+            var v = db.Communities.Where(a => a.CommunityID == objcom.CommunityID).FirstOrDefault();
+            if (v != null)
+            {
+                v.CommunityName = objcom.CommunityName;
+                v.CommunityAbout = objcom.CommunityAbout;
+                db.SaveChanges();
+            }
+            //}
+
             status = true;
             return new JsonResult { Data = new { status = status } };
         }
@@ -122,29 +124,29 @@ namespace FYP.Controllers
             var v = db.Communities.Where(a => a.CommunityID == id).FirstOrDefault();
 
             if (v != null)
-                {
-                    return View(v);
-                }
-                else
-                {
-                    return HttpNotFound();
-                }
-            
+            {
+                return View(v);
+            }
+            else
+            {
+                return HttpNotFound();
+            }
+
         }
         [HttpPost]
         [ActionName("Delete")]
-        public ActionResult Delete(int id,string url)
+        public ActionResult Delete(int id, string url)
         {
             bool status = false;
-           
-                var v = db.Communities.Where(a => a.CommunityID == id).FirstOrDefault();
-                if (v != null)
-                {
-                    db.Communities.Remove(v);
-                    db.SaveChanges();
-                    status = true;
-                }
-          
+
+            var v = db.Communities.Where(a => a.CommunityID == id).FirstOrDefault();
+            if (v != null)
+            {
+                db.Communities.Remove(v);
+                db.SaveChanges();
+                status = true;
+            }
+
             return new JsonResult { Data = new { status = status } };
         }
 
@@ -152,14 +154,21 @@ namespace FYP.Controllers
         {
             var v = db.Communities.Where(u => u.CommunityID == id).FirstOrDefault();
             ViewBag.ComData = db.Communities.Where(u => u.CommunityID == id).FirstOrDefault();
+            var b = db.FormsCommunity.Where(u => u.CommunityID.Equals(id)).ToList();
             ViewBag.Id = id;
             ViewBag.AppUser = new MultiSelectList(db.Users.Where(u => u.UserRole.Equals("Participant")), "ID", "UserName");
-            return View(v);
+            return View(new ViewDetailViewModel
+            {
+                fcom = b,
+
+                comm = v
+
+            });
         }
 
         [HttpPost]
 
-        public ActionResult ViewDetails( int id, string[] AppUser)
+        public ActionResult ViewDetails(int id, string[] AppUser)
         {
             CommunityUser cu = new CommunityUser();
 
@@ -167,11 +176,22 @@ namespace FYP.Controllers
             {
                 foreach (var item in AppUser)
                 {
+                    var memchk = (from cmu in db.CommunityUsers where cmu.UserID == item && cmu.CommunityID == id select cmu.ID).ToList();
 
-                    cu.UserID = item;
-                    cu.CommunityID = id;
-                    db.CommunityUsers.Add(cu);
-                    db.SaveChanges();
+                    if (memchk.Count == 0)
+                    {
+
+                        cu.UserID = item;
+                        cu.CommunityID = id;
+                        db.CommunityUsers.Add(cu);
+                        db.SaveChanges();
+
+                    }
+                    else
+                    {
+
+                    }
+
                 }
             }
 
@@ -182,54 +202,89 @@ namespace FYP.Controllers
         public ActionResult AddForm(int id)
         {
             ViewBag.id = id;
-           // var getrecdate = System.DateTime.Now;
+            // var getrecdate = System.DateTime.Now;
             return View();
         }
         [HttpPost]
-        public ActionResult AddForm(int id,QForm qform)
+        public ActionResult AddForm(int c_id, QForm qform)
         {
-            
-            
+
+
             qform.FormOwner = User.Identity.Name;
             qform.Creation_Time = System.DateTime.Now;
             db.QForms.Add(qform);
-            
+
             db.SaveChanges();
 
             //form community data_entry//
             FormCommunity fcom = new FormCommunity();
-            fcom.CommunityID = id;
+            fcom.CommunityID = c_id;
             fcom.QFormID = qform.QFormID;
             db.FormsCommunity.Add(fcom);
 
             db.SaveChanges();
 
-            var qformholder = qform.QFormID;
+            var qf_id = qform.QFormID;
 
-            return RedirectToAction("AddQuestion", new {qformholder = qformholder});
+            return RedirectToAction("AddQuestion", new { c_id = c_id, qf_id = qf_id });
 
         }
 
-        public ActionResult AddQuestion(int qformholder)
+        public ActionResult AddQuestion(int c_id, int qf_id)
         {
-           
-            ViewBag.qf_id = qformholder;
-             
+
+            ViewBag.qf_id = qf_id;
+
+            ViewBag.c_id = c_id;
             return View();
         }
 
         [HttpPost]
-        public ActionResult AddQuestion(int qformholder, QuestionAnswerViewModel abc)
+        public ActionResult AddQuestion(int c_id, int qf_id, Question q_obj /*, string[] Multiple_Question*/, string[] Multiple_Answer)
         {
 
-            abc.Ques.QFormID = qformholder;
 
-            db.Questions.Add(abc.Ques);
+            Answer ans_obj = new Answer();
+            int a = 1;
 
-            db.SaveChanges();
+            if (Multiple_Answer == null || q_obj == null)
+            {
 
-            return RedirectToAction("AddQuestion", new {qformid = qformholder });
+                ModelState.AddModelError("", "Fields are missing ");
+                return View(q_obj);
+
+            }
+            q_obj.QFormID = qf_id;
+            db.Questions.Add(q_obj);
+
+            foreach (var v in Multiple_Answer)
+            {
+                ans_obj.AnswerStatement = v;
+
+                ans_obj.OptionNo = a;
+
+                ans_obj.QuestionID = q_obj.QuestionID;
+                db.Answers.Add(ans_obj);
+
+                db.SaveChanges();
+
+                a++;
+
+
+            }
+
+            return RedirectToAction("AddQuestion", new { c_id = c_id, qf_id = qf_id });
+
         }
+
+
+        //public ActionResult Publish(int c_id)
+        //{
+
+
+
+        //    return RedirectToAction("ViewDetail",);
+        //}
 
 
 
