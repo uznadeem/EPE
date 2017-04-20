@@ -1,5 +1,7 @@
 ﻿@using Microsoft.AspNet.Identity
+
 @model FYP.ViewModel.ProfileDataViewModel
+
 @{
 
     Layout = "~/Views/Shared/_LayoutProject.cshtml";
@@ -27,7 +29,7 @@
                 <div class="col-md-4">
                     <!-- Company Information -->
                     <div class="sidebar">
-                        <h5 class="main-title">@Model.User.FirstName @Model.User.LastName</h5>
+                        <h5 class="main-title">@Model.UserT.FirstName @Model.UserT.LastName</h5>
                         <div class="sidebar-thumbnail"> <img src="~/images/avatar.jpg" alt=""> </div>
                         <div class="sidebar-information">
                             <div class="profile-usermenu">

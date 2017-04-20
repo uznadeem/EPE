@@ -21,15 +21,16 @@ namespace FYP.Controllers
         {
             var thisUser = db.Users.Where(u => u.UserName == User.Identity.Name).SingleOrDefault();
 
+            //db.CommunityUsers.Include(x => x.Community).Where(u => u.UserID == thisUser.Id).ToList();
+
             var myDashboard = new ProfileDataViewModel()
             {
-                User = thisUser,
-                CommunitiesList = db.CommunityUsers.Include(x => x.Community).Where(u => u.UserID==thisUser.Id).ToList()
+                UserT = thisUser,
+                CommunitiesList = db.CommunityUsers.Include(x => x.Community).Where(u => u.UserID == thisUser.Id).ToList()
 
             };
 
-
-            return View();
+            return View(myDashboard);
         }
 
 
@@ -106,7 +107,8 @@ namespace FYP.Controllers
             {
 
                 UserID = UseriD,
-                CommunityID = CommID
+                CommunityID = CommID,
+                //Community = db.Communities.Where(u=>u.CommunityID==CommID).SingleOrDefault()
             };
             db.CommunityUsers.Add(newUser);
             db.SaveChanges();

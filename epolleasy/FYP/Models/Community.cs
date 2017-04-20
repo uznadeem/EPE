@@ -37,7 +37,7 @@ namespace FYP.Models
         public virtual  ICollection<CommunityUser> CommunityUsers { get; set; }
 
 
-        public virtual IEnumerable<FormCommunity> CommunityForms { get; set; }
+     //   public virtual IEnumerable<FormCommunity> CommunityForms { get; set; }
 
 
         public Community()

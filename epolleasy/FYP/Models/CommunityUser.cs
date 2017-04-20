@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
@@ -18,8 +19,9 @@ namespace FYP.Models
         public int CommunityID { get; set; }
 
         public virtual Community Community { get; set; }
-
         public virtual ApplicationUser ApplicationUser { get; set; }
+        //public virtual ICollection<Community> CommunityCollection { get; set; }
+
 
 
     }

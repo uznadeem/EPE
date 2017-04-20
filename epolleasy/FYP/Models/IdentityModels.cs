@@ -34,12 +34,12 @@ namespace FYP.Models
 
 
 
-        public virtual ICollection<CommunityUser> CommunityUsers { get; set; }
+        //public virtual ICollection<CommunityUser> CommunityUsers { get; set; }
 
-        public ApplicationUser()
-        {
-            CommunityUsers = new Collection<CommunityUser>();
-        }
+        //public ApplicationUser()
+        //{
+        //    CommunityUsers = new Collection<CommunityUser>();
+        //}
 
 
 

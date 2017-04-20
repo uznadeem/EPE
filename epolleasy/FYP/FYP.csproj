@@ -182,9 +182,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201704181639267_April18F.cs" />
-    <Compile Include="Migrations\201704181639267_April18F.Designer.cs">
-      <DependentUpon>201704181639267_April18F.cs</DependentUpon>
+    <Compile Include="Migrations\201704200618025_April20.cs" />
+    <Compile Include="Migrations\201704200618025_April20.Designer.cs">
+      <DependentUpon>201704200618025_April20.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -403,9 +403,11 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <None Include="Properties\PublishProfiles\epolleasy - FTP %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\epolleasy - FTP %283%29.pubxml" />
+    <None Include="Properties\PublishProfiles\epolleasy - FTP %284%29.pubxml" />
     <None Include="Properties\PublishProfiles\epolleasy - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\epolleasy - Web Deploy %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\epolleasy - Web Deploy %283%29.pubxml" />
+    <None Include="Properties\PublishProfiles\epolleasy - Web Deploy %284%29.pubxml" />
     <None Include="Properties\PublishProfiles\epolleasy - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -426,6 +428,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\Multi_Answer.js" />
     <Content Include="Scripts\owl.carousel.min.js" />
     <Content Include="Scripts\plugins\jquery.flexslider-min.js" />
     <Content Include="Scripts\plugins\mejs\background.png" />
@@ -503,8 +506,8 @@
     <Content Include="Views\Manage\EditProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201704181639267_April18F.resx">
-      <DependentUpon>201704181639267_April18F.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201704200618025_April20.resx">
+      <DependentUpon>201704200618025_April20.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
