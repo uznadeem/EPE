@@ -30,25 +30,20 @@
                     <!-- Company Information -->
                     <div class="sidebar">
                         <h5 class="main-title">@Model.UserT.FirstName @Model.UserT.LastName</h5>
-                        <div class="sidebar-thumbnail"> <img src="~/images/avatar.jpg" alt=""> </div>
+                        <div class="sidebar-thumbnail"> <img src="~/images/UserImages/@Model.UserT.ImageUrl" alt=""> </div>
                         <div class="sidebar-information">
                             <div class="profile-usermenu">
                                 <ul class="nav nav-links">
-                                    <li class="active"> <a href="#."> <i class="fa fa-heart-o"></i> Network </a> </li>
-                                    <li> <a href="#."> <i class="fa fa-group"></i> Bookmarks </a> </li>
-                                    <li> <a href="#."> <i class="fa fa-plus-circle"></i> Upgrade My Account </a> </li>
-                                    <li> <a href="#."> <i class="fa fa-cog"></i> Account Settings </a> </li>
-                                    <li> <a href="#."> <i class="fa fa-cog"></i> Log out </a> </li>
-
-                                    @*@using (Html.BeginForm("LogOff", "Home", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                                    <li><span class="fa fa-cog"></span>  @Html.ActionLink("Profile Settings", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</li>
+                                    <li>
+                                        @using (Html.BeginForm("LogOff", "Home", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
                                         {
                                             @Html.AntiForgeryToken()
 
-                                            <li>
-                                                <i class="fa fa-sign-out"></i><a href="javascript:document.getElementById('logoutForm').submit()">Sign Out</a>
-                                            </li>
-
-                                        }*@
+                                            <a href="javascript:document.getElementById('logoutForm').submit()"><span class="fa fa-sign-out" aria-hidden="true"></span>Log off</a>
+                                            
+                                        }
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -120,9 +115,10 @@
                             <div class="tittle">
                                 <ul class="row">
                                     <li class="col-xs-4"> <span>Community Name</span> </li>
-                                    <li class="col-xs-3"> <span>Members</span> </li>
-                                    <li class="col-xs-3"> <span>Forms</span> </li>
+                                    <li class="col-xs-2"> <span>Members</span> </li>
+                                    <li class="col-xs-2"> <span>Forms</span> </li>
                                     <li class="col-xs-2 n-p-r n-p-l"> <span>Active</span> </li>
+                                    <li class="col-xs-1 n-p-r n-p-l"> <span>Action</span> </li>
                                 </ul>
                             </div>
                       
@@ -151,15 +147,21 @@
                                             </div>
 							  
                                             <!-- Members -->
-                                            <div class="col-xs-3 n-p-r n-p-l"> <span>@item.Community.CommunityUsers.Count()</span> </div>
+                                            <div class="col-xs-2 n-p-r n-p-l"> <span>@item.Community.CommunityUsers.Count()</span> </div>
                               
 							  
                                             <!-- Total Forms -->
-                                            <div class="col-xs-3 n-p-r"> <span>13</span></div>
+                                            <div class="col-xs-2 n-p-r"> <span>13</span></div>
                               
                                             <!-- Active Forms -->
                                             <div class="col-xs-2 n-p-r n-p-l"> <span>2</span> </div>
 							  
+                                            <div class="col-xs-1">
+
+                                                @Html.ActionLink("Go", "ParticipantViewDetail", new { controller = "Participant", id = @item.CommunityID })
+
+                                            </div>
+
                                         </div>
                                     </li>
                           

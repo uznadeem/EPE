@@ -10,6 +10,7 @@ namespace FYP.ViewModel
     {
         public Community comm { get; set; }
         public IEnumerable<FormCommunity> fcom { get; set; }
-
+        public IList<CommunityUser> c_usr { get; set; }
+        public IEnumerable<ApplicationUser> Au { get; set; }
     }
 }

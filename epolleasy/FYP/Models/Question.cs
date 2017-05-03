@@ -18,9 +18,11 @@ namespace FYP.Models
         [Required]
         public int QFormID { get; set; }
 
+        public int SelectedAnswerId { get; set; }
+
         public virtual QForm QForm { get; set; }
 
-
+        public virtual IList<Answer> Answer { get; set; }
 
     }
 }

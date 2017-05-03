@@ -15,7 +15,7 @@ namespace FYP.Models
         public int QFormID { get; set; }
 
         [Required]
-        public int UserID { get; set; }
+        public string UserID { get; set; }
 
         public virtual ApplicationUser ApplicationUser { get; set; }
 

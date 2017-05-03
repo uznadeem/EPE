@@ -1,18 +1,21 @@
 ﻿@model FYP.Models.IndexViewModel
 @{
     ViewBag.Title = "Manage";
+    Layout = "~/Views/Shared/_LayoutProject.cshtml";
 }
 
-<h2>@ViewBag.Title.</h2>
-
 <p class="text-success">@ViewBag.StatusMessage</p>
-<div>
+<div class="container">
     <h4>Change your account settings</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>Password:</dt>
-        <dd>
-            [
+    <div class="row">
+            <div class="col-md-6">
+
+                <label>Password</label>
+
+            </div>
+
+            <div class="col-md-6">
             @if (Model.HasPassword)
             {
                 @Html.ActionLink("Change your password", "ChangePassword")
@@ -21,14 +24,20 @@
             {
                 @Html.ActionLink("Create", "SetPassword")
             }
-            ]
-        </dd>
+           </div>
+    </div>
+         <div class="row">
+             <div class="col-md-6">
 
-        <dt>Edit Profile:</dt>
-        <dd>
-          [ @Html.ActionLink("Edit", "EditProfile") ]
-        </dd>
+                 <label> Profile</label>
 
+             </div>
+
+             <div class="col-md-6">
+                @Html.ActionLink("Edit", "EditProfile") 
+             </div>
+             
+          </div>
         @*<dt>External Logins:</dt>
         <dd>
             @Model.Logins.Count [
@@ -43,31 +52,43 @@
              Uncomment the following block after you have set up two-factor authentication
         *@
 
-        <dt>Phone Number:</dt>
-        <dd>
+
+
+    <div class="row">
+        <div class="col-md-6">
+
+            <label>Phone Number</label>
+
+        </div>
+
+        <div class="col-md-6">
             @(Model.PhoneNumber ?? "None")
             @if (Model.PhoneNumber != null)
             {
                 <br />
-                    <text>[&nbsp;&nbsp;@Html.ActionLink("Change", "AddPhoneNumber")&nbsp;&nbsp;]</text>
+                <text>&nbsp;&nbsp;@Html.ActionLink("Change", "AddPhoneNumber")&nbsp;&nbsp;</text>
                 using (Html.BeginForm("RemovePhoneNumber", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                 {
                     @Html.AntiForgeryToken()
-                    <text>[<input type="submit" value="Remove" class="btn-link" />]</text>
+                    <text><input type="submit" value="Remove" class="btn-link" /></text>
                 }
             }
             else
             {
-                <text>[&nbsp;&nbsp;@Html.ActionLink("Add", "AddPhoneNumber")</text>
+                <text>&nbsp;&nbsp;@Html.ActionLink("Add", "AddPhoneNumber")</text>
             }
-        </dd>
+        </div>
 
-        <dt>Two-Factor Authentication:</dt>
-        <dd>
-            @*<p>
-                    There are no two-factor authentication providers configured. See <a href="http://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
-                    for details on setting up this ASP.NET application to support two-factor authentication.
-                </p>*@
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+
+            <label>Two-Factor Authentication:</label>
+
+        </div>
+
+        <div class="col-md-6">
+            
             @if (Model.TwoFactor)
             {
                 using (Html.BeginForm("DisableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
@@ -88,6 +109,11 @@
                     </text>
                 }
             }
-        </dd>
-    </dl>
+
+
+
+
+        </div>
+
+    </div>               
 </div>

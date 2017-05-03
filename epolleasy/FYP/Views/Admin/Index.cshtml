@@ -1,98 +1,5 @@
 ﻿@using Microsoft.AspNet.Identity
-@model IEnumerable<FYP.Models.Community>
-
-@section ScriptsDashboard {
-
-    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
-    <script src="~/Scripts/jquery.validate.min.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js"></script>
-    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
-    <script>
-
-        $(document).ready(function () {
-            var oTable = $("#mydatatable").DataTable({
-                "ajax": {
-                    "url": '/admin/ShowCommunity',
-                    "type": "get",
-                    "datatype": "json"
-                },
-                "columns": [
-
-                    { "data": "CommunityName", "autoWidth": true },
-                    { "data" : "CommunityDomain", "autoWidth": true },
-                    //{ "data" : "UserID", "autoWidth": true },
-                    { "data": "CommunityAbout", "autoWidth": true },
-                    {
-                        "data": "CommunityID", "width": "30px", "render": function (data) {
-                            return '<a class="btn btn-primary" href="/admin/ViewDetails/' + data + '">View Details</a>';
-                        }
-                    },
-                    {
-                        "data": "CommunityID", "width": "30px", "render": function (data) {
-                            return '<a class="popup btn btn-primary" href="/admin/delete/' + data + '">Delete</a>';
-                        }
-                    }
-
-                ]
-
-            });
-
-            $('.tablecontainer').on('click', 'a.popup', function (e) {
-                e.preventDefault();
-                OpenPopup($(this).attr('href'));
-            })
-            function OpenPopup(pageUrl) {
-                var $pageContent = $('<div/>');
-                $pageContent.load(pageUrl, function () {
-                    $('#popupForm', $pageContent).removeData('validator');
-                    $('#popupForm', $pageContent).removeData('unobtrusiveValidation');
-                    $.validator.unobtrusive.parse('form');
-
-                });
-
-                $dialog = $('<div class="popupWindow" style="overflow:auto"></div>')
-                          .html($pageContent)
-                          .dialog({
-                              draggable: false,
-                              autoOpen: false,
-                              resizable: false,
-                              model: true,
-                              title: 'Popup Dialog',
-                              height: 550,
-                              width: 600,
-                              close: function () {
-                                  $dialog.dialog('destroy').remove();
-                              }
-                          })
-
-                $('.popupWindow').on('submit', '#popupForm', function (e) {
-                    var url = $('#popupForm')[0].action;
-                    $.ajax({
-                        type: "POST",
-                        url: url,
-                        data: $('#popupForm').serialize(),
-                        success: function (data) {
-                            if (data.status) {
-                                $dialog.dialog('close');
-                                oTable.ajax.reload();
-                            }
-                        }
-                    })
-
-                    e.preventDefault();
-                })
-                $dialog.dialog('open');
-            }
-        })
-
-    </script>
-
-
-}
-
-
+@model FYP.ViewModel.CommunityUserViewModel
 
 
 @{
@@ -103,11 +10,11 @@
 
         <!-- SUB Banner -->
         <div class="profile-bnr sub-bnr user-profile-bnr">
-            <div class="position-center-center">
-                <div class="container">
-                    <h2> </h2>
-                </div>
-            </div>
+                <div class="right-top-bnr">
+                    <div class="compop">
+                        <a class="popup btn btn-primary" href="/admin/create" style="margin-bottom:15px; margin-top:15px;">Add New Community</a>
+                    </div>
+                 </div>
         </div>
 
 
@@ -122,24 +29,24 @@
                         <div class="col-md-4">
                             <!-- Company Information -->
                             <div class="sidebar">
-                                <h5 class="main-title">Uzair Nadeem</h5>
-                                <div class="sidebar-thumbnail"> <img src="~/images/avatar.jpg" alt=""> </div>
+                                <h5 class="main-title">@Model.appuser.UserName</h5>
+                                <div class="sidebar-thumbnail"> <img src="~/images/UserImages/@Model.appuser.ImageUrl" alt=""> </div>
                                 <div class="sidebar-information">
                                     <div class="profile-usermenu">
                                         <ul class="nav nav-links">
-                                            <li class="active"> <a href="#."> <i class="fa fa-heart-o"></i> Network </a> </li>
-                                            <li> <a href="#."> <i class="fa fa-group"></i> Bookmarks </a> </li>
-                                            <li> <a href="#."> <i class="fa fa-plus-circle"></i> Upgrade My Account </a> </li>
-                                            <li> <a href="#."> <i class="fa fa-cog"></i> Account Settings </a> </li>
-                                            @*@using (Html.BeginForm("LogOff", "Home", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                                            <li>@*<span class="fa fa-cog"></span>*@  @Html.ActionLink("Profile Settings", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class="glyphicon glyphicon-signout" })</li>
+                                            <li>
+                                                @using (Html.BeginForm("LogOff", "Home", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
                                                 {
                                                     @Html.AntiForgeryToken()
 
-                                                    <li>
-                                                        <i class="fa fa-sign-out"></i><a href="javascript:document.getElementById('logoutForm').submit()">Sign Out</a>
-                                                    </li>
+                                                    <a href="javascript:document.getElementById('logoutForm').submit()"><span class="fa fa-sign-out" aria-hidden="true"></span>Log off</a>
 
-                                                }*@
+
+                                                    //<li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+
+                                                }
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -162,7 +69,7 @@
                                 </ul>
 
                                 <!-- Tab Content -->
-                                <div class="tab-content">
+                                @*<div class="tab-content">
 
                                     <div id="AcForms" class="tab-pane fade in active">
                                         <div class="net-work-in">
@@ -216,8 +123,136 @@
                                     </div>
 
 
-                                </div>
+                                </div>*@
+                                <div class="tab-content">
 
+                                    <div id="AcForms" class="tab-pane fade in active">
+                                        <div class="net-work-in">
+                                            <h3> hello bravo</h3>
+                                        </div>
+                                    </div>
+
+                                    <!-- Followers -->
+                                    <div id="comm" class="tab-pane fade">
+
+                                        <div class="net-work-in">
+
+
+                                            <!-- Members -->
+                                            <div class="main-mem">
+
+                                                <!-- Head -->
+                                                <div class="head">
+                                                    <div class="row">
+
+                                                        <div class="col-sm-4">
+
+                                                        </div>
+
+
+                                                        <div class="col-sm-4">
+                                                            <form @*action="/admin/SearchAdminCommunities"*@>
+                                                                <input type="search" placeholder="Search" name="cname">
+                                                                <button type="submit"><i class="fa fa-search"></i></button>
+                                                            </form>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <select>
+                                                                <option>Alphabetical</option>
+                                                                <option>Date Created</option>
+                                                                <option>Latest First</option>
+                                                            </select>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                                <!-- Tittle -->
+                                                <div class="tittle">
+                                                    <ul class="row">
+                                                        
+                                                        <li class="col-xs-1"> <span></span> </li>
+                                                        <li class="col-xs-3"> <span>Community Name</span> </li>
+                                                        <li class="col-xs-2"> <span>Members</span> </li>
+                                                        <li class="col-xs-2"> <span>Forms</span> </li>
+                                                        <li class="col-xs-2 "> <span>Active</span> </li>
+                                                        <li class="col-xs-1"> <span></span> </li>
+                                                    </ul>
+                                                </div>
+
+                                                <!-- Tittle -->
+                                                <div class="folow-persons">
+                                                    <ul>
+
+                                                        @foreach (var item in Model.Com)
+                                                        {
+                                                            <!-- COMMUNITY -->
+                                                            <li>
+                                                                <div class="row">
+                                                                    <div class="col-xs-1">
+                                                                        <!-- COMMUNITY TITLE -->
+                                                                        <div class="fol-name">
+
+                                                                            <!-- COMMUNITY Logo -->
+                                                                            <div class="avatar"> <img src="~/CommunityImages/@item.CommunityLogo" alt=""> </div>
+                                                                       </div>
+                                                                    </div>
+                                                                    <div class="fol-name">
+                                                                        <div class="col-xs-3">
+                                                                            <!-- COMMUNITY Title -->
+                                                                            <h6>@item.CommunityName</h6>
+
+                                                                            <!-- COMMUNITY About -->
+                                                                            <span>@item.CommunityAbout</span>
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                    <!-- Members -->
+                                                                    <div class="col-xs-2"> <span>@item.CommunityUsers.Count()</span> </div>
+
+
+                                                                    <!-- Total Forms -->
+                                                                    <div class="col-xs-2"> <span>13</span></div>
+
+                                                                    <!-- Active Forms -->
+                                                                    <div class="col-xs-2"> <span>2</span> </div>
+
+                                                                    <div class="col-xs-1">
+   
+                                                                        @Html.ActionLink("Go", "ViewDetails", new { controller = "Admin", id = @item.CommunityID })
+                                                                         
+                                                                    </div>
+
+                                                                </div>
+                                                            </li>
+
+                                                        }
+
+
+                                                    </ul>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                    </div>
+
+
+
+                                    <div id="sforms" class="tab-pane fade in active">
+
+                                        <div class="net-work-in">
+                                            <h3> hello jello</h3>
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
 
                             </div>
                         </div>
@@ -228,16 +263,61 @@
                 </div>
             </div>
         </div>
+<h5>hello World</h5>
+<h2>Time For the Result</h2>
+<img src="@Url.Action("ResultChart") alt="SimpleChart" />
 
+@*<script>
 
-        <!-- HOME PRO-->
+        $(document).ready(function () {
+           
+            $('.compop').on('click', 'a.popup', function (e) {
+                e.preventDefault();
+                OpenPopup($(this).attr('href'));
+            })
+            function OpenPopup(pageUrl) {
+                var $pageContent = $('<div/>');
+                $pageContent.load(pageUrl, function () {
+                    $('#popupForm', $pageContent).removeData('validator');
+                    $('#popupForm', $pageContent).removeData('unobtrusiveValidation');
+                    $.validator.unobtrusive.parse('form');
 
+                });
 
+                $dialog = $('<div class="popupWindow" style="overflow:auto"></div>')
+                          .html($pageContent)
+                          .dialog({
+                              draggable: false,
+                              autoOpen: false,
+                              resizable: false,
+                              model: true,
+                              title: 'Popup Dialog',
+                              height: 550,
+                              width: 600,
+                              close: function () {
+                                  $dialog.dialog('destroy').remove();
+                              }
+                          })
 
+                $('.popupWindow').on('submit', '#popupForm', function (e) {
+                    var url = $('#popupForm')[0].action;
+                    $.ajax({
+                        type: "POST",
+                        url: url,
+                        data: $('#popupForm').serialize(),
+                        success: function (data) {
+                            if (data.status) {
+                                $dialog.dialog('close');
+                                //oTable.ajax.reload();
+                            }
+                        }
+                    })
 
+                    e.preventDefault();
+                })
+                $dialog.dialog('open');
+            }
+        })
 
-
-
-
-
-
+</script>*@
+<script src="~/Scripts/create_com_popup.js"></script>

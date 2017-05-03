@@ -20,7 +20,7 @@ namespace FYP.Models
 
         public int AnsCount { get; set; }
 
-        public virtual Question Question { get; set; }
+        //public virtual Question Question { get; set; }
 
 
     }

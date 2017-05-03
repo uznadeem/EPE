@@ -182,9 +182,25 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201704200618025_April20.cs" />
-    <Compile Include="Migrations\201704200618025_April20.Designer.cs">
-      <DependentUpon>201704200618025_April20.cs</DependentUpon>
+    <Compile Include="Migrations\201704210722366_Ap_212.cs" />
+    <Compile Include="Migrations\201704210722366_Ap_212.Designer.cs">
+      <DependentUpon>201704210722366_Ap_212.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704221843344_Second.cs" />
+    <Compile Include="Migrations\201704221843344_Second.Designer.cs">
+      <DependentUpon>201704221843344_Second.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704291945249_ap_301.cs" />
+    <Compile Include="Migrations\201704291945249_ap_301.Designer.cs">
+      <DependentUpon>201704291945249_ap_301.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704292022105_ap_302.cs" />
+    <Compile Include="Migrations\201704292022105_ap_302.Designer.cs">
+      <DependentUpon>201704292022105_ap_302.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704301722286_ap_101.cs" />
+    <Compile Include="Migrations\201704301722286_ap_101.Designer.cs">
+      <DependentUpon>201704301722286_ap_101.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -202,12 +218,16 @@
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AdminService.cs" />
+    <Compile Include="Services\ParticipantService.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="system\web.cs" />
     <Compile Include="ViewModel\CommunityMemberViewModel.cs" />
+    <Compile Include="ViewModel\CommunityUserViewModel.cs" />
+    <Compile Include="ViewModel\FormUserViewModel.cs" />
     <Compile Include="ViewModel\HomePageViewModel.cs" />
     <Compile Include="ViewModel\ProfileDataViewModel.cs" />
-    <Compile Include="ViewModel\QuestionAnswerViewModel.cs" />
+    <Compile Include="ViewModel\PFormViewModel.cs" />
     <Compile Include="ViewModel\ViewDetailViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -319,6 +339,7 @@
     <Content Include="images\sponsor_logo5.png" />
     <Content Include="images\sponsor_logo6.png" />
     <Content Include="images\user-bg.jpg" />
+    <Content Include="images\UserImages\defaultImage.jpg" />
     <Content Include="img\avatar.png" />
     <Content Include="img\b-post-image.jpg" />
     <Content Include="img\blog-image-1.jpg" />
@@ -354,6 +375,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\CommunityAdder.js" />
+    <Content Include="Scripts\create_com_popup.js" />
     <Content Include="Scripts\Datatable.js" />
     <Content Include="Scripts\gmap3.min.js" />
     <Content Include="Scripts\i18n\grid.locale-ar.js" />
@@ -477,15 +499,16 @@
     <Content Include="Views\Home\SendCode.cshtml" />
     <Content Include="Views\Home\VerifyCode.cshtml" />
     <Content Include="Views\Admin\AddForm.cshtml" />
-    <Content Include="Views\Admin\_QuestionForm.cshtml" />
     <Content Include="Views\Admin\AddQuestion.cshtml" />
     <Content Include="Views\Participant\Community.cshtml" />
     <Content Include="Views\Participant\SearchCommunity.cshtml" />
     <Content Include="Views\Participant\_ShowMyCommunityList.cshtml" />
+    <Content Include="Views\Participant\ParticipantViewDetail.cshtml" />
+    <Content Include="Views\Participant\FormParticipate.cshtml" />
+    <Content Include="Views\Participant\_UserAlreadyParticipateInForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -506,8 +529,20 @@
     <Content Include="Views\Manage\EditProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201704200618025_April20.resx">
-      <DependentUpon>201704200618025_April20.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201704210722366_Ap_212.resx">
+      <DependentUpon>201704210722366_Ap_212.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704221843344_Second.resx">
+      <DependentUpon>201704221843344_Second.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704291945249_ap_301.resx">
+      <DependentUpon>201704291945249_ap_301.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704292022105_ap_302.resx">
+      <DependentUpon>201704292022105_ap_302.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704301722286_ap_101.resx">
+      <DependentUpon>201704301722286_ap_101.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

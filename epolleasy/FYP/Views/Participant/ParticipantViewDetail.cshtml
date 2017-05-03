@@ -12,9 +12,9 @@
         <!-- Top Riht Button -->
         <div class="right-top-bnr">
             <div class="connect">
-                <a href="#." data-toggle="modal" data-target="#myModal"><i class="fa fa-user-plus"></i> Add Member</a>
+                @*<a href="#." data-toggle="modal" data-target="#myModal"><i class="fa fa-user-plus"></i> Add Member</a>
 
-                <a href="/admin/AddForm/@ViewBag.Id"><i class="fa fa-user-plus"></i> Add Form</a>
+                <a href="/admin/AddForm/@ViewBag.Id"><i class="fa fa-user-plus"></i> Add Form</a>*@
 
 
 
@@ -27,51 +27,15 @@
 
         </div>
     </div>
-    @*<div class="position-center-center">
 
-        <img src="@Url.Action("ResultChart")" alt="SimpleChart" />
-
-    </div>*@
 
 
     <!-- Modal POPUP -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
 
-            <div class="modal-content">
-
-                <div class="modal-header">
-                    <button type="button" class="close pull-right" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Add Member</h4>
-                </div>
-
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            @using(Html.BeginForm("ViewDetails", "Admin", new { id = ViewBag.Id }, FormMethod.Post))
-                            {
-                                @Html.AntiForgeryToken()
-                                <hr />
-
-                                @*@Html.DisplayFor(m => m.com.CommunityID, new { @class = "col-md-2 control-label" })*@
-
-                                <div class="form-group">
-                                    @*<div class="editor-label">
-                                            <input name="AppUser[]">
-                                        </div>*@
-
-                                    <div class="editor-field">
-                                        @Html.ListBox("AppUser")
-                                    </div>
-                                </div>
-
-                                <input type="submit" value="Add">
-                            }
-
-                        </div>
-                    </div>
-                </div>
-            </div>
+               
+            
         </div>
 
     </div>
@@ -168,17 +132,19 @@
                                 <tbody>
 
                                     <tr>
-                                    @if (t.QForms.Expiry_Time > DateTime.Now)
-                                    {
+                                        @if (t.QForms.Expiry_Time > DateTime.Now)
+                                        {
 
-                                        <td>@t.QForms.FormTitle</td>
-                                        <td>@t.QForms.FormDetail</td>
-                                        <td>@t.QForms.Expiry_Time</td>
-                                    }
-                                    else
-                                    {
-                                        
-                                    }
+                                            <td>@t.QForms.FormTitle</td>
+                                            <td>@t.QForms.FormDetail</td>
+                                            <td>@t.QForms.Expiry_Time</td>
+                                            <td>@Html.ActionLink("Participate", "FormParticipate", new { controller = "Participant", id = @t.QFormID })</td>
+
+                                        }
+                                        else
+                                        {
+
+                                        }
                                     </tr>
 
                                 </tbody>
@@ -225,15 +191,70 @@
                                 <div class="container pb30">
                                     <h3>Professionals</h3>
                                     <div class="row">
-                                        @*@for(var i=0; i< Model.c_usr.Count(); i++)
-                                        {
-                                             <div class="col-sm-3">
-                                                   <div class="uou-block-6a">
-                                                        <img src="~/images/UserImages/@Model.c_usr[i].ApplicationUser.ImageUrl" alt="">
-                                                        <h6>@Model.c_usr[i].ApplicationUser.UserName</h6>
-                                                    </div>
-                                              </div>
-                                        }*@
+                                        <div class="col-sm-3">
+                                            <div class="uou-block-6a">
+                                                <img src="~/images/member-1.png" alt="">
+                                                <h6>Jessica Walsh<span>Founder &amp; Web Designer</span></h6>
+                                                <p><i class="fa fa-map-marker"></i> New York, USA</p>
+                                            </div>
+                                            <!-- end.uou-block-6a -->
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="uou-block-6a">
+                                                <img src="~/images/member-2.png" alt="">
+                                                <h6>Jessica Walsh<span>Founder &amp; Web Designer</span></h6>
+                                                <p><i class="fa fa-map-marker"></i> New York, USA</p>
+                                            </div>
+                                            <!-- end.uou-block-6a -->
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="uou-block-6a">
+                                                <img src="~/images/member-2.png" alt="">
+                                                <h6>Jessica Walsh<span>Founder &amp; Web Designer</span></h6>
+                                                <p><i class="fa fa-map-marker"></i> New York, USA</p>
+                                            </div>
+                                            <!-- end.uou-block-6a -->
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="uou-block-6a">
+                                                <img src="~/images/member-3.png" alt="">
+                                                <h6>Jessica Walsh<span>Founder &amp; Web Designer</span></h6>
+                                                <p><i class="fa fa-map-marker"></i> New York, USA</p>
+                                            </div>
+                                            <!-- end.uou-block-6a -->
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="uou-block-6a">
+                                                <img src="~/images/member-1.png" alt="">
+                                                <h6>Jessica Walsh<span>Founder &amp; Web Designer</span></h6>
+                                                <p><i class="fa fa-map-marker"></i> New York, USA</p>
+                                            </div>
+                                            <!-- end.uou-block-6a -->
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="uou-block-6a">
+                                                <img src="~/images/member-1.png" alt="">
+                                                <h6>Jessica Walsh<span>Founder &amp; Web Designer</span></h6>
+                                                <p><i class="fa fa-map-marker"></i> New York, USA</p>
+                                            </div>
+                                            <!-- end.uou-block-6a -->
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="uou-block-6a">
+                                                <img src="~/images/member-2.png" alt="">
+                                                <h6>Jessica Walsh<span>Founder &amp; Web Designer</span></h6>
+                                                <p><i class="fa fa-map-marker"></i> New York, USA</p>
+                                            </div>
+                                            <!-- end.uou-block-6a -->
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="uou-block-6a">
+                                                <img src="~/images/member-2.png" alt="">
+                                                <h6>Jessica Walsh<span>Founder &amp; Web Designer</span></h6>
+                                                <p><i class="fa fa-map-marker"></i> New York, USA</p>
+                                            </div>
+                                            <!-- end.uou-block-6a -->
+                                        </div>
                                     </div>
                                 </div>
                             </section>
@@ -247,6 +268,8 @@
                         <div class="profile-main">
                             <h3>Contact the Company</h3>
                             <div class="profile-in">
+                                @foreach (var v in Model.fcom)
+                                {
                                     <table id="abc" width="80%">
 
                                         <thead>
@@ -266,7 +289,7 @@
                                             <tbody>
 
                                                 <tr>
-                                                    @if (DateTime.Now > t.QForms.Expiry_Time  )
+                                                    @if (DateTime.Now > t.QForms.Expiry_Time)
                                                     {
 
                                                         <td>@t.QForms.FormTitle</td>
@@ -283,6 +306,9 @@
 
                                         }
                                     </table>
+
+
+                                }
                             </div>
                         </div>
                     </div>
@@ -294,27 +320,3 @@
         </div>
     </div>
 </div>
-
-
-
-@* <p>*@
-@*@Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |</p>*@
-@* @Html.ActionLink("Back to List", "Index")*@
-
-<script type="text/javascript">
-
-    $(document).ready(function () {
-
-        $('#AppUser').select2({
-
-            placeholder: "Select members",
-
-            maximumSelectionSize: 10,
-
-            width:150
-
-        });
-
-    });
-
-</script>

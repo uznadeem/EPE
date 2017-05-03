@@ -24,6 +24,9 @@ namespace FYP.Models
         [DataType(DataType.Date)]
         public DateTime DOB { get; set; }
 
+        public string ImageUrl { get; set; }
+
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -69,6 +72,8 @@ namespace FYP.Models
             return new ApplicationDbContext();
         }
 
+
+        
         
     }
 }

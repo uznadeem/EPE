@@ -65,7 +65,7 @@ namespace FYP.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Reg.UserName, Email = model.Reg.Email, DOB=model.Reg.DOB ,FirstName = model.Reg.FirstName, LastName = model.Reg.LastName,Gender = model.Reg.Gender,UserRole = model.Reg.UserRole};
+                var user = new ApplicationUser { UserName = model.Reg.UserName, Email = model.Reg.Email, DOB=model.Reg.DOB ,FirstName = model.Reg.FirstName, LastName = model.Reg.LastName,Gender = model.Reg.Gender,UserRole = model.Reg.UserRole,ImageUrl="defaultImage.jpg"};
                 var result = await UserManager.CreateAsync(user, model.Reg.Password);
                 if (result.Succeeded)
                 {
@@ -111,10 +111,18 @@ namespace FYP.Controllers
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var user = SignInManager.UserManager.Users.Where(u => u.Email == model.Log.Email).FirstOrDefault();
 
+            if (user == null)
+            {
+                ModelState.AddModelError("", "Invalid login attempt.");
+                return View(model);
+
+            }
+
             var result = await SignInManager.PasswordSignInAsync(user.UserName, model.Log.Password, model.Log.RememberMe, shouldLockout: false);
 
+           
 
-             ViewBag.data = (from userrole in context.Users where userrole.Email.Equals(model.Log.Email) select userrole.UserRole).FirstOrDefault();
+            ViewBag.data = (from userrole in context.Users where userrole.Email.Equals(model.Log.Email) select userrole.UserRole).FirstOrDefault();
 
             
 

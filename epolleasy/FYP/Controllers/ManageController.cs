@@ -12,6 +12,8 @@ using System.Data;
 using System.Data.Entity;
 using System.Net;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.IO;
+using System.Web.Hosting;
 
 namespace FYP.Controllers
 {
@@ -93,7 +95,7 @@ namespace FYP.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> EditProfile([Bind(Include = "UserName,FirstName,LastName,DOB")]ApplicationUser model)
+        public async Task<ActionResult> EditProfile([Bind(Include = "UserName,FirstName,LastName,ImageUrl")]ApplicationUser model,HttpPostedFileBase file)
         {
 
 
@@ -107,9 +109,18 @@ namespace FYP.Controllers
                 user.UserName = model.UserName;
                 user.FirstName = model.FirstName;
                 user.LastName = model.LastName;
-                user.DOB = model.DOB;
+                //user.DOB = model.DOB;
 
-                
+                if (file != null)
+                {
+
+                    var filename = Path.GetFileName(file.FileName);
+                    //  string path = Path.Combine(Server.MapPath("~/CommunityImages/"), Path.GetFileName(file.FileName));
+                    string path = HostingEnvironment.MapPath(Path.Combine("~/images/UserImages/", filename));
+                    file.SaveAs(path);
+                    user.ImageUrl = filename;
+                }
+
                 IdentityResult result = await UserManager.UpdateAsync(user);
 
                 

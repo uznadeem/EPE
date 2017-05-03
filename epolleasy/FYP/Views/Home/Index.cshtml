@@ -5,38 +5,6 @@
     Layout = "~/Views/Shared/_LayoutProject.cshtml";
 }
 
-
-<!doctype html>
-<html lang="en">
-<!-- Mirrored from new.uouapps.com/tiger-html/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 26 Nov 2016 10:00:50 GMT -->
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>TIGER - Social Network HTML Template</title>
-    <!-- Fonts Online -->
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800,300' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-    <!-- Style Sheet -->
-    <link rel="stylesheet" href="~/Content/owl.carousel.css">
-    <link rel="stylesheet" href="~/Content/main-style.css">
-    <link rel="stylesheet" href="~/Content/style.css">
-
-    @*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">*@
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-</head>
-
-
-<body>
     <div id="main-wrapper">
 
 
@@ -147,7 +115,7 @@
                                                 @Html.AntiForgeryToken()
                                                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                                                 <div class="form-group">
-                                                    @Html.LabelFor(u => u.Log.Email, new { @class = "col-md-2 control-label" })
+                                                    @Html.LabelFor(u => u.Log.Email, new { @class = "col-md-4 control-label" })
                                                     <div class="col-sm-6">
                                                         @Html.TextBoxFor(u => u.Log.Email, new { @class = "form-control" })
                                                         @Html.ValidationMessageFor(u => u.Log.Email, "", new { @class = "text-danger" })
@@ -156,7 +124,7 @@
                                                 </div>
 
                                                 <div class="form-group">
-                                                    @Html.LabelFor(u => u.Log.Password, new { @class = "col-md-2 control-label" })
+                                                    @Html.LabelFor(u => u.Log.Password, new { @class = "col-md-4 control-label" })
                                                     <div class="col-sm-6">
                                                         @Html.PasswordFor(u => u.Log.Password, new { @class = "form-control" })
                                                         @Html.ValidationMessageFor(u => u.Log.Password, "", new { @class = "text-danger" })
@@ -164,13 +132,18 @@
                                                 </div>
 
                                                     <div class="form-group">
-                                                        <div class="col-md-offset-2 col-md-2">
+                                                        <div class="col-md-offset-5 col-md-5">
                                                             <input type="submit" value="Log in" class="btn btn-default" />
+                                                            @Html.ActionLink("Forgot Your Password?", "ForgotPassword")
+
+
                                                         </div>
+
+                                                        @*<div class="col-md-3">
+                                                            @Html.ActionLink("Forgot?", "ForgotPassword")
+                                                        </div>*@
                                                     </div>
-                                                    <div class="col-md-6">
-                                                        @Html.ActionLink("Forgot your password?", "ForgotPassword")
-                                                    </div>
+                                                    
 
                                             }
                                         </div>
@@ -189,7 +162,4 @@
      </div>
 
 
-
-</body>
-<!-- Mirrored from new.uouapps.com/tiger-html/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 26 Nov 2016 10:01:54 GMT -->
-</html>
+@Scripts.Render("~/bundles/bootstrap")

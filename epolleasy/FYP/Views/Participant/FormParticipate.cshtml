@@ -1,0 +1,61 @@
+﻿@model FYP.ViewModel.PFormViewModel
+@{
+    ViewBag.Title = "FormParticipate";
+}
+
+<h2>FormParticipate</h2>
+
+@using (Html.BeginForm("FormParticipate", "Participant", new { id = ViewBag.Id }, FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <hr />
+    <div class="form-group">
+        @*@foreach(var v in Model.Ques)
+        {
+
+        
+            <h3>@v.QuestionString</h3>
+
+            foreach (var opt in Model.Ans)
+            {
+                if(opt.QuestionID==v.QuestionID)
+                { 
+                   
+                    @Html.RadioButtonFor(m =>v.QuestionID, new { @class = "radio-inline", id = opt.AnswerID })
+
+                    @Html.Label(opt.AnswerStatement, new { @class = "control-label" })
+                }
+                else
+                {
+
+                }
+
+            }
+
+
+        }*@
+
+        @for (var i = 0; i < Model.Ques.Count(); i++)
+        {
+            <p>@Model.Ques[i].QuestionString</p>
+
+                for (var j = 0; j < Model.Ques[i].Answer.Count(); j++)
+                {
+                    @Html.RadioButtonFor(m => m.Ques[i].SelectedAnswerId, Model.Ques[i].Answer[j].AnswerID, new { id = "Question" + i.ToString() + "Answer" + j.ToString() })
+                    <label for="Ques@(i)Answer@(j)">@Model.Ques[i].Answer[j].AnswerStatement</label>
+                }
+        }
+
+
+
+    </div>
+     <div>
+            <input type="submit" value="Save" />
+      </div>
+
+
+
+
+
+
+}

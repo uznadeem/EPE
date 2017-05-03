@@ -26,5 +26,7 @@ namespace FYP.Models
         [DataType(DataType.DateTime)]
         public DateTime Expiry_Time { get; set; }
         
+        public virtual ICollection<Question> Question { get; set; }
+        
     }
 }
