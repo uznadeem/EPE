@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 
-namespace TestWebApi2.Models
+namespace FYP.Models
 {
     // Models used as parameters to AccountController actions.
 

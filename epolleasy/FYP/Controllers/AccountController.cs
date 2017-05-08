@@ -13,11 +13,11 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
-using TestWebApi2.Models;
-using TestWebApi2.Providers;
-using TestWebApi2.Results;
+using FYP.Models;
+using FYP.Providers;
+using FYP.Results;
 
-namespace TestWebApi2.Controllers
+namespace FYP.Controllers
 {
     [Authorize]
     [RoutePrefix("api/Account")]

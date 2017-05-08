@@ -1,7 +1,7 @@
 using System.Web.Http;
 using System.Web.Mvc;
 
-namespace TestWebApi2.Areas.HelpPage
+namespace FYP.Areas.HelpPage
 {
     public class HelpPageAreaRegistration : AreaRegistration
     {

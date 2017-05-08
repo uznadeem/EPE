@@ -1,4 +1,4 @@
-namespace TestWebApi2.Areas.HelpPage.ModelDescriptions
+namespace FYP.Areas.HelpPage.ModelDescriptions
 {
     public class CollectionModelDescription : ModelDescription
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace TestWebApi2.Areas.HelpPage.ModelDescriptions
+namespace FYP.Areas.HelpPage.ModelDescriptions
 {
     /// <summary>
     /// Describes a type model.

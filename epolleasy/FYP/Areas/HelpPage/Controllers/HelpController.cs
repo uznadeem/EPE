@@ -1,10 +1,10 @@
 using System;
 using System.Web.Http;
 using System.Web.Mvc;
-using TestWebApi2.Areas.HelpPage.ModelDescriptions;
-using TestWebApi2.Areas.HelpPage.Models;
+using FYP.Areas.HelpPage.ModelDescriptions;
+using FYP.Areas.HelpPage.Models;
 
-namespace TestWebApi2.Areas.HelpPage.Controllers
+namespace FYP.Areas.HelpPage.Controllers
 {
     /// <summary>
     /// The controller that will handle requests for the help page.

@@ -16,7 +16,7 @@ using System.Web.Http;
 using System.Web.Http.OData;
 #endif
 
-namespace TestWebApi2.Areas.HelpPage
+namespace FYP.Areas.HelpPage
 {
     /// <summary>
     /// Use this class to customize the Help Page.

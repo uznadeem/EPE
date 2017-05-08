@@ -1,4 +1,4 @@
-namespace TestWebApi2.Areas.HelpPage
+namespace FYP.Areas.HelpPage
 {
     /// <summary>
     /// Indicates whether the sample is used for request or response
