@@ -237,6 +237,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705090718369_May9th.cs" />
+    <Compile Include="Migrations\201705090718369_May9th.Designer.cs">
+      <DependentUpon>201705090718369_May9th.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -586,6 +590,11 @@
     <Content Include="Views\Home\ResetPassword.cshtml" />
     <Content Include="Views\Home\ResetPasswordConfirmation.cshtml" />
     <Content Include="Views\Manage\EditProfile.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201705090718369_May9th.resx">
+      <DependentUpon>201705090718369_May9th.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
