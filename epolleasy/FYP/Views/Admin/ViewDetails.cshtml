@@ -170,14 +170,15 @@
                                     <tr>
                                     @if (t.QForms.Expiry_Time > DateTime.Now)
                                     {
-
+                                        
                                         <td>@t.QForms.FormTitle</td>
                                         <td>@t.QForms.FormDetail</td>
                                         <td>@t.QForms.Expiry_Time</td>
+                                        <td>@Html.ActionLink("Go", "FormResult", new { controller = "Admin", id = @t.QFormID })</td>
                                     }
                                     else
                                     {
-                                        
+
                                     }
                                     </tr>
 
@@ -272,6 +273,7 @@
                                                         <td>@t.QForms.FormTitle</td>
                                                         <td>@t.QForms.FormDetail</td>
                                                         <td>@t.QForms.Expiry_Time</td>
+                                                        <td>@Html.ActionLink("Go", "FormResult", new { controller = "Admin", id = @t.QFormID })</td>
                                                     }
                                                     else
                                                     {

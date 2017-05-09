@@ -107,16 +107,23 @@ namespace FYP.Controllers
             {
                 return View(model);
             }
+           
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var user = SignInManager.UserManager.Users.Where(u => u.Email == model.Log.Email).FirstOrDefault();
-
+            
             if (user == null)
             {
                 ModelState.AddModelError("", "Invalid login attempt.");
                 return View(model);
 
             }
+            //else if(user.EmailConfirmed==false)
+            //{
+            //    ModelState.AddModelError("", "Verify Your Email Address to Login");
+            //    return View(model);
+                
+            //}
 
             var result = await SignInManager.PasswordSignInAsync(user.UserName, model.Log.Password, model.Log.RememberMe, shouldLockout: false);
 

@@ -47,7 +47,7 @@ namespace FYP.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(Community objcom, HttpPostedFileBase file)
         {
-            await _as.CreateCommunityPAsync(objcom,file);
+            await _as.CreateCommunityPAsync(objcom, file);
             return RedirectToAction("Index", "Admin");
         }
 
@@ -67,10 +67,10 @@ namespace FYP.Controllers
 
         public async Task<ActionResult> ViewDetails(int id, string[] AppUser)
         {
-           
+
             if (AppUser != null)
             {
-                await _as.ViewDetailsPAsync(id,AppUser);
+                await _as.ViewDetailsPAsync(id, AppUser);
             }
 
             return RedirectToAction("ViewDetails", new { id = id });
@@ -89,9 +89,9 @@ namespace FYP.Controllers
         {
 
 
-            var p = await _as.AddFormAsync(c_id,qform);
-           
-            
+            var p = await _as.AddFormAsync(c_id, qform);
+
+
             return RedirectToAction("AddQuestion", new { c_id = c_id, qf_id = p });
 
         }
@@ -106,10 +106,10 @@ namespace FYP.Controllers
         }
 
         [HttpPost]
-        public async Task <ActionResult> AddQuestion(int c_id, int qf_id, Question q_obj , string[] Multiple_Answer)
+        public async Task<ActionResult> AddQuestion(int c_id, int qf_id, Question q_obj, string[] Multiple_Answer)
         {
 
-            
+
             if (Multiple_Answer == null || q_obj == null)
             {
 
@@ -118,8 +118,8 @@ namespace FYP.Controllers
 
             }
 
-            await _as.AddQuestionAsync(c_id,qf_id,q_obj,Multiple_Answer);
-            
+            await _as.AddQuestionAsync(c_id, qf_id, q_obj, Multiple_Answer);
+
             return RedirectToAction("AddQuestion", new { c_id = c_id, qf_id = qf_id });
 
         }
@@ -202,36 +202,51 @@ namespace FYP.Controllers
 
 
 
-        //public ActionResult Publish(int c_id)
-        //{
+
+        public ActionResult ResultChart(int qid)
+        {
+            ApplicationDbContext db = new ApplicationDbContext();
+
+            //var c = db.Questions.Where(u => u.QFormID.Equals(id)).FirstOrDefault();
+
+            //var b = db.Questions.Where(u => u.QFormID.Equals(id)).ToList();
+
+            //var ans = db.Answers.ToList();
+
+            //var ans = db.Questions.Where(a=>a.QFormID);
+
+           
+                var group = db.Answers.Where(a => a.QuestionID.Equals(qid)).Select(x => new { x.AnswerStatement, x.AnsCount }).AsEnumerable();
+                new Chart(width: 400, height: 200).AddSeries(
+
+                    chartType: "column",
+                    xValue: group, xField: "AnswerStatement",
+                    yValues: group, yFields: "AnsCount").Write();
+            return null;
+            //return View(new QuestionAndAnswerViewModel {
+            //    Quest = b ,
+            //    Answ  = ans
+
+            //});
+            // }
+
+        }
 
 
 
-        //    return RedirectToAction("ViewDetail",);
-        //}
-        //public ActionResult ResultChart()
-        //{
 
-        //    var b = db.Questions.Where(u => u.QFormID.Equals(4)).ToList();
 
-        //    string[] Ans_str = new string[3];
+        public ActionResult FormResult(int id)
+        {
+            ApplicationDbContext db = new ApplicationDbContext();
 
-        //    int[] Ans_arr = new int[3];
+            var b = db.Questions.Where(u => u.QFormID.Equals(id)).ToList();
 
-        //    for(int i= 0;i<b[0].Answer.Count();i++)
-        //    {
-        //        Ans_arr[i] = b[i].Answer[i].AnsCount;
-        //        Ans_str[i] = b[i].Answer[i].AnswerStatement;
-        //    }
 
-        //    new Chart(width: 400, height: 200).AddSeries(
-
-        //        chartType: "column",
-        //        xValue: Ans_str,
-        //        yValues: Ans_arr).Write("png");
-        //        return null;
-        //}
-
+            return View(new PFormViewModel {
+                Ques = b
+            });
+        }
 
 
 

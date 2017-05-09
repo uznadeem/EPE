@@ -1,0 +1,17 @@
+﻿@model FYP.ViewModel.PFormViewModel
+@{
+    ViewBag.Title = "FormResultData";
+    Layout = "~/Views/Shared/_LayoutProject.cshtml";
+}
+
+<h2>Form Data</h2>
+
+<div class="container">
+
+    @for(var i=0; i < Model.Ques.Count;i++)
+    {
+        <p>@Model.Ques[i].QuestionString  @Html.ActionLink("Result","ResultChart", new {qid = Model.Ques[i].QuestionID })</p>
+        
+    }
+
+</div>
