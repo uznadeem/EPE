@@ -2806,7 +2806,7 @@ body {
 }
 #main-wrapper {
 	position: relative;
-	background: #f8f8f8;
+	background: #ffffff;
 	z-index: 2;
 	min-height: 100%;
 	transition: transform 0.3s;
@@ -6956,7 +6956,7 @@ p i {
 .uou-block-2b {
 	position: relative;
 	display: block;
-	background: #fff;
+	background: #30af91;
 	padding: 24px 0;
 	font-family: 'Montserrat', sans-serif;
 }
@@ -8286,7 +8286,7 @@ p i {
 	color: #e6e6e6;
 }
 .secondary.uou-block-4a.dark {
-	background: #fff;
+	background: #fbfbfb;
 }
 .uou-block-4a p {
 	margin-bottom: 0;

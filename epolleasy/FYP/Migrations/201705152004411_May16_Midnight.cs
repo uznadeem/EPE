@@ -3,7 +3,7 @@ namespace FYP.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class May9th : DbMigration
+    public partial class May16_Midnight : DbMigration
     {
         public override void Up()
         {

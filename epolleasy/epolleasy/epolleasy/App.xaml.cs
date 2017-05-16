@@ -13,7 +13,7 @@ namespace epolleasy
         {
             InitializeComponent();
 
-            MainPage = new RegisterPage();
+            MainPage = new NavigationPage(new LoginPage());
         }
 
         protected override void OnStart()

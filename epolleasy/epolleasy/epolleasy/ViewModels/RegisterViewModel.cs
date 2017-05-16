@@ -30,11 +30,7 @@ namespace epolleasy.ViewModels
                 {
                     var isSuccess = await _apiServices.RegisterAsync(Email,Password,ConfirmPassword);
 
-                    if (isSuccess)
-                        Message = "Registered Successfully";
-                    else
-                        Message = "Retry Later";
-                    
+                    Message = isSuccess ? "Registered Successfully" : "Retry Later";
                 });
             }
         }

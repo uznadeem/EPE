@@ -237,9 +237,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201705090718369_May9th.cs" />
-    <Compile Include="Migrations\201705090718369_May9th.Designer.cs">
-      <DependentUpon>201705090718369_May9th.cs</DependentUpon>
+    <Compile Include="Migrations\201705152004411_May16_Midnight.cs" />
+    <Compile Include="Migrations\201705152004411_May16_Midnight.Designer.cs">
+      <DependentUpon>201705152004411_May16_Midnight.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -354,6 +354,7 @@
     <Content Include="images\icon-prifile-2.png" />
     <Content Include="images\icon-prifile-3.png" />
     <Content Include="images\icon-ver.png" />
+    <Content Include="images\index-cover.png" />
     <Content Include="images\logo.png" />
     <Content Include="images\main-bg.jpg" />
     <Content Include="images\med-avatar.jpg" />
@@ -592,8 +593,8 @@
     <Content Include="Views\Manage\EditProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201705090718369_May9th.resx">
-      <DependentUpon>201705090718369_May9th.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201705152004411_May16_Midnight.resx">
+      <DependentUpon>201705152004411_May16_Midnight.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -13,7 +13,7 @@
     </ContentPage.BindingContext>
 
 
-  <StackLayout>
+  <StackLayout VerticalOptions="Center">
     
     
     <Entry Text="{Binding Email}" Placeholder="Email" />
@@ -21,6 +21,8 @@
     <Entry Text="{Binding ConfirmPassword}" Placeholder="Confirm Password" IsPassword="True"/>
     
     <Button Command="{Binding RegisterCommand}" Text="Register"/>
+    
+    <Label Text="{Binding Message}" />
 
 
   </StackLayout>

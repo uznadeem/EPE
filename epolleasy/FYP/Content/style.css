@@ -1276,13 +1276,13 @@ iframe {
 	width: 100%;
 	padding-top: 20px;
 	text-align: center;
-	color: black;
+	color: white;
 	margin-top: 30px;
 	font-size: 12px;
 }
 .banr-head .login-sec button {
 	border: none;
-	background: #0099ff;
+	background: #30af91;
 	border-radius: 30px;
 	padding: 8px 30px;
 	color: #fff;
@@ -1296,8 +1296,8 @@ iframe {
 .banr-head .login-sec .uou-tabs .tabs li a {
 	border: none;
 	padding: 15px 10px;
-	background: #0099ff;
-	color: black;
+	background: #30af91;
+	color: white;
 }
 .banr-head .login-sec .uou-tabs .tabs li.active a {
 	background: none;
