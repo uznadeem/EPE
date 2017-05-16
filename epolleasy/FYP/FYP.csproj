@@ -237,9 +237,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201705152004411_May16_Midnight.cs" />
-    <Compile Include="Migrations\201705152004411_May16_Midnight.Designer.cs">
-      <DependentUpon>201705152004411_May16_Midnight.cs</DependentUpon>
+    <Compile Include="Migrations\201705160804355_May16_Uzair.cs" />
+    <Compile Include="Migrations\201705160804355_May16_Uzair.Designer.cs">
+      <DependentUpon>201705160804355_May16_Uzair.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -593,8 +593,8 @@
     <Content Include="Views\Manage\EditProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201705152004411_May16_Midnight.resx">
-      <DependentUpon>201705152004411_May16_Midnight.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201705160804355_May16_Uzair.resx">
+      <DependentUpon>201705160804355_May16_Uzair.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
