@@ -8,61 +8,40 @@
 
 
 
-@using (Html.BeginForm("AddQuestion", "admin", new { c_id = ViewBag.c_id, qf_id = ViewBag.qf_id }, FormMethod.Post))
-{
-    @Html.AntiForgeryToken()
+<div class="container">
+    <h2>AddQuestion</h2>
 
-    @Html.ActionLink("Back to Community", "ViewDetails", new { id = ViewBag.c_id })
-    <div>
+    @using (Html.BeginForm("AddQuestion", "admin", new { c_id = ViewBag.c_id, qf_id = ViewBag.qf_id }, FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
 
-        @Html.LabelFor(a => a.QuestionString, new { @class = "col-md-3" })
+
         <div class="col-md-8">
-            @Html.TextBoxFor(a => a.QuestionString)
-            @Html.ValidationMessageFor(a => a.QuestionString)
-        </div>
-    </div>
-
-    @*<div class="input_fields_wrap1">
-
-            <div class="row">
-
-                <div class="col-md-3">
-                    <label>Question Statement</label>
-                </div>
-                <div class="col-md-4">
-                    <input type="text" name="Multiple_Question[]">
-                </div>
-                <div class="col-md-4">
-                    <button class="add_field_button1">Add More Question</button>
-                </div>
+            <div class="form-group col-md-12">
+                @Html.ActionLink("Back to Community", "ViewDetails", new { id = ViewBag.c_id })
             </div>
-        </div>*@
+            <div class="col-md-12 form-group">
+                @Html.LabelFor(a => a.QuestionString, new { @class = "" })
+                @Html.TextBoxFor(a => a.QuestionString)
+                @Html.ValidationMessageFor(a => a.QuestionString)
+            </div>
+            <div class="col-md-12 form-group">
 
-    <br />
-
-    <div class="input_fields_wrap">
-
-        <div class="row">
-
-            <div class="col-md-3">
                 <label>Answer</label>
-            </div>
-            <div class="col-md-4">
+
                 <input type="text" name="Multiple_Answer[]">
             </div>
-            <div class="col-md-4">
+            <div class="form-group col-md-4 input_fields_wrap">
                 <button class="add_field_button">Add More Options</button>
             </div>
+
         </div>
-    </div>
-    <div>
-        @* <button class="btn btn-primary" type="submit">Add</button>*@
+        <div class="col-md-4">
 
-        <button class="btn btn-primary" type="submit">Add More Question</button>
-        @*<button class="btn btn-success" href="~/Admin/ViewDetails/@ViewBag.c_id">Publish</button>*@
+            <button class="btn btn-primary" type="submit" name="mul" value="More">Add</button>
+            <br />
 
-
-    </div>
-}
-
+        </div>
+ }
+</div>
 <script src="~/Scripts/Multi_Answer.js"></script>

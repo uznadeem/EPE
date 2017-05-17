@@ -263,6 +263,7 @@
     <Compile Include="system\web.cs" />
     <Compile Include="ViewModel\CommunityMemberViewModel.cs" />
     <Compile Include="ViewModel\CommunityUserViewModel.cs" />
+    <Compile Include="ViewModel\FormResultViewModel.cs" />
     <Compile Include="ViewModel\FormUserViewModel.cs" />
     <Compile Include="ViewModel\HomePageViewModel.cs" />
     <Compile Include="ViewModel\ProfileDataViewModel.cs" />
@@ -568,6 +569,8 @@
     <Content Include="Views\Participant\FormParticipate.cshtml" />
     <Content Include="Views\Participant\_UserAlreadyParticipateInForm.cshtml" />
     <Content Include="Views\Shared\_HeaderPartial.cshtml" />
+    <Content Include="Views\Admin\Graphview.cshtml" />
+    <Content Include="Views\Admin\FormResult.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

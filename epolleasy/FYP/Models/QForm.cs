@@ -27,6 +27,8 @@ namespace FYP.Models
         public DateTime Expiry_Time { get; set; }
         
         public virtual ICollection<Question> Question { get; set; }
-        
+
+        public virtual ICollection<FormUser> FormUser { get; set; }
+
     }
 }

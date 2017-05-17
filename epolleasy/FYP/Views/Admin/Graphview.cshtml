@@ -1,0 +1,13 @@
+﻿@model FYP.Models.Question
+@{
+    ViewBag.Title = "Graphview";
+    Layout = "~/Views/Shared/_LayoutProject.cshtml";
+}
+
+<h2>Graphview</h2>
+
+<div class="container">
+
+    <img src="@Url.Action("ResultChart",new {qid = @ViewBag.id})" alt="SimpleChart" />
+
+</div>

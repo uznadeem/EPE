@@ -10,5 +10,9 @@ namespace FYP.ViewModel
     {
         public IList<Community> Com  { get; set; }
          public ApplicationUser appuser { get; set; }
+        public IList<FormCommunity> fcom { get; set; }
+
+        public IList<QForm> qf { get; set; }
+
     }
 }

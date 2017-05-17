@@ -43,6 +43,11 @@ namespace FYP.Services
 
             abc.appuser = await _db.Users.Where(u => u.UserName.Equals(value)).FirstOrDefaultAsync();
 
+            abc.fcom = await _db.FormsCommunity.Where(u => u.QForms.FormOwner.Equals(value)).ToListAsync();
+
+
+            abc.qf = await _db.QForms.Where(u => u.FormOwner.Equals(value)).ToListAsync();
+
             return abc;
         }
 

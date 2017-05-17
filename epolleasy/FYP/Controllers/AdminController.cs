@@ -197,6 +197,13 @@ namespace FYP.Controllers
         ////    });
         ////}
 
+        public ActionResult Graphview(int qid)
+        {
+            ViewBag.id = qid;
+
+            return View();
+
+        }
 
 
 
@@ -235,16 +242,18 @@ namespace FYP.Controllers
 
 
 
-
-        public ActionResult FormResult(int id)
+        public ActionResult FormResult(int c_id, int id)
         {
             ApplicationDbContext db = new ApplicationDbContext();
 
             var b = db.Questions.Where(u => u.QFormID.Equals(id)).ToList();
 
 
-            return View(new PFormViewModel {
-                Ques = b
+            return View(new FormResultViewModel
+            {
+                Ques = b,
+                comid = c_id,
+                qf_id = id
             });
         }
 

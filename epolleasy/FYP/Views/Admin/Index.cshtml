@@ -8,316 +8,437 @@
 
 
 
-        <!-- SUB Banner -->
-        <div class="profile-bnr sub-bnr user-profile-bnr">
-                <div class="right-top-bnr">
-                    <div class="compop">
-                        <a class="popup btn btn-primary" href="/admin/create" style="margin-bottom:15px; margin-top:15px;">Add New Community</a>
-                    </div>
-                 </div>
+<!-- SUB Banner -->
+<div class="profile-bnr sub-bnr user-profile-bnr">
+    <div class="right-top-bnr">
+        <div class="compop">
+            <a class="popup btn btn-primary" href="/admin/create" style="margin-bottom:15px; margin-top:15px;">Add New Community</a>
         </div>
+    </div>
+</div>
 
 
-        <div class="compny-profile">
+<div class="compny-profile">
 
-            <!-- Profile Company Content -->
-            <div class="profile-company-content" data-bg-color="fff">
-                <div class="container">
-                    <div class="row">
+    <!-- Profile Company Content -->
+    <div class="profile-company-content" data-bg-color="fff">
+        <div class="container">
+            <div class="row">
 
-                        <!-- SIDE BAR -->
-                        <div class="col-md-4">
-                            <!-- Company Information -->
-                            <div class="sidebar">
-                                <h5 class="main-title">@Model.appuser.UserName</h5>
-                                <div class="sidebar-thumbnail"> <img src="~/images/UserImages/@Model.appuser.ImageUrl" alt=""> </div>
-                                <div class="sidebar-information">
-                                    <div class="profile-usermenu">
-                                        <ul class="nav nav-links">
-                                            <li>@*<span class="fa fa-cog"></span>*@  @Html.ActionLink("Profile Settings", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class="glyphicon glyphicon-signout" })</li>
-                                            <li>
-                                                @using (Html.BeginForm("LogOff", "Home", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
-                                                {
-                                                    @Html.AntiForgeryToken()
+                <!-- SIDE BAR -->
+                <div class="col-md-4">
+                    <!-- Company Information -->
+                    <div class="sidebar">
+                        <h5 class="main-title">@Model.appuser.UserName</h5>
+                        <div class="sidebar-thumbnail"> <img src="~/images/UserImages/@Model.appuser.ImageUrl" alt=""> </div>
+                        <div class="sidebar-information">
+                            <div class="profile-usermenu">
+                                <ul class="nav nav-links">
+                                    <li>@*<span class="fa fa-cog"></span>*@  @Html.ActionLink("Profile Settings", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "glyphicon glyphicon-signout" })</li>
+                                    <li>
+                                        @using (Html.BeginForm("LogOff", "Home", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                                        {
+                                            @Html.AntiForgeryToken()
 
-                                                    <a href="javascript:document.getElementById('logoutForm').submit()"><span class="fa fa-sign-out" aria-hidden="true"></span>Log off</a>
+                                            <a href="javascript:document.getElementById('logoutForm').submit()"><span class="fa fa-sign-out" aria-hidden="true"></span>Log off</a>
 
 
-                                                    //<li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+                                            //<li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
 
-                                                }
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                        }
+                                    </li>
+                                </ul>
                             </div>
                         </div>
+                    </div>
+                </div>
+
+                <!-- Tab Content -->
+                <div class="col-md-8">
+
+                    <h2>  Manager Dashboard</h2>
+
+
+                    <div class="network">
+
+                        <!-- Nav Tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a data-toggle="tab" href="#AcForms">Active Forms (2)</a></li>
+                            <li><a data-toggle="tab" href="#comm">Communities (23)</a></li>
+                            <li><a data-toggle="tab" href="#sforms">Sealed Forms (103)</a></li>
+                        </ul>
 
                         <!-- Tab Content -->
-                        <div class="col-md-8">
+                        @*<div class="tab-content">
 
-                            <h2>  Manager Dashboard</h2>
+                                <div id="AcForms" class="tab-pane fade in active">
+                                    <div class="net-work-in">
+                                        <h3> hello bravo</h3>
+                                    </div>
+                                </div>
+
+                                <div id="comm" class="tab-pane fade">
+
+                                    <div style="width:90%; margin:0 auto" class="tablecontainer">
+                                        <a class="popup btn btn-primary" href="/admin/create" style="margin-bottom:15px; margin-top:15px;">Add New Community</a>
+
+                                        <div class="row">
 
 
-                            <div class="network">
+                                            <table id="mydatatable" width="100%">
 
-                                <!-- Nav Tabs -->
-                                <ul class="nav nav-tabs">
-                                    <li class="active"><a data-toggle="tab" href="#AcForms">Active Forms (2)</a></li>
-                                    <li><a data-toggle="tab" href="#comm">Communities (23)</a></li>
-                                    <li><a data-toggle="tab" href="#sforms">Sealed Forms (103)</a></li>
-                                </ul>
+                                                <thead>
+                                                    <tr>
 
-                                <!-- Tab Content -->
-                                @*<div class="tab-content">
+                                                        <th>Community Name</th>
+                                                        <th>Community Members</th>
+                                                        <th>Community Forms</th>
+                                                        <th>Edit  </th>
 
-                                    <div id="AcForms" class="tab-pane fade in active">
-                                        <div class="net-work-in">
-                                            <h3> hello bravo</h3>
+                                                        <th>Delete </th>
+
+
+                                                    </tr>
+
+
+
+                                                </thead>
+
+
+                                                <tbody></tbody>
+
+                                            </table>
+
                                         </div>
                                     </div>
 
-                                    <div id="comm" class="tab-pane fade">
+                                </div>
 
-                                        <div style="width:90%; margin:0 auto" class="tablecontainer">
-                                            <a class="popup btn btn-primary" href="/admin/create" style="margin-bottom:15px; margin-top:15px;">Add New Community</a>
+                                <div id="sforms" class="tab-pane fade in active">
 
-                                            <div class="row">
-
-
-                                                <table id="mydatatable" width="100%">
-
-                                                    <thead>
-                                                        <tr>
-
-                                                            <th>Community Name</th>
-                                                            <th>Community Members</th>
-                                                            <th>Community Forms</th>
-                                                            <th>Edit  </th>
-
-                                                            <th>Delete </th>
-
-
-                                                        </tr>
-
-
-
-                                                    </thead>
-
-
-                                                    <tbody></tbody>
-
-                                                </table>
-
-                                            </div>
-                                        </div>
-
+                                    <div class="net-work-in">
+                                        <h3> hello jello</h3>
                                     </div>
 
-                                    <div id="sforms" class="tab-pane fade in active">
+                                </div>
 
-                                        <div class="net-work-in">
-                                            <h3> hello jello</h3>
+
+                            </div>*@
+                        <div class="tab-content">
+
+                            <div id="AcForms" class="tab-pane fade in active">
+                                <div class="net-work-in">
+                                    <div class="main-mem">
+                                        <!-- Tittle -->
+                                        <div class="tittle">
+                                            <ul class="row">
+                                                <li class="col-xs-4"> <span>Title</span> </li>
+                                                <li class="col-xs-3"> <span>Community</span> </li>
+                                                <li class="col-xs-3"> <span>Total Members</span> </li>
+                                                <li class="col-xs-2 n-p-r n-p-l"> <span>Responses</span> </li>
+                                            </ul>
                                         </div>
+                                        <div class="folow-persons">
+                                            <ul>
+                                                @for (var i = 0; i < Model.qf.Count; i++)
+                                                {
+                                                    if (Model.fcom[i].QForms.Expiry_Time > System.DateTime.Now)
+                                                    {
+                                                        <li>
 
-                                    </div>
+                                                            <div class="row">
+                                                                <div class="col-xs-4">
 
-
-                                </div>*@
-                                <div class="tab-content">
-
-                                    <div id="AcForms" class="tab-pane fade in active">
-                                        <div class="net-work-in">
-                                            <h3> hello bravo</h3>
-                                        </div>
-                                    </div>
-
-                                    <!-- Followers -->
-                                    <div id="comm" class="tab-pane fade">
-
-                                        <div class="net-work-in">
-
-
-                                            <!-- Members -->
-                                            <div class="main-mem">
-
-                                                <!-- Head -->
-                                                <div class="head">
-                                                    <div class="row">
-
-                                                        <div class="col-sm-4">
-
-                                                        </div>
-
-
-                                                        <div class="col-sm-4">
-                                                            <form @*action="/admin/SearchAdminCommunities"*@>
-                                                                <input type="search" placeholder="Search" name="cname">
-                                                                <button type="submit"><i class="fa fa-search"></i></button>
-                                                            </form>
-                                                        </div>
-                                                        <div class="col-sm-4">
-                                                            <select>
-                                                                <option>Alphabetical</option>
-                                                                <option>Date Created</option>
-                                                                <option>Latest First</option>
-                                                            </select>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-
-                                                <!-- Tittle -->
-                                                <div class="tittle">
-                                                    <ul class="row">
-                                                        
-                                                        <li class="col-xs-1"> <span></span> </li>
-                                                        <li class="col-xs-3"> <span>Community Name</span> </li>
-                                                        <li class="col-xs-2"> <span>Members</span> </li>
-                                                        <li class="col-xs-2"> <span>Forms</span> </li>
-                                                        <li class="col-xs-2 "> <span>Active</span> </li>
-                                                        <li class="col-xs-1"> <span></span> </li>
-                                                    </ul>
-                                                </div>
-
-                                                <!-- Tittle -->
-                                                <div class="folow-persons">
-                                                    <ul>
-
-                                                        @foreach (var item in Model.Com)
-                                                        {
-                                                            <!-- COMMUNITY -->
-                                                            <li>
-                                                                <div class="row">
-                                                                    <div class="col-xs-1">
-                                                                        <!-- COMMUNITY TITLE -->
-                                                                        <div class="fol-name">
-
-                                                                            <!-- COMMUNITY Logo -->
-                                                                            <div class="avatar"> <img src="~/CommunityImages/@item.CommunityLogo" alt=""> </div>
-                                                                       </div>
-                                                                    </div>
+                                                                    <!-- Form Title -->
                                                                     <div class="fol-name">
-                                                                        <div class="col-xs-3">
-                                                                            <!-- COMMUNITY Title -->
-                                                                            <h6>@item.CommunityName</h6>
 
-                                                                            <!-- COMMUNITY About -->
-                                                                            <span>@item.CommunityAbout</span>
-                                                                        </div>
+                                                                        <!-- Form Logo -->
 
-                                                                    </div>
+                                                                        <div class="avatar"> <img src="images/sm-avatar.jpg" alt=""> </div>
 
-                                                                    <!-- Members -->
-                                                                    <div class="col-xs-2"> <span>@item.CommunityUsers.Count()</span> </div>
+                                                                        <!-- Form Title -->
+                                                                        <h6>@Model.fcom[i].QForms.FormTitle</h6>
 
-
-                                                                    <!-- Total Forms -->
-                                                                    <div class="col-xs-2"> <span>13</span></div>
-
-                                                                    <!-- Active Forms -->
-                                                                    <div class="col-xs-2"> <span>2</span> </div>
-
-                                                                    <div class="col-xs-1">
-   
-                                                                        @Html.ActionLink("Go", "ViewDetails", new { controller = "Admin", id = @item.CommunityID })
-                                                                         
+                                                                        <!-- Form About -->
+                                                                        <span>@Model.fcom[i].QForms.FormDetail</span>
                                                                     </div>
 
                                                                 </div>
-                                                            </li>
 
-                                                        }
+                                                                <!-- Form Community -->
+                                                                <div class="col-xs-3 n-p-r n-p-l"> <span>@Model.fcom[i].Community.CommunityName</span> </div>
 
 
-                                                    </ul>
+                                                                <!-- Total Members -->
+                                                                <div class="col-xs-3 n-p-r"> <span>@Model.fcom[i].Community.CommunityUsers.Count</span></div>
 
+                                                                <!-- Response Received -->
+                                                                <div class="col-xs-2 n-p-r n-p-l"> <span>@Model.fcom[i].QForms.FormUser.Count</span> </div>
+
+                                                            </div>
+                                                        </li>
+                                                    }
+                                                    else
+                                                    {
+
+                                                    }
+                                                }
+                                            </ul>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Followers -->
+                            <div id="comm" class="tab-pane fade">
+
+                                <div class="net-work-in">
+
+
+                                    <!-- Members -->
+                                    <div class="main-mem">
+
+                                        <!-- Head -->
+                                        <div class="head">
+                                            <div class="row">
+
+                                                <div class="col-sm-4">
 
                                                 </div>
+
+
+                                                <div class="col-sm-4">
+                                                    <form @*action="/admin/SearchAdminCommunities"*@>
+                                                        <input type="search" placeholder="Search" name="cname">
+                                                        <button type="submit"><i class="fa fa-search"></i></button>
+                                                    </form>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <select>
+                                                        <option>Alphabetical</option>
+                                                        <option>Date Created</option>
+                                                        <option>Latest First</option>
+                                                    </select>
+                                                </div>
+
                                             </div>
                                         </div>
 
+                                        <!-- Tittle -->
+                                        <div class="tittle">
+                                            <ul class="row">
+
+                                                <li class="col-xs-1"> <span></span> </li>
+                                                <li class="col-xs-3"> <span>Community Name</span> </li>
+                                                <li class="col-xs-2"> <span>Members</span> </li>
+                                                <li class="col-xs-2"> <span>Forms</span> </li>
+                                                <li class="col-xs-2 "> <span>Active</span> </li>
+                                                <li class="col-xs-1"> <span></span> </li>
+                                            </ul>
+                                        </div>
+
+                                        <!-- Tittle -->
+                                        <div class="folow-persons">
+                                            <ul>
+
+                                                @foreach (var item in Model.Com)
+                                                {
+                                                            <!-- COMMUNITY -->
+                                                    <li>
+                                                        <div class="row">
+                                                            <div class="col-xs-1">
+                                                                <!-- COMMUNITY TITLE -->
+                                                                <div class="fol-name">
+
+                                                                    <!-- COMMUNITY Logo -->
+                                                                    <div class="avatar"> <img src="~/CommunityImages/@item.CommunityLogo" alt=""> </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="fol-name">
+                                                                <div class="col-xs-3">
+                                                                    <!-- COMMUNITY Title -->
+                                                                    <h6>@item.CommunityName</h6>
+
+                                                                    <!-- COMMUNITY About -->
+                                                                    <span>@item.CommunityAbout</span>
+                                                                </div>
+
+                                                            </div>
+
+                                                            <!-- Members -->
+                                                            <div class="col-xs-2"> <span>@item.CommunityUsers.Count()</span> </div>
 
 
+                                                            <!-- Total Forms -->
+                                                            <div class="col-xs-2"> <span>13</span></div>
+
+                                                            <!-- Active Forms -->
+                                                            <div class="col-xs-2"> <span>2</span> </div>
+
+                                                            <div class="col-xs-1">
+
+                                                                @Html.ActionLink("Go", "ViewDetails", new { controller = "Admin", id = @item.CommunityID })
+
+                                                            </div>
+
+                                                        </div>
+                                                    </li>
+
+                                                }
+
+
+                                            </ul>
+
+
+                                        </div>
                                     </div>
+                                </div>
 
 
 
-                                    <div id="sforms" class="tab-pane fade in active">
+                            </div>
 
-                                        <div class="net-work-in">
-                                            <h3> hello jello</h3>
+
+
+                            <div id="sforms" class="tab-pane fade">
+
+                                <div class="net-work-in">
+                                    <div class="main-mem">
+                                        <!-- Tittle -->
+                                        <div class="tittle">
+                                            <ul class="row">
+                                                <li class="col-xs-4"> <span>Title</span> </li>
+                                                <li class="col-xs-3"> <span>Community</span> </li>
+                                                <li class="col-xs-3"> <span>Total Members</span> </li>
+                                                @*<li class="col-xs-2 n-p-r n-p-l"> <span>Response</span> </li>*@
+                                                <li class="col-xs-2 n-p-r n-p-l"> <span>Result</span> </li>
+                                            </ul>
+                                        </div>
+                                        <div class="folow-persons">
+                                            <ul>
+                                                @for (var i = 0; i < Model.qf.Count; i++)
+                                                {
+                                                    if (Model.fcom[i].QForms.Expiry_Time < System.DateTime.Now)
+                                                    {
+                                                        <li>
+
+                                                            <div class="row">
+                                                                <div class="col-xs-4">
+
+                                                                    <!-- Form Title -->
+                                                                    <div class="fol-name">
+
+                                                                        <!-- Form Logo -->
+
+                                                                        <div class="avatar"> <img src="images/sm-avatar.jpg" alt=""> </div>
+
+                                                                        <!-- Form Title -->
+                                                                        <h6>@Model.fcom[i].QForms.FormTitle</h6>
+
+                                                                        <!-- Form About -->
+                                                                        <span>@Model.fcom[i].QForms.FormDetail</span>
+                                                                    </div>
+
+                                                                </div>
+
+                                                                <!-- Form Community -->
+                                                                <div class="col-xs-3 n-p-r n-p-l"> <span>@Model.fcom[i].Community.CommunityName</span> </div>
+
+
+                                                                <!-- Total Members -->
+                                                                <div class="col-xs-3 n-p-r"> <span>@Model.fcom[i].Community.CommunityUsers.Count</span></div>
+
+                                                                <!-- Response Received -->
+                                                                @*<div class="col-xs-2 n-p-r n-p-l"> <span>@Model.fcom[i].QForms.FormUser.Count</span> </div>*@
+                                                                <!--View Form-->
+                                                                <div class="col-xs-2 n-p-r n-p-l"> @Html.ActionLink("View", "FormResult", new { controller = "Admin", c_id = Model.fcom[i].CommunityID, id = Model.fcom[i].QFormID }) </div>
+
+                                                            </div>
+                                                        </li>
+                                                    }
+                                                    else
+                                                    {
+
+                                                    }
+                                                }
+                                            </ul>
                                         </div>
 
                                     </div>
-
-
                                 </div>
 
+
                             </div>
+
+
                         </div>
 
-
                     </div>
-
                 </div>
+
+
             </div>
+
         </div>
+    </div>
+</div>
 @*<h5>hello World</h5>
-<h2>Time For the Result</h2>
-<img src="@Url.Action("ResultChart")" alt="SimpleChart" />*@
+    <h2>Time For the Result</h2>
+    <img src="@Url.Action("ResultChart")" alt="SimpleChart" />*@
 
 @*<script>
 
-        $(document).ready(function () {
-           
-            $('.compop').on('click', 'a.popup', function (e) {
-                e.preventDefault();
-                OpenPopup($(this).attr('href'));
-            })
-            function OpenPopup(pageUrl) {
-                var $pageContent = $('<div/>');
-                $pageContent.load(pageUrl, function () {
-                    $('#popupForm', $pageContent).removeData('validator');
-                    $('#popupForm', $pageContent).removeData('unobtrusiveValidation');
-                    $.validator.unobtrusive.parse('form');
+            $(document).ready(function () {
 
-                });
-
-                $dialog = $('<div class="popupWindow" style="overflow:auto"></div>')
-                          .html($pageContent)
-                          .dialog({
-                              draggable: false,
-                              autoOpen: false,
-                              resizable: false,
-                              model: true,
-                              title: 'Popup Dialog',
-                              height: 550,
-                              width: 600,
-                              close: function () {
-                                  $dialog.dialog('destroy').remove();
-                              }
-                          })
-
-                $('.popupWindow').on('submit', '#popupForm', function (e) {
-                    var url = $('#popupForm')[0].action;
-                    $.ajax({
-                        type: "POST",
-                        url: url,
-                        data: $('#popupForm').serialize(),
-                        success: function (data) {
-                            if (data.status) {
-                                $dialog.dialog('close');
-                                //oTable.ajax.reload();
-                            }
-                        }
-                    })
-
+                $('.compop').on('click', 'a.popup', function (e) {
                     e.preventDefault();
+                    OpenPopup($(this).attr('href'));
                 })
-                $dialog.dialog('open');
-            }
-        })
+                function OpenPopup(pageUrl) {
+                    var $pageContent = $('<div/>');
+                    $pageContent.load(pageUrl, function () {
+                        $('#popupForm', $pageContent).removeData('validator');
+                        $('#popupForm', $pageContent).removeData('unobtrusiveValidation');
+                        $.validator.unobtrusive.parse('form');
 
-</script>*@
+                    });
+
+                    $dialog = $('<div class="popupWindow" style="overflow:auto"></div>')
+                              .html($pageContent)
+                              .dialog({
+                                  draggable: false,
+                                  autoOpen: false,
+                                  resizable: false,
+                                  model: true,
+                                  title: 'Popup Dialog',
+                                  height: 550,
+                                  width: 600,
+                                  close: function () {
+                                      $dialog.dialog('destroy').remove();
+                                  }
+                              })
+
+                    $('.popupWindow').on('submit', '#popupForm', function (e) {
+                        var url = $('#popupForm')[0].action;
+                        $.ajax({
+                            type: "POST",
+                            url: url,
+                            data: $('#popupForm').serialize(),
+                            success: function (data) {
+                                if (data.status) {
+                                    $dialog.dialog('close');
+                                    //oTable.ajax.reload();
+                                }
+                            }
+                        })
+
+                        e.preventDefault();
+                    })
+                    $dialog.dialog('open');
+                }
+            })
+
+    </script>*@
 <script src="~/Scripts/create_com_popup.js"></script>
