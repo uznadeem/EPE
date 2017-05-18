@@ -165,6 +165,32 @@ namespace FYP.Services
 
         }
 
+
+        public async Task<FormResultViewModel> FormResultAsync(int c_id, int id)
+        {
+
+            var qu = await _db.Questions.Where(u => u.QFormID.Equals(id)).ToListAsync();
+
+            FormResultViewModel fr = new FormResultViewModel();
+
+            fr.Ques = qu;
+            fr.qf_id = id;
+            fr.comid = c_id;
+
+            return fr;
+
+        }
+
+
+        //public async Task<> ResultChartAsync(int qid)
+        //{
+
+        //    var group = await _db.Answers.Where(a => a.QuestionID.Equals(qid)).Select(x => new { x.AnswerStatement, x.AnsCount }).FirstOrDefaultAsync;
+        //    return group;
+        //}
+
+
+
         public async Task AddQuestionAsync(int c_id, int qf_id, Question q_obj, string[] Multiple_Answer)
         {
             Answer ans_obj = new Answer();

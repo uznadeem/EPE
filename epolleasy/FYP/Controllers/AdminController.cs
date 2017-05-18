@@ -197,33 +197,23 @@ namespace FYP.Controllers
         ////    });
         ////}
 
-        public ActionResult Graphview(int qid)
-        {
-            ViewBag.id = qid;
+        //public ActionResult Graphview(int qid)
+        //{
+        //    ViewBag.id = qid;
 
-            return View();
+        //    return View();
 
-        }
+        //}
 
-
-
-
-
+            
 
         public ActionResult ResultChart(int qid)
         {
             ApplicationDbContext db = new ApplicationDbContext();
 
-            //var c = db.Questions.Where(u => u.QFormID.Equals(id)).FirstOrDefault();
+           var group = db.Answers.Where(a => a.QuestionID.Equals(qid)).Select(x => new { x.AnswerStatement, x.AnsCount }).AsEnumerable();
 
-            //var b = db.Questions.Where(u => u.QFormID.Equals(id)).ToList();
-
-            //var ans = db.Answers.ToList();
-
-            //var ans = db.Questions.Where(a=>a.QFormID);
-
-           
-                var group = db.Answers.Where(a => a.QuestionID.Equals(qid)).Select(x => new { x.AnswerStatement, x.AnsCount }).AsEnumerable();
+            //var group = await _as.ResultChartAsync(qid);
                 new Chart(width: 400, height: 200).AddSeries(
 
                     chartType: "column",
@@ -238,23 +228,13 @@ namespace FYP.Controllers
             // }
 
         }
+        
 
-
-
-
-        public ActionResult FormResult(int c_id, int id)
+        public async Task<ActionResult> FormResult(int c_id, int id)
         {
-            ApplicationDbContext db = new ApplicationDbContext();
+            var grp = await _as.FormResultAsync(c_id,id);
 
-            var b = db.Questions.Where(u => u.QFormID.Equals(id)).ToList();
-
-
-            return View(new FormResultViewModel
-            {
-                Ques = b,
-                comid = c_id,
-                qf_id = id
-            });
+            return View(grp);
         }
 
 
