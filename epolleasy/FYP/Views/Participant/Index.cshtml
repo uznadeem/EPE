@@ -1,21 +1,11 @@
 ﻿@using Microsoft.AspNet.Identity
-
-@model FYP.ViewModel.ProfileDataViewModel
+@model FYP.ViewModel.CommunityUserViewModel
 
 @{
 
     Layout = "~/Views/Shared/_LayoutProject.cshtml";
 
 }
-
-<!-- SUB Banner -->
-<div class="profile-bnr sub-bnr user-profile-bnr">
-    <div class="position-center-center">
-        <div class="container">
-            <h2> </h2>
-        </div>
-    </div>
-</div>
 
 
 <div class="compny-profile">
@@ -29,25 +19,29 @@
                 <div class="col-md-4">
                     <!-- Company Information -->
                     <div class="sidebar">
-                        <h5 class="main-title">@Model.UserT.FirstName @Model.UserT.LastName</h5>
-                        <div class="sidebar-thumbnail"> <img src="~/images/UserImages/@Model.UserT.ImageUrl" alt=""> </div>
+                        @*<h5 class="main-title">@Model.appuser.UserName</h5>*@
+                        <div class="sidebar-thumbnail"> <img src="~/images/UserImages/@Model.appuser.ImageUrl" alt=""> </div>
                         <div class="sidebar-information">
                             <div class="profile-usermenu">
                                 <ul class="nav nav-links">
-                                    <li><span class="fa fa-cog"></span>  @Html.ActionLink("Profile Settings", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</li>
+                                    <li><a href="@Url.Action("Index", "Manage")"><i class="fa fa-cog"></i> Account Settings</a></li>
                                     <li>
                                         @using (Html.BeginForm("LogOff", "Home", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
                                         {
                                             @Html.AntiForgeryToken()
 
                                             <a href="javascript:document.getElementById('logoutForm').submit()"><span class="fa fa-sign-out" aria-hidden="true"></span>Log off</a>
-                                            
+
+
+                                            //<li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+
                                         }
                                     </li>
                                 </ul>
                             </div>
                         </div>
                     </div>
+                
                 </div>
 
                 <!-- Tab Content -->
@@ -55,6 +49,17 @@
 
                     <h2>  Participant Dashboard</h2>
 
+
+                    <table class="table table-bordered">
+ 
+                        <tr>	<td>Name</td> <td>@Model.appuser.FirstName @Model.appuser.LastName</td> <td>Communities</td> <td>2</td>	</tr>
+
+                        <tr>	<td>Username</td> <td>@Model.appuser.UserName</td> <td>Total Forms</td> <td>3</td>	</tr>
+
+                        <tr>	<td>Account Type</td> <td>@Model.appuser.UserName</td> <td>Active Forms</td> <td>2</td>	</tr>
+					
+					
+                    </table>
 
 
 

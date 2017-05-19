@@ -11,13 +11,25 @@
         <ul class="sf-menu">
             <li>
                 
-                @using (Html.BeginForm("SearchCommunity", "Participant", FormMethod.Get))
+                @*@using (Html.BeginForm("SearchCommunity", "Participant", FormMethod.Get))
                 {
                     @Html.TextBox("SearchString")
                     <input type="submit" value="Search" />
                     
-                }
+                }*@
+                
+                
+                <div class="uou-block-1a blog">
+                    <div class="search"> <a href="#" class="toggle fa fa-search"></a>
+                
+                        <form action="/Participant/SearchCommunity" method="get">
+                    
+                            <input id="SearchString" name="SearchString" type="text" class="search-input" placeholder="Search ..."/>
+                            <input type="submit" value="">
+                        </form>
 
+                    </div>
+                </div>
                 
                  
             </li>

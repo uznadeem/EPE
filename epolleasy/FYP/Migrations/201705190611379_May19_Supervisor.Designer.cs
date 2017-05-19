@@ -7,13 +7,13 @@ namespace FYP.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class upd_dbap : IMigrationMetadata
+    public sealed partial class May19_Supervisor : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(upd_dbap));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(May19_Supervisor));
         
         string IMigrationMetadata.Id
         {
-            get { return "201705181141355_upd_dbap"; }
+            get { return "201705190611379_May19_Supervisor"; }
         }
         
         string IMigrationMetadata.Source

@@ -8,7 +8,7 @@
 
 
 
-<!-- SUB Banner -->
+<!-- SUB Banner 
 <div class="profile-bnr sub-bnr user-profile-bnr">
     <div class="right-top-bnr">
         <div class="compop">
@@ -16,7 +16,7 @@
         </div>
     </div>
 </div>
-
+-->
 
 <div class="compny-profile">
 
@@ -29,12 +29,12 @@
                 <div class="col-md-4">
                     <!-- Company Information -->
                     <div class="sidebar">
-                        <h5 class="main-title">@Model.appuser.UserName</h5>
+                        @*<h5 class="main-title">@Model.appuser.UserName</h5>*@
                         <div class="sidebar-thumbnail"> <img src="~/images/UserImages/@Model.appuser.ImageUrl" alt=""> </div>
                         <div class="sidebar-information">
                             <div class="profile-usermenu">
                                 <ul class="nav nav-links">
-                                    <li>@*<span class="fa fa-cog"></span>*@  @Html.ActionLink("Profile Settings", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "glyphicon glyphicon-signout" })</li>
+                                    <li><a href="@Url.Action("Index", "Manage")"><i class="fa fa-cog"></i> Account Settings</a></li>
                                     <li>
                                         @using (Html.BeginForm("LogOff", "Home", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
                                         {
@@ -51,6 +51,7 @@
                             </div>
                         </div>
                     </div>
+                
                 </div>
 
                 <!-- Tab Content -->
@@ -60,73 +61,31 @@
 
 
                     <div class="network">
+                        
+                        		  
+                    <table class="table table-bordered">
+ 
+                        <tr>	<td>Name</td> <td>@Model.appuser.FirstName @Model.appuser.LastName</td> <td>Communities</td> <td>2</td>	</tr>
 
-                        <!-- Nav Tabs -->
+                        <tr>	<td>Username</td> <td>@Model.appuser.UserName</td> <td>Total Forms</td> <td>3</td>	</tr>
+
+                        <tr>	<td>Account Type</td> <td>@Model.appuser.UserName</td> <td>Active Forms</td> <td>2</td>	</tr>
+					
+					
+                    </table>
+
+                    <!-- Nav Tabs -->
                         <ul class="nav nav-tabs">
                             <li class="active"><a data-toggle="tab" href="#AcForms">Active Forms (2)</a></li>
                             <li><a data-toggle="tab" href="#comm">Communities (23)</a></li>
                             <li><a data-toggle="tab" href="#sforms">Sealed Forms (103)</a></li>
                         </ul>
 
-                        <!-- Tab Content -->
-                        @*<div class="tab-content">
-
-                                <div id="AcForms" class="tab-pane fade in active">
-                                    <div class="net-work-in">
-                                        <h3> hello bravo</h3>
-                                    </div>
-                                </div>
-
-                                <div id="comm" class="tab-pane fade">
-
-                                    <div style="width:90%; margin:0 auto" class="tablecontainer">
-                                        <a class="popup btn btn-primary" href="/admin/create" style="margin-bottom:15px; margin-top:15px;">Add New Community</a>
-
-                                        <div class="row">
-
-
-                                            <table id="mydatatable" width="100%">
-
-                                                <thead>
-                                                    <tr>
-
-                                                        <th>Community Name</th>
-                                                        <th>Community Members</th>
-                                                        <th>Community Forms</th>
-                                                        <th>Edit  </th>
-
-                                                        <th>Delete </th>
-
-
-                                                    </tr>
-
-
-
-                                                </thead>
-
-
-                                                <tbody></tbody>
-
-                                            </table>
-
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <div id="sforms" class="tab-pane fade in active">
-
-                                    <div class="net-work-in">
-                                        <h3> hello jello</h3>
-                                    </div>
-
-                                </div>
-
-
-                            </div>*@
+                        <!--Tabs Content-->
                         <div class="tab-content">
-
-                            <div id="AcForms" class="tab-pane fade in active">
+                            
+                        <!--Active Forms-->
+                        <div id="AcForms" class="tab-pane fade in active">
                                 <div class="net-work-in">
                                     <div class="main-mem">
                                         <!-- Tittle -->
@@ -191,7 +150,7 @@
                                 </div>
                             </div>
 
-                            <!-- Followers -->
+                            <!-- Communities -->
                             <div id="comm" class="tab-pane fade">
 
                                 <div class="net-work-in">
@@ -205,6 +164,10 @@
                                             <div class="row">
 
                                                 <div class="col-sm-4">
+                                                    
+                                                    <div class="compop">
+                                                        <a class="popup btn btn-primary" href="/admin/create" style="margin-bottom:15px; margin-top:15px;">Add New Community</a>
+                                                    </div>
 
                                                 </div>
 
@@ -301,7 +264,7 @@
                             </div>
 
 
-
+                            <!--Sealed Forms-->
                             <div id="sforms" class="tab-pane fade">
 
                                 <div class="net-work-in">

@@ -237,9 +237,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201705181141355_upd_dbap.cs" />
-    <Compile Include="Migrations\201705181141355_upd_dbap.Designer.cs">
-      <DependentUpon>201705181141355_upd_dbap.cs</DependentUpon>
+    <Compile Include="Migrations\201705190611379_May19_Supervisor.cs" />
+    <Compile Include="Migrations\201705190611379_May19_Supervisor.Designer.cs">
+      <DependentUpon>201705190611379_May19_Supervisor.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -595,8 +595,8 @@
     <Content Include="Views\Manage\EditProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201705181141355_upd_dbap.resx">
-      <DependentUpon>201705181141355_upd_dbap.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201705190611379_May19_Supervisor.resx">
+      <DependentUpon>201705190611379_May19_Supervisor.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
