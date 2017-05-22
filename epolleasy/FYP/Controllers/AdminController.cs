@@ -85,42 +85,57 @@ namespace FYP.Controllers
 
 
         [HttpPost]
-        public async Task<ActionResult> AddForm(int c_id, QForm qform)
+        public async Task<ActionResult> AddForm(int c_id, QForm qform,int ft)
         {
+            if(ft==0)
+            {
+                ViewBag.Messge = "Form Type required";
+                return View(c_id);
+            }
+           
+            var p = await _as.AddFormAsync(c_id, qform,ft);
 
-
-            var p = await _as.AddFormAsync(c_id, qform);
-
-
-            return RedirectToAction("AddQuestion", new { c_id = c_id, qf_id = p });
+            return RedirectToAction("AddQuestion", new { c_id = c_id, qf_id = p , ft = ft});
 
         }
 
-        public ActionResult AddQuestion(int c_id, int qf_id)
+        public ActionResult AddQuestion(int c_id, int qf_id,int ft)
         {
 
             ViewBag.qf_id = qf_id;
-
+            ViewBag.ft = ft;
             ViewBag.c_id = c_id;
             return View();
         }
 
         [HttpPost]
-        public async Task<ActionResult> AddQuestion(int c_id, int qf_id, Question q_obj, string[] Multiple_Answer)
+        public async Task<ActionResult> AddQuestion(int c_id, int qf_id, Question q_obj, string[] Multiple_Answer,int ft)
         {
-
-
-            if (Multiple_Answer == null || q_obj == null)
+            if (ft == 1)
             {
 
-                ModelState.AddModelError("", "Fields are missing ");
-                return View(q_obj);
+                if (Multiple_Answer == null || q_obj == null)
+                {
 
+                    ModelState.AddModelError("", "Fields are missing ");
+                    return View(q_obj);
+
+                }
+
+                await _as.AddQuestionAsync(c_id, qf_id, q_obj, Multiple_Answer);
             }
+            else
+            {
+                if (q_obj == null)
+                {
 
-            await _as.AddQuestionAsync(c_id, qf_id, q_obj, Multiple_Answer);
+                    ModelState.AddModelError("", "Fields are missing ");
+                    return View(q_obj);
 
-            return RedirectToAction("AddQuestion", new { c_id = c_id, qf_id = qf_id });
+                }
+                await _as.FrequencyQuestionAsync(c_id,qf_id,q_obj);
+            }
+            return RedirectToAction("AddQuestion", new { c_id = c_id, qf_id = qf_id ,ft=ft});
 
         }
 

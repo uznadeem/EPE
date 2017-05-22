@@ -17,6 +17,8 @@ namespace FYP.Models
         
         [Required]
         public string FormOwner { get; set; }
+
+        public int FormType { get; set; }
         
         [Required]  //get system date
         [DataType(DataType.DateTime)]

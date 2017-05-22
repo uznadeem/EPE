@@ -11,7 +11,7 @@
 <div class="container">
     <h2>AddQuestion</h2>
 
-    @using (Html.BeginForm("AddQuestion", "admin", new { c_id = ViewBag.c_id, qf_id = ViewBag.qf_id }, FormMethod.Post))
+    @using (Html.BeginForm("AddQuestion", "admin", new { c_id = ViewBag.c_id, qf_id = ViewBag.qf_id, ft = ViewBag.ft }, FormMethod.Post))
     {
         @Html.AntiForgeryToken()
 
@@ -25,6 +25,8 @@
                 @Html.TextBoxFor(a => a.QuestionString)
                 @Html.ValidationMessageFor(a => a.QuestionString)
             </div>
+            @if (ViewBag.ft==1)
+            {
             <div class="col-md-12 form-group">
 
                 <label>Answer</label>
@@ -33,8 +35,16 @@
             </div>
             <div class="form-group col-md-4 input_fields_wrap">
                 <button class="add_field_button">Add More Options</button>
-            </div>
 
+            </div>
+            <script src="~/Scripts/Multi_Answer.js"></script>
+
+            }
+            else
+            {
+
+
+            }
         </div>
         <div class="col-md-4">
 
@@ -44,4 +54,3 @@
         </div>
  }
 </div>
-<script src="~/Scripts/Multi_Answer.js"></script>

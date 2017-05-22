@@ -139,11 +139,12 @@ namespace FYP.Services
         }
         
         
-        public async Task<int> AddFormAsync(int c_id, QForm qform)
+        public async Task<int> AddFormAsync(int c_id, QForm qform,int ft)
         {
 
             qform.FormOwner = HttpContext.Current.User.Identity.Name;
             qform.Creation_Time = System.DateTime.Now;
+            qform.FormType = ft;
             _db.QForms.Add(qform);
 
             await _db.SaveChangesAsync();
@@ -170,13 +171,13 @@ namespace FYP.Services
         {
 
             var qu = await _db.Questions.Where(u => u.QFormID.Equals(id)).ToListAsync();
-
+            var ft = await (from a in _db.QForms where a.QFormID == id select a.FormType).FirstOrDefaultAsync();
             FormResultViewModel fr = new FormResultViewModel();
 
             fr.Ques = qu;
             fr.qf_id = id;
             fr.comid = c_id;
-
+            fr.ft = ft;
             return fr;
 
         }
@@ -194,6 +195,7 @@ namespace FYP.Services
         public async Task AddQuestionAsync(int c_id, int qf_id, Question q_obj, string[] Multiple_Answer)
         {
             Answer ans_obj = new Answer();
+
             int a = 1;
 
              q_obj.QFormID = qf_id;
@@ -217,6 +219,39 @@ namespace FYP.Services
 
 
         }
+        public async Task FrequencyQuestionAsync(int c_id, int qf_id, Question q_obj)
+        {
+            Answer ans_obj = new Answer();
 
+            string[] fre = new string[4];
+
+            fre[0] = "agree";
+            fre[1] = "Strongly agree";
+            fre[2] = "Disagree";
+            fre[3] = "Strongly disagree";
+            
+            int a = 1;
+
+            q_obj.QFormID = qf_id;
+            _db.Questions.Add(q_obj);
+
+
+            foreach (var v in fre )
+            {
+
+                ans_obj.AnswerStatement = v;
+
+                ans_obj.OptionNo = a;
+
+                ans_obj.QuestionID = q_obj.QuestionID;
+                _db.Answers.Add(ans_obj);
+
+                await _db.SaveChangesAsync();
+
+                a++;
+            }
+
+          }
+
+        }
     }
-}

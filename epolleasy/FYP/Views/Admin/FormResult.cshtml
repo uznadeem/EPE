@@ -9,7 +9,7 @@
 
     @if (Model.Ques.Count == 0)
     {
-        <p>Form is Empty Click Here to add Question @Html.ActionLink("AddQuestion", "AddQuestion", new { controller = "Admin", c_id = Model.comid, qf_id = Model.qf_id }) </p>
+        <p>Form is Empty Click Here to add Question @Html.ActionLink("AddQuestion", "AddQuestion", new { controller = "Admin", c_id = Model.comid, qf_id = Model.qf_id, ft = Model.ft}) </p>
 
     }
     else

@@ -11,9 +11,8 @@ namespace FYP.ViewModel
 
         public ApplicationUser UserT { get; set; }
         public List<CommunityUser> CommunitiesList { get; set; }
-//        public bool IsMember { get; set; }
-//        public Community Community { get; set; }
-
-
+        public List<FormCommunity> fc { get; set; }
+        
     }
+    
 }

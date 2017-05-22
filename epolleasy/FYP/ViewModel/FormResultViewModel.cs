@@ -12,5 +12,6 @@ namespace FYP.ViewModel
         public IList<Question> Ques { get; set; }
         public int comid { get; set; }
         public int qf_id { get; set; }
+        public int ft { get; set; }
     }
 }

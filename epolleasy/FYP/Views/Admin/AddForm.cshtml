@@ -5,7 +5,7 @@
 }
 
 <h2>AddForm</h2>
-
+<p>@ViewBag.Messge</p>
 
 
 @using (Html.BeginForm("AddForm", "admin", new { c_id = ViewBag.id }, FormMethod.Post))
@@ -23,9 +23,21 @@
         @Html.ValidationMessageFor(a => a.FormDetail)
     </div>
     <div class="form-group">
+        
+        <div class="row">
 
-        @*@Html.TextBoxFor(x => x.Creation_Time, new { @Value = @DateTime.Now.ToShortDateString() })*@
-
+            <div class="col-md-2">
+                <label>Select Form Type *</label>
+            </div>
+            <div class="col-md-4">
+                @Html.DropDownList("ft", new List<SelectListItem>
+                {
+                    new SelectListItem{ Text="Poll ", Value = "1" },
+                    new SelectListItem{ Text="Frequency", Value = "2" },
+                })
+            </div>
+        </div>
+        
     </div>
         <div class="form-control ">
             @Html.LabelFor(m => m.Expiry_Time, new { @class = "col-md-2 control-label" })

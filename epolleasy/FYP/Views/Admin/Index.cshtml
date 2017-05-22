@@ -197,15 +197,15 @@
                                                 <li class="col-xs-3"> <span>Community Name</span> </li>
                                                 <li class="col-xs-2"> <span>Members</span> </li>
                                                 <li class="col-xs-2"> <span>Forms</span> </li>
-                                                <li class="col-xs-2 "> <span>Active</span> </li>
-                                                <li class="col-xs-1"> <span></span> </li>
+                                               @* <li class="col-xs-2 "> <span>Active</span> </li>*@
+                                                <li class="col-xs-2"> <span></span> </li>
                                             </ul>
                                         </div>
 
                                         <!-- Tittle -->
                                         <div class="folow-persons">
                                             <ul>
-
+                                                
                                                 @foreach (var item in Model.Com)
                                                 {
                                                             <!-- COMMUNITY -->
@@ -219,6 +219,7 @@
                                                                     <div class="avatar"> <img src="~/CommunityImages/@item.CommunityLogo" alt=""> </div>
                                                                 </div>
                                                             </div>
+                                                            
                                                             <div class="fol-name">
                                                                 <div class="col-xs-3">
                                                                     <!-- COMMUNITY Title -->
@@ -235,12 +236,12 @@
 
 
                                                             <!-- Total Forms -->
-                                                            <div class="col-xs-2"> <span>13</span></div>
+                                                            <div class="col-xs-2"> <span>@item.FormsCommunity.Count</span></div>
 
                                                             <!-- Active Forms -->
-                                                            <div class="col-xs-2"> <span>2</span> </div>
+                                                            @*<div class="col-xs-2"> <span></span> </div>*@
 
-                                                            <div class="col-xs-1">
+                                                            <div class="col-xs-2">
 
                                                                 @Html.ActionLink("Go", "ViewDetails", new { controller = "Admin", id = @item.CommunityID })
 

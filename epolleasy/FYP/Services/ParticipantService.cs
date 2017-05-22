@@ -30,12 +30,20 @@ namespace FYP.Services
         {
 
             var us = await _db.Users.Where(u => u.UserName == HttpContext.Current.User.Identity.Name).SingleOrDefaultAsync();
-
             var comlst = await _db.CommunityUsers.Include(x => x.Community).Where(u => u.UserID == us.Id).ToListAsync();
+
+            //var wf = await (from fc in _db.FormsCommunity join cu in _db.CommunityUsers on fc.CommunityID equals cu.CommunityID select new {frm = fc.QForms}).ToListAsync();
+
+            //var fc = await _db.FormsCommunity
+
+            //var pf = await (from c in _db.CommunityUsers where c.UserID.Equals(us.Id) select c.Community).T;
+
+            var qf = await (from cu in _db.CommunityUsers join fc in _db.FormsCommunity on cu.CommunityID equals fc.CommunityID where (cu.UserID.Equals(us.Id)) select fc).ToListAsync();
+
             ProfileDataViewModel pd = new ProfileDataViewModel();
             pd.UserT = us;
             pd.CommunitiesList = comlst;
-
+            pd.fc = qf;
             return pd;
 
         }
@@ -125,11 +133,12 @@ namespace FYP.Services
         {
             var v = await _db.Communities.Where(u => u.CommunityID == id).FirstOrDefaultAsync();
             var b = await _db.FormsCommunity.Where(u => u.CommunityID.Equals(id)).ToListAsync();
+            var cu = await _db.CommunityUsers.Where(u => u.CommunityID.Equals(id)).ToListAsync();
 
             ViewDetailViewModel vd = new ViewDetailViewModel();
             vd.fcom = b;
             vd.comm = v;
-
+            vd.c_usr = cu;
             return vd;
         }
 

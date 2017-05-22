@@ -1,11 +1,21 @@
 ﻿@using Microsoft.AspNet.Identity
-@model FYP.ViewModel.CommunityUserViewModel
+
+@model FYP.ViewModel.ProfileDataViewModel
 
 @{
 
     Layout = "~/Views/Shared/_LayoutProject.cshtml";
 
 }
+
+<!-- SUB Banner -->
+<div class="profile-bnr sub-bnr user-profile-bnr">
+    <div class="position-center-center">
+        <div class="container">
+            <h2> </h2>
+        </div>
+    </div>
+</div>
 
 
 <div class="compny-profile">
@@ -19,8 +29,8 @@
                 <div class="col-md-4">
                     <!-- Company Information -->
                     <div class="sidebar">
-                        @*<h5 class="main-title">@Model.appuser.UserName</h5>*@
-                        <div class="sidebar-thumbnail"> <img src="~/images/UserImages/@Model.appuser.ImageUrl" alt=""> </div>
+                        <h5 class="main-title">@Model.UserT.FirstName @Model.UserT.LastName</h5>
+                        <div class="sidebar-thumbnail"> <img src="~/images/UserImages/@Model.UserT.ImageUrl" alt=""> </div>
                         <div class="sidebar-information">
                             <div class="profile-usermenu">
                                 <ul class="nav nav-links">
@@ -32,36 +42,18 @@
 
                                             <a href="javascript:document.getElementById('logoutForm').submit()"><span class="fa fa-sign-out" aria-hidden="true"></span>Log off</a>
 
-
-                                            //<li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-
                                         }
                                     </li>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                
                 </div>
 
                 <!-- Tab Content -->
                 <div class="col-md-8">
 
                     <h2>  Participant Dashboard</h2>
-
-
-                    <table class="table table-bordered">
- 
-                        <tr>	<td>Name</td> <td>@Model.appuser.FirstName @Model.appuser.LastName</td> <td>Communities</td> <td>2</td>	</tr>
-
-                        <tr>	<td>Username</td> <td>@Model.appuser.UserName</td> <td>Total Forms</td> <td>3</td>	</tr>
-
-                        <tr>	<td>Account Type</td> <td>@Model.appuser.UserName</td> <td>Active Forms</td> <td>2</td>	</tr>
-					
-					
-                    </table>
-
-
 
                     <div class="network">
 
@@ -77,135 +69,251 @@
 
                             <div id="AcForms" class="tab-pane fade in active">
                                 <div class="net-work-in">
-                                    <h3> hello bravo</h3>
+                                    <div class="main-mem">
+                                        <!-- Tittle -->
+                                        <div class="tittle">
+                                            <ul class="row">
+                                                <li class="col-xs-4"> <span>Title</span> </li>
+                                                <li class="col-xs-3"> <span>Community</span> </li>
+                                                <li class="col-xs-3"> <span>Total Members</span> </li>
+                                                <li class="col-xs-2 n-p-r n-p-l"> <span>Responses</span> </li>
+                                            </ul>
+                                        </div>
+                                        <div class="folow-persons">
+                                            <ul>
+                                                @for (var i = 0; i < Model.fc.Count; i++)
+                                                {
+                                                    if (Model.fc[i].QForms.Expiry_Time > System.DateTime.Now)
+                                                    {
+                                                        <li>
+
+                                                            <div class="row">
+                                                                <div class="col-xs-4">
+
+                                                                    <!-- Form Title -->
+                                                                    <div class="fol-name">
+
+                                                                        <!-- Form Logo -->
+
+                                                                        <div class="avatar"> <img src="images/sm-avatar.jpg" alt=""> </div>
+
+                                                                        <!-- Form Title -->
+                                                                        <h6>@Model.fc[i].QForms.FormTitle</h6>
+
+                                                                        <!-- Form About -->
+                                                                        <span>@Model.fc[i].QForms.FormDetail</span>
+                                                                    </div>
+
+                                                                </div>
+
+                                                                <!-- Form Community -->
+                                                                <div class="col-xs-3 n-p-r n-p-l"> <span>@Model.fc[i].Community.CommunityName</span> </div>
+
+
+                                                                <!-- Total Members -->
+                                                                <div class="col-xs-3 n-p-r"> <span>@Model.fc[i].Community.CommunityUsers.Count</span></div>
+
+                                                                <!-- Response Received -->
+                                                                <div class="col-xs-2 n-p-r n-p-l"> <span>@Model.fc[i].QForms.FormUser.Count</span> </div>
+
+                                                            </div>
+                                                        </li>
+                                                    }
+                                                    else
+                                                    {
+
+                                                    }
+                                                }
+                                            </ul>
+                                        </div>
+
+
+                                    </div>
                                 </div>
                             </div>
 
                             <!-- Followers -->
                             <div id="comm" class="tab-pane fade">
 
-                            <div class="net-work-in"> 
-                    
-                    
-                            <!-- Members -->
-                            <div class="main-mem"> 
-                      
-                            <!-- Head -->
-                            <div class="head">
-                                <div class="row">
-
-                                    <div class="col-sm-4">
-                            
-                                    </div>
+                                <div class="net-work-in">
 
 
-                                    <div class="col-sm-4">
-                                        <form>
-                                            <input type="search" placeholder="Search">
-                                            <button type="submit"><i class="fa fa-search"></i></button>
-                                        </form>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <select>
-                                            <option>Alphabetical</option>
-                                            <option>Date Created</option>
-                                            <option>Latest First</option>
-                                        </select>
-                                    </div>
-						
-                                </div>
-                            </div>
-                      
-                            <!-- Tittle -->
-                            <div class="tittle">
-                                <ul class="row">
-                                    <li class="col-xs-4"> <span>Community Name</span> </li>
-                                    <li class="col-xs-2"> <span>Members</span> </li>
-                                    <li class="col-xs-2"> <span>Forms</span> </li>
-                                    <li class="col-xs-2 n-p-r n-p-l"> <span>Active</span> </li>
-                                    <li class="col-xs-1 n-p-r n-p-l"> <span>Action</span> </li>
-                                </ul>
-                            </div>
-                      
-                            <!-- Tittle -->
-                            <div class="folow-persons">
-                            <ul>
-                          
-                                @foreach (var item in Model.CommunitiesList)
-                                {
-                                    <!-- COMMUNITY -->
-                                    <li>
-                                        <div class="row">
-                                            <div class="col-xs-4"> 
-                                                <!-- COMMUNITY TITLE -->
-                                                <div class="fol-name">
-									
-                                                    <!-- COMMUNITY Logo -->
-                                                    <div class="avatar"> <img src="~/CommunityImages/@item.Community.CommunityLogo" alt=""> </div>
-                                  
-                                                    <!-- COMMUNITY Title -->
-                                                    <h6>@item.Community.CommunityName</h6>
-									
-                                                    <!-- COMMUNITY About -->
-                                                    <span>@item.Community.CommunityAbout</span> </div>
-                              
-                                            </div>
-							  
-                                            <!-- Members -->
-                                            <div class="col-xs-2 n-p-r n-p-l"> <span>@item.Community.CommunityUsers.Count()</span> </div>
-                              
-							  
-                                            <!-- Total Forms -->
-                                            <div class="col-xs-2 n-p-r"> <span>13</span></div>
-                              
-                                            <!-- Active Forms -->
-                                            <div class="col-xs-2 n-p-r n-p-l"> <span>2</span> </div>
-							  
-                                            <div class="col-xs-1">
+                                    <!-- Members -->
+                                    <div class="main-mem">
 
-                                                @Html.ActionLink("Go", "ParticipantViewDetail", new { controller = "Participant", id = @item.CommunityID })
+                                        <!-- Head -->
+                                        <div class="head">
+                                            <div class="row">
+
+                                                <div class="col-sm-4">
+
+                                                </div>
+
+
+                                                <div class="col-sm-4">
+                                                    <form>
+                                                        <input type="search" placeholder="Search">
+                                                        <button type="submit"><i class="fa fa-search"></i></button>
+                                                    </form>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <select>
+                                                        <option>Alphabetical</option>
+                                                        <option>Date Created</option>
+                                                        <option>Latest First</option>
+                                                    </select>
+                                                </div>
 
                                             </div>
+                                        </div>
+
+                                        <!-- Tittle -->
+                                        <div class="tittle">
+                                            <ul class="row">
+                                                <li class="col-xs-4"> <span>Community Name</span> </li>
+                                                <li class="col-xs-2"> <span>Members</span> </li>
+                                                <li class="col-xs-2"> <span>Forms</span> </li>
+                                                @*<li class="col-xs-2 n-p-r n-p-l"> <span>Active</span> </li>*@
+                                                <li class="col-xs-2 n-p-r n-p-l"> <span>Action</span> </li>
+                                            </ul>
+                                        </div>
+
+                                        <!-- Tittle -->
+                                        <div class="folow-persons">
+                                            <ul>
+
+                                                @foreach (var item in Model.CommunitiesList)
+                                                {
+                                                    <!-- COMMUNITY -->
+                                                    <li>
+                                                        <div class="row">
+                                                            <div class="col-xs-4">
+                                                                <!-- COMMUNITY TITLE -->
+                                                                <div class="fol-name">
+
+                                                                    <!-- COMMUNITY Logo -->
+                                                                    <div class="avatar"> <img src="~/CommunityImages/@item.Community.CommunityLogo" alt=""> </div>
+
+                                                                    <!-- COMMUNITY Title -->
+                                                                    <h6>@item.Community.CommunityName</h6>
+
+                                                                    <!-- COMMUNITY About -->
+                                                                    <span>@item.Community.CommunityAbout</span>
+                                                                </div>
+
+                                                            </div>
+
+                                                            <!-- Members -->
+                                                            <div class="col-xs-2 n-p-r n-p-l"> <span>@item.Community.CommunityUsers.Count()</span> </div>
+
+
+                                                            <!-- Total Forms -->
+                                                            <div class="col-xs-2 n-p-r"> <span>@item.Community.FormsCommunity.Count</span></div>
+
+                                                            <!-- Active Forms -->
+                                                            <div class="col-xs-2 n-p-r n-p-l"> <span></span> </div>
+
+                                                            <div class="col-xs-2">
+
+                                                                @Html.ActionLink("Go", "ParticipantViewDetail", new { controller = "Participant", id = @item.CommunityID })
+
+                                                            </div>
+
+                                                        </div>
+                                                    </li>
+
+                                                }
+
+
+                                            </ul>
+
 
                                         </div>
-                                    </li>
-                          
-                                }
-                          
-                          
-                            </ul>
-                            
-                            
-                            </div>
-                            </div>
-                            </div>
-                
+                                    </div>
+                                </div>
 
-                                
+
+
                             </div>
 
 
 
-                            <div id="sforms" class="tab-pane fade in active">
+                            <div id="sforms" class="tab-pane fade">
 
                                 <div class="net-work-in">
-                                    <h3> hello jello</h3>
+                                    <div class="main-mem">
+                                        <!-- Tittle -->
+                                        <div class="tittle">
+                                            <ul class="row">
+                                                <li class="col-xs-4"> <span>Title</span> </li>
+                                                <li class="col-xs-3"> <span>Community</span> </li>
+                                                <li class="col-xs-3"> <span>Total Members</span> </li>
+                                                @*<li class="col-xs-2 n-p-r n-p-l"> <span>Response</span> </li>*@
+                                                <li class="col-xs-2 n-p-r n-p-l"> <span>Result</span> </li>
+                                            </ul>
+                                        </div>
+                                        <div class="folow-persons">
+                                            <ul>
+                                                @for (var i = 0; i < Model.fc.Count; i++)
+                                                {
+                                                    if (Model.fc[i].QForms.Expiry_Time < System.DateTime.Now)
+                                                    {
+                                                        <li>
+
+                                                            <div class="row">
+                                                                <div class="col-xs-4">
+
+                                                                    <!-- Form Title -->
+                                                                    <div class="fol-name">
+
+                                                                        <!-- Form Logo -->
+
+                                                                        <div class="avatar"> <img src="images/sm-avatar.jpg" alt=""> </div>
+
+                                                                        <!-- Form Title -->
+                                                                        <h6>@Model.fc[i].QForms.FormTitle</h6>
+
+                                                                        <!-- Form About -->
+                                                                        <span>@Model.fc[i].QForms.FormDetail</span>
+                                                                    </div>
+
+                                                                </div>
+
+                                                                <!-- Form Community -->
+                                                                <div class="col-xs-3 n-p-r n-p-l"> <span>@Model.fc[i].Community.CommunityName</span> </div>
+
+
+                                                                <!-- Total Members -->
+                                                                <div class="col-xs-3 n-p-r"> <span>@Model.fc[i].Community.CommunityUsers.Count</span></div>
+
+                                                                <!-- Response Received -->
+                                                                @*<div class="col-xs-2 n-p-r n-p-l"> <span>@Model.fcom[i].QForms.FormUser.Count</span> </div>*@
+                                                                <!--View Form-->
+                                                                <div class="col-xs-2 n-p-r n-p-l"> @Html.ActionLink("View", "FormResult", new { controller = "Admin", c_id = Model.fc[i].CommunityID, id = Model.fc[i].QFormID }) </div>
+
+                                                            </div>
+                                                        </li>
+                                                    }
+                                                    else
+                                                    {
+
+                                                    }
+                                                }
+                                            </ul>
+                                        </div>
+
+                                    </div>
                                 </div>
 
                             </div>
-
 
                         </div>
 
-
                     </div>
                 </div>
-
 
             </div>
 
         </div>
     </div>
 </div>
-
-

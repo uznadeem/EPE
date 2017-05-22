@@ -10,7 +10,7 @@
 @using (Html.BeginForm("create", "admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
    @Html.AntiForgeryToken()
-
+    <div class="container">
         <div class="form-group">
             <label>Community Name</label>
             @Html.TextBoxFor(a => a.CommunityName, new { @class = "form-control" })
@@ -32,10 +32,10 @@
             @Html.Label("Privacy Level", new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
 
-              @Html.RadioButtonFor(m => m.PrivacyID, "1" , new { @class = "radio-inline" })@Html.Label("Public")
-              @Html.RadioButtonFor(m => m.PrivacyID, "2" ,new { @class = "radio-inline" })@Html.Label("Private")  
-              
-             </div>
+                @Html.RadioButtonFor(m => m.PrivacyID, "1", new { @class = "radio-inline" })@Html.Label("Public")
+                @Html.RadioButtonFor(m => m.PrivacyID, "2", new { @class = "radio-inline" })@Html.Label("Private")
+
+            </div>
         </div>
 
 
@@ -46,17 +46,13 @@
                 @Html.ValidationMessageFor(model => model.CommunityLogo, "", new { @class = "text-danger" })
             </div>
         </div>
+        <br/>
+        <br />
 
-                @*<div class="col-md-10">
-            
-                        <input type="file" name="file" accept="images/jpg" />
-                              
-                </div>*@
-            
+        <div>
+            <input type="submit" value="Create" />
+        </div>
 
-            <div>
-                <input type="submit" value="Create" />
-            </div>
-
-            }
+    </div>
+}
 

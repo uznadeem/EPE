@@ -21,7 +21,7 @@
                               autoOpen: false,
                               resizable: false,
                               model: true,
-                              title: 'Popup Dialog',
+                              title: 'Create New Community',
                               height: 550,
                               width: 600,
                               close: function () {
