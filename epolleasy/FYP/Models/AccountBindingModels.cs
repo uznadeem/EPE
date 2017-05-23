@@ -48,6 +48,29 @@ namespace FYP.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+
+
+
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
+        public string UserName { get; set; }
+
+        public string UserRole { get; set; }
+
+        public string Gender { get; set; }
+
+        [DataType(DataType.Date)]
+        public DateTime DOB { get; set; }
+
+        public string ImageUrl { get; set; }
+
+
+
+
+
     }
 
     public class RegisterExternalBindingModel

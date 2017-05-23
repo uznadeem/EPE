@@ -328,17 +328,25 @@ namespace FYP.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
+            var user = new ApplicationUser() { UserName = model.UserName, Email = model.Email, DOB = model.DOB, FirstName = model.FirstName, LastName = model.LastName, Gender = model.Gender, UserRole = model.UserRole, ImageUrl = "defaultImage.jpg" };
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
-            if (!result.Succeeded)
+
+            if (!result.Succeeded)//error
             {
                 return GetErrorResult(result);
             }
 
-            return Ok();
+
+            return Ok(); //user registered but email not verified yet
         }
+
+
+
+
+
+
 
         // POST api/Account/RegisterExternal
         [OverrideAuthentication]
