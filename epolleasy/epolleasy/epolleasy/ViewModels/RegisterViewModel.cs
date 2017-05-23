@@ -19,6 +19,18 @@ namespace epolleasy.ViewModels
 
         public string ConfirmPassword { get; set; }
 
+
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string UserName { get; set; }
+        public string UserRole { get; set; }
+        public string Gender { get; set; }
+        public DateTime BirthDate { get; set; }
+        public string ImageUrl { get; set; }
+
+
+
+
         public string Message { get; set; }
 
 
@@ -28,7 +40,7 @@ namespace epolleasy.ViewModels
             {
                 return new Command(async () =>
                 {
-                    var isSuccess = await _apiServices.RegisterAsync(Email,Password,ConfirmPassword);
+                    var isSuccess = await _apiServices.RegisterAsync(FirstName,LastName,UserName,Email,Password,ConfirmPassword,UserRole,Gender,BirthDate,ImageUrl);
 
                     Message = isSuccess ? "Registered Successfully" : "Retry Later";
                 });

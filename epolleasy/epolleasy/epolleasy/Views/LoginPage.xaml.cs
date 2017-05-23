@@ -17,7 +17,7 @@ namespace epolleasy.Views
 
         private async void Button_OnClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new RegisterPage());
+            await Navigation.PushModalAsync(new RegisterPage());
         }
     }
 }

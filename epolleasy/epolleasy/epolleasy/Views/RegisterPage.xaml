@@ -13,12 +13,23 @@
     </ContentPage.BindingContext>
 
 
-  <StackLayout VerticalOptions="Center">
+  <StackLayout BackgroundColor="#30af91" Padding="60">
     
     
+    <Entry Text="{Binding FirstName}" Placeholder="First Name"/>
+    <Entry Text="{Binding LastName}" Placeholder="Last Name"/>
+    <Entry Text="{Binding UserName}" Placeholder="Last Name"/>
+
     <Entry Text="{Binding Email}" Placeholder="Email" />
     <Entry Text="{Binding Password}" Placeholder="Password" IsPassword="True"/>
     <Entry Text="{Binding ConfirmPassword}" Placeholder="Confirm Password" IsPassword="True"/>
+    
+    <DatePicker MinimumDate="1/1/1948" MaximumDate="12/31/2007"/>
+
+    <!--Radio buttons for Gender-->
+
+    <!--Radio Buttons for UserRole
+        1. Admin  2.Participant-->
     
     <Button Command="{Binding RegisterCommand}" Text="Register"/>
     

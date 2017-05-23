@@ -13,16 +13,24 @@ namespace epolleasy.Services
 {
     public class ApiServices
     {
-        public async Task<bool> RegisterAsync(string email, string password, string confirmPassword)
+        public async Task<bool> RegisterAsync(String firstName, String lastName, String username, String email, String password, String confirmPassword, String userRole, String gender, DateTime birthDate, String imageUrl)
         {
 
             var client = new HttpClient();
 
             var model = new RegisterBindingModel
             {
+                FirstName = firstName,
+                LastName = lastName,
+                UserName = username,
                 Email = email,
                 Password = password,
-                ConfirmPassword = confirmPassword
+                ConfirmPassword = confirmPassword,
+                UserRole = userRole,
+                Gender = gender,
+                BirthDate = birthDate,
+                ImageUrl = "defaultImage.jpg"
+
             };
 
             var json = JsonConvert.SerializeObject(model);
