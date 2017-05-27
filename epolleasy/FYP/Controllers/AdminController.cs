@@ -52,6 +52,39 @@ namespace FYP.Controllers
         }
 
 
+        [HttpGet]
+        public async Task<ActionResult> Edit(int id)
+        {
+
+            var v = await _as.EditCommunity(id);
+            return View(v);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Edit(Community objcom)
+        {
+
+            await _as.PEditCommunity(objcom);
+
+            return RedirectToAction("ViewDetails", new { id = objcom.CommunityID });
+        }
+
+        public async Task<ActionResult> Delete(int id)
+        {
+            var v = await _as.EditCommunity(id);
+            return View(v);
+        }
+
+
+        [HttpPost]
+        public async Task<ActionResult> Delete(Community obj)
+        {
+
+            await _as.DeleteCommunity(obj);
+
+            return RedirectToAction("Index");
+        }
+        
         public async Task<ActionResult> ViewDetails(int id)
         {
 

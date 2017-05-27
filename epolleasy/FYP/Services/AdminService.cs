@@ -81,10 +81,87 @@ namespace FYP.Services
 
             //return RedirectToAction("Index", "Admin");
             //}
-
+            
 
         }
 
+        public async Task<Community> EditCommunity(int id)
+        {
+
+            var v = await _db.Communities.Where(a => a.CommunityID == id).FirstOrDefaultAsync();
+            return v;
+
+        }
+
+        public async Task PEditCommunity(Community objcom)
+        {
+
+            var v = await _db.Communities.Where(a => a.CommunityID == objcom.CommunityID).FirstOrDefaultAsync();
+            if (v != null)
+            {
+                v.CommunityName = objcom.CommunityName;
+                v.CommunityAbout = objcom.CommunityAbout;
+                await _db.SaveChangesAsync();
+            }
+
+        }
+
+        public async Task DeleteCommunity(Community obj)
+        {
+
+            var v = await _db.Communities.Where(a => a.CommunityID == obj.CommunityID).FirstOrDefaultAsync();
+            var t = await _db.FormsCommunity.Where(a => a.CommunityID == obj.CommunityID).ToListAsync();
+
+            var cu = await _db.CommunityUsers.Where(g => g.CommunityID.Equals(obj.CommunityID)).ToListAsync();
+
+            if (t.Count != 0)
+            {
+                for (var i = 0; i < t.Count; i++)
+                {
+                    var k = t[i].QFormID;
+                    var q = await _db.Questions.Where(a => a.QFormID.Equals(k)).ToListAsync();
+                    var fu = await _db.FormUsers.Where(a => a.QFormID.Equals(k)).ToListAsync();
+                    for (var qc = 0; qc < q.Count; qc++)
+                    {
+                        var m = q[qc].QuestionID;
+                        var ans = await _db.Answers.Where(a => a.QuestionID.Equals(m)).ToListAsync();
+
+                        for (var aw = 0; aw < ans.Count; aw++)
+                        {
+
+                            _db.Answers.Remove(ans[aw]);
+                        }
+                        _db.Questions.Remove(q[qc]);
+                    }
+
+                    for (var w = 0; w < fu.Count; w++)
+                    {
+                        _db.FormUsers.Remove(fu[w]);
+                    }
+                    var n = t[i].QForms;
+                    _db.QForms.Remove(n);
+                    _db.FormsCommunity.Remove(t[i]);
+                }
+            }
+            else
+            {
+
+            }
+            if (v != null)
+            {
+                if (cu.Count != 0)
+                {
+                    for (var c = 0; c < cu.Count; c++)
+                    {
+                        _db.CommunityUsers.Remove(cu[c]);
+                    }
+                }
+
+                _db.Communities.Remove(v);
+            }
+
+            await _db.SaveChangesAsync();
+        }
 
         public async Task<ViewDetailViewModel> ViewDetailAsync(int id)
         {

@@ -16,6 +16,7 @@
 
                 <a href="/admin/AddForm/@ViewBag.Id"><i class="fa fa-user-plus"></i> Add Form</a>
 
+                <a class="btn btn-primary" href="/admin/Index/"><i class="fa fa-arrow-left"></i>Back</a>
 
 
                 @*<a data-toggle="modal" data-target="#myModal"><i class="fa fa-user-plus"></i>Add Members</a>*@
@@ -122,6 +123,11 @@
                             </li>
 
                         </ul>
+                        <a class="btn btn-primary" href="/admin/Edit/@Model.comm.CommunityID"><i class="fa fa-edit"></i>Edit</a>
+
+                        <br />
+                        <a class="btn btn-primary" href="/admin/Delete/@Model.comm.CommunityID"><i class="fa fa-remove"></i>Delete</a>
+
 
                     </div>
                 </div>

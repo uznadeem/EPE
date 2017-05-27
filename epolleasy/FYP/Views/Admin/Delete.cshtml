@@ -4,7 +4,10 @@
     Layout = null;
 }
 
-@using (Html.BeginForm("Delete", "admin", FormMethod.Post, new { id = "popupForm" }))
+<a class="btn btn-primary" href="/admin/ViewDetails/@Model.CommunityID/"><i class="fa fa-arrow-left"></i>Back</a>
+
+
+@using (Html.BeginForm("Delete", "admin", FormMethod.Post))
 {
     
         @Html.HiddenFor(a => a.CommunityID)

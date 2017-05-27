@@ -3,7 +3,9 @@
     Layout = null;
 }
 <h2>Edit007</h2>
-@using (Html.BeginForm("edit", "admin", FormMethod.Post, new { id = "popupForm" }))
+<a class="btn btn-primary" href="/admin/ViewDetails/@Model.CommunityID/"><i class="fa fa-arrow-left"></i>Back</a>
+
+@using (Html.BeginForm("edit", "admin", FormMethod.Post))
 {
 
 

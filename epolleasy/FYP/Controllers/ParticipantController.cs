@@ -150,7 +150,7 @@ namespace FYP.Controllers
         }
 
 
-        public async Task<ActionResult> FormParticipate(int id)
+        public async Task<ActionResult> FormParticipate(int id,int c_id)
         {
             if ((await CheckUserFormParticipation(id)).Equals(true))
             {
@@ -162,7 +162,7 @@ namespace FYP.Controllers
                 var v = await _ps.FormParticipateAsync(id);
                 
                 ViewBag.Id = id;
-                
+                ViewBag.cid = c_id;
                 return View(v);
             }
         }

@@ -2,10 +2,11 @@
 @{
     ViewBag.Title = "FormParticipate";
 }
+<a class="btn btn-primary" href="/participant/ViewDetail/@ViewBag.cid"><i class="fa fa-arrow-left"></i>Back</a>
 
 <h2>FormParticipate</h2>
 
-@using (Html.BeginForm("FormParticipate", "Participant", new { id = ViewBag.Id }, FormMethod.Post))
+@using (Html.BeginForm("FormParticipate", "Participant", new { id = ViewBag.Id, c_id = ViewBag.cid }, FormMethod.Post))
 {
     @Html.AntiForgeryToken()
     <hr />

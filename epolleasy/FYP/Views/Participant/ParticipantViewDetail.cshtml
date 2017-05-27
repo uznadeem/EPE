@@ -16,6 +16,7 @@
 
                 <a href="/admin/AddForm/@ViewBag.Id"><i class="fa fa-user-plus"></i> Add Form</a>*@
 
+                <a class="btn btn-primary" href="/Participant/Index/"><i class="fa fa-arrow-left"></i>Back</a>
 
 
                 @*<a data-toggle="modal" data-target="#myModal"><i class="fa fa-user-plus"></i>Add Members</a>*@
@@ -138,7 +139,7 @@
                                             <td>@t.QForms.FormTitle</td>
                                             <td>@t.QForms.FormDetail</td>
                                             <td>@t.QForms.Expiry_Time</td>
-                                            <td>@Html.ActionLink("Participate", "FormParticipate", new { controller = "Participant", id = @t.QFormID })</td>
+                                            <td>@Html.ActionLink("Participate", "FormParticipate", new { controller = "Participant", id = @t.QFormID , c_id = ViewBag.Id })</td>
 
                                         }
                                         else
