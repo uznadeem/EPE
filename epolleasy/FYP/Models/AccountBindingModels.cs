@@ -65,8 +65,7 @@ namespace FYP.Models
         [DataType(DataType.Date)]
         public DateTime DOB { get; set; }
 
-        public string ImageUrl { get; set; }
-
+        
 
 
 

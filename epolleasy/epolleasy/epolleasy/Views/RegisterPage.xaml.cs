@@ -13,6 +13,7 @@ namespace epolleasy.Views
         public RegisterPage()
         {
             InitializeComponent();
+            
         }
     }
 }

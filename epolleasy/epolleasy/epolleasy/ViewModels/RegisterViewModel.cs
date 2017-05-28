@@ -26,7 +26,7 @@ namespace epolleasy.ViewModels
         public string UserRole { get; set; }
         public string Gender { get; set; }
         public DateTime BirthDate { get; set; }
-        public string ImageUrl { get; set; }
+        //public string ImageUrl { get; set; }
 
 
 
@@ -40,7 +40,7 @@ namespace epolleasy.ViewModels
             {
                 return new Command(async () =>
                 {
-                    var isSuccess = await _apiServices.RegisterAsync(FirstName,LastName,UserName,Email,Password,ConfirmPassword,UserRole,Gender,BirthDate,ImageUrl);
+                    var isSuccess = await _apiServices.RegisterAsync(FirstName,LastName,UserName,Email,Password,ConfirmPassword,UserRole,Gender,BirthDate);
 
                     Message = isSuccess ? "Registered Successfully" : "Retry Later";
                 });

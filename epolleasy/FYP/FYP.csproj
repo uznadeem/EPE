@@ -239,17 +239,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201705190611379_May19_Supervisor.cs" />
-    <Compile Include="Migrations\201705190611379_May19_Supervisor.Designer.cs">
-      <DependentUpon>201705190611379_May19_Supervisor.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201705201256524_may5.cs" />
-    <Compile Include="Migrations\201705201256524_may5.Designer.cs">
-      <DependentUpon>201705201256524_may5.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201705211206203_fmtypett.cs" />
-    <Compile Include="Migrations\201705211206203_fmtypett.Designer.cs">
-      <DependentUpon>201705211206203_fmtypett.cs</DependentUpon>
+    <Compile Include="Migrations\201705281115007_May28_Uzair.cs" />
+    <Compile Include="Migrations\201705281115007_May28_Uzair.Designer.cs">
+      <DependentUpon>201705281115007_May28_Uzair.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -608,14 +600,8 @@
     <Content Include="Views\Manage\EditProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201705190611379_May19_Supervisor.resx">
-      <DependentUpon>201705190611379_May19_Supervisor.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201705201256524_may5.resx">
-      <DependentUpon>201705201256524_may5.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201705211206203_fmtypett.resx">
-      <DependentUpon>201705211206203_fmtypett.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201705281115007_May28_Uzair.resx">
+      <DependentUpon>201705281115007_May28_Uzair.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -13,7 +13,7 @@ namespace epolleasy.Services
 {
     public class ApiServices
     {
-        public async Task<bool> RegisterAsync(String firstName, String lastName, String username, String email, String password, String confirmPassword, String userRole, String gender, DateTime birthDate, String imageUrl)
+        public async Task<bool> RegisterAsync(String firstName, String lastName, String username, String email, String password, String confirmPassword, String userRole, String gender, DateTime birthDate)
         {
 
             var client = new HttpClient();
