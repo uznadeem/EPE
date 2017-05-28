@@ -29,7 +29,6 @@ namespace epolleasy.Services
                 UserRole = userRole,
                 Gender = gender,
                 BirthDate = birthDate,
-                ImageUrl = "defaultImage.jpg"
 
             };
 
@@ -38,7 +37,7 @@ namespace epolleasy.Services
 
             content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
-            var response = await client.PostAsync("http://epolleasy.azurewebsites/api/Account/Register", content);
+            var response = await client.PostAsync("http://epolleasy.azurewebsites.net/api/Account/Register", content);
 
             return response.IsSuccessStatusCode;
 

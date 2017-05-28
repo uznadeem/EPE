@@ -19,7 +19,7 @@ namespace epolleasy.Models
         public string UserRole { get; set; }
         public string Gender { get; set; }
         public DateTime BirthDate { get; set; }
-        public string ImageUrl { get; set; }
+        //public string ImageUrl { get; set; }
 
 
     }

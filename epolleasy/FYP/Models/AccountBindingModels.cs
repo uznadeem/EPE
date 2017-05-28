@@ -62,10 +62,10 @@ namespace FYP.Models
 
         public string Gender { get; set; }
 
-        [DataType(DataType.Date)]
-        public DateTime DOB { get; set; }
+        public DateTime BirthDate { get; set; }
 
-        
+        //public string ImageUrl { get; set; }
+
 
 
 

@@ -328,7 +328,7 @@ namespace FYP.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new ApplicationUser() { UserName = model.UserName, Email = model.Email, DOB = model.DOB, FirstName = model.FirstName, LastName = model.LastName, Gender = model.Gender, UserRole = model.UserRole, ImageUrl = "defaultImage.jpg" };
+            var user = new ApplicationUser() { UserName = model.UserName, Email = model.Email, DOB = model.BirthDate, FirstName = model.FirstName, LastName = model.LastName, Gender = model.Gender, UserRole = model.UserRole, ImageUrl = "defaultImage.jpg" };
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
