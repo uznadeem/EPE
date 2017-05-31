@@ -14,5 +14,8 @@ namespace FYP.ViewModel
 
         public IList<QForm> qf { get; set; }
 
+        public int activeform { get; set; }
+        public int sealedform { get; set; }
+
     }
 }

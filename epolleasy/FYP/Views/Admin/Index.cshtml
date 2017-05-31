@@ -65,20 +65,20 @@
                         		  
                     <table class="table table-bordered">
  
-                        <tr>	<td>Name</td> <td>@Model.appuser.FirstName @Model.appuser.LastName</td> <td>Communities</td> <td>2</td>	</tr>
+                        <tr>	<td>Name</td> <td>@Model.appuser.FirstName @Model.appuser.LastName</td> <td>Communities</td> <td>@Model.Com.Count</td>	</tr>
 
-                        <tr>	<td>Username</td> <td>@Model.appuser.UserName</td> <td>Total Forms</td> <td>3</td>	</tr>
+                        <tr>	<td>Username</td> <td>@Model.appuser.UserName</td> <td>Total Forms</td> <td>@Model.fcom.Count</td>	</tr>
 
-                        <tr>	<td>Account Type</td> <td>@Model.appuser.UserName</td> <td>Active Forms</td> <td>2</td>	</tr>
+                        <tr>	<td>Account Type</td> <td>@Model.appuser.UserName</td> <td>Active Forms</td> <td>@Model.activeform</td>	</tr>
 					
 					
                     </table>
 
                     <!-- Nav Tabs -->
                         <ul class="nav nav-tabs">
-                            <li class="active"><a data-toggle="tab" href="#AcForms">Active Forms (2)</a></li>
-                            <li><a data-toggle="tab" href="#comm">Communities (23)</a></li>
-                            <li><a data-toggle="tab" href="#sforms">Sealed Forms (103)</a></li>
+                            <li class="active"><a data-toggle="tab" href="#AcForms">Active Forms (@Model.activeform)</a></li>
+                            <li><a data-toggle="tab" href="#comm">Communities (@Model.Com.Count)</a></li>
+                            <li><a data-toggle="tab" href="#sforms">Sealed Forms (@Model.sealedform)</a></li>
                         </ul>
 
                         <!--Tabs Content-->

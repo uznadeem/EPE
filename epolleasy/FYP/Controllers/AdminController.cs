@@ -118,12 +118,19 @@ namespace FYP.Controllers
 
 
         [HttpPost]
-        public async Task<ActionResult> AddForm(int c_id, QForm qform,int ft)
+        public async Task<ActionResult> AddForm(int c_id, QForm qform,int ft,DateTime exp_t)
         {
-            if(ft==0)
+            ViewBag.id = c_id;
+            if (qform.FormTitle==null)
             {
                 ViewBag.Messge = "Form Type required";
-                return View(c_id);
+                ModelState.AddModelError("", "Form title required");
+                return View(qform);
+            }
+            else if(exp_t==null)
+            {
+                ModelState.AddModelError("", "Expiry datetime required");
+                return View(qform);
             }
            
             var p = await _as.AddFormAsync(c_id, qform,ft);
@@ -144,13 +151,17 @@ namespace FYP.Controllers
         [HttpPost]
         public async Task<ActionResult> AddQuestion(int c_id, int qf_id, Question q_obj, string[] Multiple_Answer,int ft)
         {
+            ViewBag.qf_id = qf_id;
+            ViewBag.ft = ft;
+            ViewBag.c_id = c_id;
+
             if (ft == 1)
             {
 
                 if (Multiple_Answer == null || q_obj == null)
                 {
 
-                    ModelState.AddModelError("", "Fields are missing ");
+                    ModelState.AddModelError("QEr", "Atleast one answer is required");
                     return View(q_obj);
 
                 }
@@ -162,7 +173,7 @@ namespace FYP.Controllers
                 if (q_obj == null)
                 {
 
-                    ModelState.AddModelError("", "Fields are missing ");
+                    ModelState.AddModelError("QEr", "Question string is required");
                     return View(q_obj);
 
                 }

@@ -32,6 +32,7 @@ namespace FYP.Services
             var us = await _db.Users.Where(u => u.UserName == HttpContext.Current.User.Identity.Name).SingleOrDefaultAsync();
             var comlst = await _db.CommunityUsers.Include(x => x.Community).Where(u => u.UserID == us.Id).ToListAsync();
 
+            var a = System.DateTime.Now;
             //var wf = await (from fc in _db.FormsCommunity join cu in _db.CommunityUsers on fc.CommunityID equals cu.CommunityID select new {frm = fc.QForms}).ToListAsync();
 
             //var fc = await _db.FormsCommunity
@@ -44,6 +45,12 @@ namespace FYP.Services
             pd.UserT = us;
             pd.CommunitiesList = comlst;
             pd.fc = qf;
+
+            pd.activeform = await (from c in _db.FormUsers where c.UserID == us.Id && c.QForm.Expiry_Time > a select c.QForm).CountAsync();
+
+            pd.sealedform = await (from c in _db.FormUsers where c.UserID == us.Id && c.QForm.Expiry_Time < a select c.QForm).CountAsync();
+
+
             return pd;
 
         }

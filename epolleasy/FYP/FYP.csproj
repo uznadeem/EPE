@@ -234,14 +234,15 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ParticipantApiController.cs" />
     <Compile Include="Controllers\ParticipantController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201705281115007_May28_Uzair.cs" />
-    <Compile Include="Migrations\201705281115007_May28_Uzair.Designer.cs">
-      <DependentUpon>201705281115007_May28_Uzair.cs</DependentUpon>
+    <Compile Include="Migrations\201705302037157_upda1234.cs" />
+    <Compile Include="Migrations\201705302037157_upda1234.Designer.cs">
+      <DependentUpon>201705302037157_upda1234.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -263,11 +264,19 @@
     <Compile Include="Services\ParticipantService.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="system\web.cs" />
+    <Compile Include="ViewModel\AdminApi\AAddQuestionViewModel.cs" />
+    <Compile Include="ViewModel\AdminApi\AddFormViewModel.cs" />
+    <Compile Include="ViewModel\AdminApi\ApFormResultViewModel.cs" />
+    <Compile Include="ViewModel\AdminApi\ApiViewDetailViewModel.cs" />
+    <Compile Include="ViewModel\AdminApi\chekViewModel.cs" />
+    <Compile Include="ViewModel\AdminApi\ChkvmViewModel.cs" />
+    <Compile Include="ViewModel\AdminApi\CreatCommunityViewModel.cs" />
     <Compile Include="ViewModel\CommunityMemberViewModel.cs" />
     <Compile Include="ViewModel\CommunityUserViewModel.cs" />
     <Compile Include="ViewModel\FormResultViewModel.cs" />
     <Compile Include="ViewModel\FormUserViewModel.cs" />
     <Compile Include="ViewModel\HomePageViewModel.cs" />
+    <Compile Include="ViewModel\ParticipantApi\PApiFormParticipateViewModel.cs" />
     <Compile Include="ViewModel\ProfileDataViewModel.cs" />
     <Compile Include="ViewModel\PFormViewModel.cs" />
     <Compile Include="ViewModel\ViewDetailViewModel.cs" />
@@ -600,8 +609,8 @@
     <Content Include="Views\Manage\EditProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201705281115007_May28_Uzair.resx">
-      <DependentUpon>201705281115007_May28_Uzair.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201705302037157_upda1234.resx">
+      <DependentUpon>201705302037157_upda1234.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

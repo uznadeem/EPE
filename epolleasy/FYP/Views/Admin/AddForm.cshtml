@@ -3,18 +3,17 @@
     ViewBag.Title = "AddForm";
     Layout = "~/Views/Shared/_LayoutProject.cshtml";
 }
-<a class="btn btn-primary" href="/admin/ViewDetails/@ViewBag.id/">Back</a>
+<a class="btn btn-primary" href="/admin/ViewDetails/@ViewBag.id/"><i class="fa fa-arrow-left"></i>Back</a>
 
 <h2>AddForm</h2>
-<p>@ViewBag.Messge</p>
 
 
 @using (Html.BeginForm("AddForm", "admin", new { c_id = ViewBag.id }, FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-
+    @Html.ValidationSummary("", new { @class = "text-danger" })
     <div class="form-group">
-        <label>Form Title</label>
+        <label>Form Title*</label>
         @Html.TextBoxFor(a => a.FormTitle, new { @class = "form-control" })
         @Html.ValidationMessageFor(a => a.FormTitle)
     </div>
@@ -41,12 +40,40 @@
         
     </div>
         <div class="form-control ">
-            @Html.LabelFor(m => m.Expiry_Time, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(m => m.Expiry_Time, "{0:MM/dd/yyyy HH:mm:ss}", new { @class = "form-control", type = "datetime-local" })
+           @*@Html.LabelFor(m => m.Expiry_Time, new { @class = "col-md-2 control-label" })*@
+            <div class="col-md-4">
+                <p>Expiry Time*</p>
+            </div>
+            <div class="col-md-6">
+                @*<input type="text" name="datepicker"/>*@
+                @Html.TextBoxFor(m => m.Expiry_Time, "{0:MM/dd/yyyy HH:mm:ss}", new { @class = "form-control",id="datepicker"})
+             
+                   @Html.TextBoxFor(m => m.Expiry_Time, "{0:MM/dd/yyyy HH:mm:ss}", new { @class = "form-control",type="datetime-local" ,id = "datepicker" })
+                
+                 @Html.ValidationMessageFor(a => a.Expiry_Time)
             </div>
         </div>
 
         <button class="btn btn-primary" type="submit">Create</button>
 
 }
+
+@*<script type="text/javascript">
+    $(document).ready(function () {
+        $("#datepicker").datepicker
+            ({
+                startDate: '12/30/2016', //syntax nai yaad
+                //endDate: '',
+                dateFormat: 'mm/dd/yy',
+                //showStatus: true,
+                showWeeks: true,
+                //highlightWeek: true,
+                numberOfMonths: 1
+                //showAnim: "scale",
+                //showOptions: {
+                  //  origin: ["top", "left"]
+                //}
+            });
+    });
+</script>
+@Scripts.Render("~/bundles/jqueryval")*@

@@ -114,16 +114,17 @@ namespace FYP.Controllers
             
             if (user == null)
             {
-                ModelState.AddModelError("", "Invalid login attempt.");
+                ModelState.AddModelError("LogError", "Invalid Usermame attempt.");
                 return View(model);
 
             }
-            //else if(user.EmailConfirmed==false)
-            //{
-            //    ModelState.AddModelError("", "Verify Your Email Address to Login");
-            //    return View(model);
-                
-            //}
+            else if (user.EmailConfirmed == false)
+            {
+                 ModelState.AddModelError("LogError", "Verify Your Email Address to Login");
+                //ViewBag.EMessage = "Please Verify your email address first to login";
+                return View(model);
+
+            }
 
             var result = await SignInManager.PasswordSignInAsync(user.UserName, model.Log.Password, model.Log.RememberMe, shouldLockout: false);
 
@@ -152,7 +153,7 @@ namespace FYP.Controllers
                     return RedirectToAction("SendCode", new { ReturnUrl =  ViewBag.data, RememberMe = model.Log.RememberMe });
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
+                    ModelState.AddModelError("LogError", "Invalid Password.");
                     return View(model);
             }
         }

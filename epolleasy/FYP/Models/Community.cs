@@ -11,7 +11,7 @@ namespace FYP.Models
 {
     public class Community
     {
-       [Key]
+        [Key]
         public int CommunityID { get; set; }
 
         [Required]

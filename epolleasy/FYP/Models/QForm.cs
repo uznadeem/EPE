@@ -13,14 +13,13 @@ namespace FYP.Models
 
         public string FormDetail { get; set; }
 
+        [Required]
         public string FormTitle { get; set; }
         
-        [Required]
         public string FormOwner { get; set; }
 
         public int FormType { get; set; }
         
-        [Required]  //get system date
         [DataType(DataType.DateTime)]
         public DateTime Creation_Time { get; set; }
 

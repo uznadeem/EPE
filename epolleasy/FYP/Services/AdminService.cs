@@ -37,6 +37,8 @@ namespace FYP.Services
 
             var value = HttpContext.Current.User.Identity.Name;
 
+            var a = System.DateTime.Now;
+
             CommunityUserViewModel abc = new CommunityUserViewModel();
 
             abc.Com = await _db.Communities.Where(c => c.CommunityAdmin == value).ToListAsync();
@@ -47,6 +49,11 @@ namespace FYP.Services
 
 
             abc.qf = await _db.QForms.Where(u => u.FormOwner.Equals(value)).ToListAsync();
+
+            abc.activeform = await (from c in _db.QForms where c.FormOwner == value && c.Expiry_Time > a select c).CountAsync();
+
+            abc.sealedform = await (from c in _db.QForms where c.FormOwner == value && c.Expiry_Time < a select c).CountAsync();
+
 
             return abc;
         }

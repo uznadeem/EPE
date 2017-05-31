@@ -12,6 +12,7 @@
 <div class="container">
     <h2>AddQuestion</h2>
 
+    <p>@Html.ValidationMessage("QEr")</p>
     @using (Html.BeginForm("AddQuestion", "admin", new { c_id = ViewBag.c_id, qf_id = ViewBag.qf_id, ft = ViewBag.ft }, FormMethod.Post))
     {
         @Html.AntiForgeryToken()
@@ -22,8 +23,8 @@
                 @Html.ActionLink("Back to Community", "ViewDetails", new { id = ViewBag.c_id })
             </div>
             <div class="col-md-12 form-group">
-                @Html.LabelFor(a => a.QuestionString, new { @class = "" })
-                @Html.TextBoxFor(a => a.QuestionString)
+                <h3>Enter Question Statement(*)</h3>
+                 @Html.TextBoxFor(a => a.QuestionString)
                 @Html.ValidationMessageFor(a => a.QuestionString)
             </div>
             @if (ViewBag.ft==1)
