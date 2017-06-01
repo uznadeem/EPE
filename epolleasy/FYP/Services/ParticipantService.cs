@@ -138,6 +138,9 @@ namespace FYP.Services
 
         public async Task<ViewDetailViewModel> ParticipantViewDetailAsync(int id)
         {
+            var name = HttpContext.Current.User.Identity.Name;
+            var us = await _db.Users.Where(u => u.UserName == name).SingleOrDefaultAsync();
+
             var v = await _db.Communities.Where(u => u.CommunityID == id).FirstOrDefaultAsync();
             var b = await _db.FormsCommunity.Where(u => u.CommunityID.Equals(id)).ToListAsync();
             var cu = await _db.CommunityUsers.Where(u => u.CommunityID.Equals(id)).ToListAsync();
@@ -146,6 +149,8 @@ namespace FYP.Services
             vd.fcom = b;
             vd.comm = v;
             vd.c_usr = cu;
+            vd.IsMember = await IsMemberAsync(us.Id, id);
+
             return vd;
         }
 

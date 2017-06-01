@@ -1,0 +1,102 @@
+﻿@model FYP.Models.Community
+@{
+    ViewBag.Title = "CommunitySearchResult";
+    Layout = "~/Views/Shared/_LayoutProject.cshtml";
+}
+
+<a class="btn btn-primary" href="/admin/Index/"><i class="fa fa-arrow-left"></i>Back</a>
+
+<div class="profile-company-content main-user" data-bg-color="f5f5f5">
+    <div class="container">
+        <div class="row">
+
+            <!-- Nav Tabs -->
+            <div class="col-md-12 ">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#profile">Home</a></li>
+                    <li><a data-toggle="tab" href="#commForms">Forms</a></li>
+                    <li><a data-toggle="tab" href="#members">Members</a></li>
+                    <li><a data-toggle="tab" href="#history">History</a></li>
+                </ul>
+            </div>
+
+            <!-- SIDE BAR -->
+            <div class="col-md-4">
+
+                <!-- Company Information -->
+                <div class="sidebar">
+                    <!--Column Heading-->
+                    <h5 class="main-title">Community About</h5>
+
+                    <!--Community Logo-->
+                    <div class="sidebar-thumbnail"> <img src="~/CommunityImages/@Model.CommunityLogo" alt=""> </div>
+
+                    <!--Information-->
+                    <div class="sidebar-information">
+
+                        <ul class="single-category">
+                            <li class="row">
+                                <h6 class="title col-xs-4">Title</h6>
+                                <span class="subtitle col-xs-8">@Model.CommunityName</span>
+                            </li>
+                            <li class="row">
+                                <h6 class="title col-xs-4">Details</h6>
+                                <span class="subtitle col-xs-8">@Model.CommunityAbout</span>
+                            </li>
+                            <li class="row">
+                                <h6 class="title col-xs-4">Members</h6>
+                                <span class="subtitle col-xs-8">@Model.CommunityUsers.Count()</span>
+                            </li>
+                            <li class="row">
+                                <h6 class="title col-xs-4">Manager</h6>
+                                <span class="subtitle col-xs-8">@Model.CommunityAdmin</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+            <!-- Tab Content -->
+            <div class="col-md-8">
+                <div class="tab-content">
+
+                    <!-- PROFILE -->
+                    <div id="profile" class="tab-pane fade in active">
+                        <div class="profile-main">
+                            <h3>Active Forms</h3>
+                            <div class="profile-in">
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                    
+                    <!-- Community Forms -->
+                        <div id="commForms" class="tab-pane fade">
+
+
+                        </div>
+
+
+                    <!-- Community Members -->
+                        <div id="members" class="tab-pane fade">
+                            <p>Information is protected</p>
+                        </div>
+
+
+                    <!-- Contact -->
+                        <div id="history" class="tab-pane fade">
+                            
+                        </div>
+                    
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

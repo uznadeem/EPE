@@ -89,7 +89,38 @@ namespace FYP.Services
             //return RedirectToAction("Index", "Admin");
             //}
             
+        }
 
+        public async Task<Community> CommunitySearchAsync(int id)
+        {
+
+            //var us = await _db.Users.Where(u => u.UserName == HttpContext.Current.User.Identity.Name).SingleOrDefaultAsync();
+
+            var Comm = await _db.Communities.Where(u => u.CommunityID == id).FirstOrDefaultAsync();
+
+
+            //var CommV = new CommunityMemberViewModel
+            //{
+
+            //    Community = Comm,
+            //    //IsMember = await IsMemberAsync(us.Id, Comm.CommunityID)
+
+            //};
+
+            return Comm;
+
+        }
+
+        public async Task<AdminSearchCommunityViewModel> SearchCommunityAsync(string searchString)
+        {
+            var us = HttpContext.Current.User.Identity.Name;
+            var p = await _db.Communities.Include(x => x.CommunityUsers).Where(s => s.CommunityName.Contains(searchString)).ToListAsync();
+            var com = await _db.Communities.Where(a=>a.CommunityAdmin.Equals(us)).ToArrayAsync();
+            AdminSearchCommunityViewModel adscm = new AdminSearchCommunityViewModel();
+            adscm.com = com;
+            adscm.searchstr = p;
+            adscm.a = 0;
+            return adscm;
         }
 
         public async Task<Community> EditCommunity(int id)

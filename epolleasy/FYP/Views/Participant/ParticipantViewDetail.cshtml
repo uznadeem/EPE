@@ -12,18 +12,39 @@
         <!-- Top Riht Button -->
         <div class="right-top-bnr">
             <div class="connect">
-                @*<a href="#." data-toggle="modal" data-target="#myModal"><i class="fa fa-user-plus"></i> Add Member</a>
+                <div class="connect">
+                    <a class="btn btn-primary" href="/Participant/Index/"><i class="fa fa-arrow-left"></i>Back</a>
 
-                <a href="/admin/AddForm/@ViewBag.Id"><i class="fa fa-user-plus"></i> Add Form</a>*@
+                    @if (Model.IsMember)
+                    {
 
-                <a class="btn btn-primary" href="/Participant/Index/"><i class="fa fa-arrow-left"></i>Back</a>
+
+                        using (Html.BeginForm("leaveCommunity", "Participant", FormMethod.Post))
+                        {
+                            <input type="hidden" name="CommID" value="@Model.comm.CommunityID" />
+                            <br />
+                            <button type="submit" class="btn btn-primary">Leave</button>
+                        }
+
+                    }
+                    else
+                    {
 
 
-                @*<a data-toggle="modal" data-target="#myModal"><i class="fa fa-user-plus"></i>Add Members</a>*@
-                <!-- Buttons not used
-                <div class="bt-ns"> <a href="#."><i class="fa fa-bookmark-o"></i> </a> <a href="#."><i class="fa fa-envelope-o"></i> </a> <a href="#."><i class="fa fa-exclamation"></i> </a> </div>
-                    -->
+                        using (Html.BeginForm("joinCommunity", "Participant", FormMethod.Post))
+                        {
+                            <input type="hidden" name="CommID" value="@Model.comm.CommunityID" />
+                            <br />
+                            <button type="submit" class="btn btn-primary">Join</button>
+                        }
 
+
+                    }
+
+
+                </div>
+
+                
             </div>
 
         </div>
@@ -49,197 +70,240 @@
     <div class="container">
         <div class="row">
 
-            <!-- Nav Tabs -->
-            <div class="col-md-12 ">
-                <ul class="nav nav-tabs">
-                    <li class="active"><a data-toggle="tab" href="#profile">Home</a></li>
-                    <li><a data-toggle="tab" href="#commForms">Forms</a></li>
-                    <li><a data-toggle="tab" href="#members">Members</a></li>
-                    <li><a data-toggle="tab" href="#history">History</a></li>
-                </ul>
-            </div>
-
+    <!-- Nav Tabs -->
+    <div class="col-md-12 ">
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#profile">Home</a></li>
+            <li><a data-toggle="tab" href="#commForms">Forms</a></li>
+            <li><a data-toggle="tab" href="#members">Members</a></li>
+            <li><a data-toggle="tab" href="#history">History</a></li>
+        </ul>
+    </div>
+    @if (Model.IsMember)
+    {
             <!-- SIDE BAR -->
-            <div class="col-md-4">
+        <div class="col-md-4">
 
-                <!-- Company Information -->
-                <div class="sidebar">
-                    <!--Column Heading-->
-                    <h5 class="main-title">Community Details  </h5>
-                    @*   @Html.ActionLink("Edit", "Edit", new { id = Model.CommunityID }, new { @class= "popup" })*@
-                    <!--Community Logo-->
-                    <div class="sidebar-thumbnail"> <img src="~/CommunityImages/@Model.comm.CommunityLogo"> </div>
+            <!-- Company Information -->
+            <div class="sidebar">
+                <!--Column Heading-->
+                <h5 class="main-title">Community Details  </h5>
+                @*   @Html.ActionLink("Edit", "Edit", new { id = Model.CommunityID }, new { @class= "popup" })*@
+                <!--Community Logo-->
+                <div class="sidebar-thumbnail"> <img src="~/CommunityImages/@Model.comm.CommunityLogo"> </div>
 
-                    <!--Information-->
-                    <div class="sidebar-information">
-                        <ul class="single-category">
-                            <li class="row">
-                                <h6 class="title col-xs-4">Name</h6>
-                                <span class="subtitle col-xs-8"> @Model.comm.CommunityName </span>
-                            </li>
-                            <li class="row">
-                                <h6 class="title col-xs-4">Community About</h6>
-                                <span class="subtitle col-xs-8"> @Model.comm.CommunityAbout </span>
-                            </li>
-                            <li class="row">
-                                <h6 class="title col-xs-4">Community Domain</h6>
-                                <span class="subtitle col-xs-8"> @Model.comm.CommunityDomain </span>
-                            </li>
+                <!--Information-->
+                <div class="sidebar-information">
+                    <ul class="single-category">
+                        <li class="row">
+                            <h6 class="title col-xs-4">Name</h6>
+                            <span class="subtitle col-xs-8"> @Model.comm.CommunityName </span>
+                        </li>
+                        <li class="row">
+                            <h6 class="title col-xs-4">Community About</h6>
+                            <span class="subtitle col-xs-8"> @Model.comm.CommunityAbout </span>
+                        </li>
+                        <li class="row">
+                            <h6 class="title col-xs-4">Community Domain</h6>
+                            <span class="subtitle col-xs-8"> @Model.comm.CommunityDomain </span>
+                        </li>
 
-                        </ul>
+                    </ul>
 
-                    </div>
                 </div>
-
-
-
             </div>
+
+
+
+        </div>
 
             <!-- Tab Content -->
-            <div class="col-md-8">
-                <div class="tab-content">
+        <div class="col-md-8">
+            <div class="tab-content">
 
-                    <!-- PROFILE -->
-                    <div id="profile" class="tab-pane fade in active">
-                        <div class="profile-main">
-                            <h3>Active Forms</h3>
-                            <div class="profile-in">
+                <!-- PROFILE -->
+                <div id="profile" class="tab-pane fade in active">
+                    <div class="profile-main">
+                        <h3>Active Forms</h3>
+                        <div class="profile-in">
 
-                            </div>
-                        </div>
-
-
-                    </div>
-
-                    <!-- Community Forms -->
-                    <div id="commForms" class="tab-pane fade">
-
-                        <table id="abc" width="80%">
-
-                            <thead>
-
-                                <tr>
-                                    <th>Form Title</th>
-                                    <th>Form About</th>
-                                    <th>End Date/Time</th>
-
-                                </tr>
-                            </thead>
-
-                            @foreach (var t in Model.fcom)
-                            {
-
-
-                                <tbody>
-
-                                    <tr>
-                                        @if (t.QForms.Expiry_Time > DateTime.Now)
-                                        {
-
-                                            <td>@t.QForms.FormTitle</td>
-                                            <td>@t.QForms.FormDetail</td>
-                                            <td>@t.QForms.Expiry_Time</td>
-                                            <td>@Html.ActionLink("Participate", "FormParticipate", new { controller = "Participant", id = @t.QFormID , c_id = ViewBag.Id })</td>
-
-                                        }
-                                        else
-                                        {
-
-                                        }
-                                    </tr>
-
-                                </tbody>
-
-                            }
-                        </table>
-                    </div>
-
-
-                    <!-- Community Members -->
-                    <div id="members" class="tab-pane fade">
-                        <div class="row">
-                            <!-- Members -->
-                            <section class="pro-mem">
-                                <div class="container pb30">
-                                    <div class="row">
-                                        @if (Model.c_usr.Count != 0)
-                                        {
-                                            for (var i = 0; i < Model.c_usr.Count; i++)
-                                            {
-                                                <div class="col-sm-3">
-                                                    <div class="uou-block-6a" style="height: 250px">
-                                                        <img src="~/images/UserImages/@Model.c_usr[i].User.ImageUrl" style="height: 250px" alt="">
-
-                                                        <h6>@Model.c_usr[i].User.FirstName @Model.c_usr[i].User.LastName<span>UserName: @Model.c_usr[i].User.UserName</span></h6>
-
-                                                    </div>
-                                                </div>
-                                            }
-                                        }
-                                        else
-                                        {
-                                            <p>You have not added member to this community yet </p>
-                                        }
-                                    </div>
-                                </div>
-                            </section>
-                         </div>                  
-                    </div>
-
-
-                    <!-- Contact -->
-                    <div id="history" class="tab-pane fade">
-                        <div class="profile-main">
-                            <div class="profile-in">
-                                @foreach (var v in Model.fcom)
-                                {
-                                    <table id="abc" width="80%">
-
-                                        <thead>
-
-                                            <tr>
-                                                <th>Form Title</th>
-                                                <th>Form About</th>
-                                                <th>End Date/Time</th>
-
-                                            </tr>
-                                        </thead>
-
-                                        @foreach (var t in Model.fcom)
-                                        {
-
-
-                                            <tbody>
-
-                                                <tr>
-                                                    @if (DateTime.Now > t.QForms.Expiry_Time)
-                                                    {
-
-                                                        <td>@t.QForms.FormTitle</td>
-                                                        <td>@t.QForms.FormDetail</td>
-                                                        <td>@t.QForms.Expiry_Time</td>
-                                                    }
-                                                    else
-                                                    {
-
-                                                    }
-                                                </tr>
-
-                                            </tbody>
-
-                                        }
-                                    </table>
-
-
-                                }
-                            </div>
                         </div>
                     </div>
-
 
 
                 </div>
+
+                <!-- Community Forms -->
+                <div id="commForms" class="tab-pane fade">
+
+                    <table id="abc" width="80%">
+
+                        <thead>
+
+                            <tr>
+                                <th>Form Title</th>
+                                <th>Form About</th>
+                                <th>End Date/Time</th>
+
+                            </tr>
+                        </thead>
+
+                        @foreach (var t in Model.fcom)
+                        {
+
+
+                            <tbody>
+
+                                <tr>
+                                    @if (t.QForms.Expiry_Time > DateTime.Now)
+                                    {
+
+                                        <td>@t.QForms.FormTitle</td>
+                                            <td>@t.QForms.FormDetail</td>
+                                            <td>@t.QForms.Expiry_Time</td>
+                                            <td>@Html.ActionLink("Participate", "FormParticipate", new { controller = "Participant", id = @t.QFormID, c_id = ViewBag.Id })</td>
+
+                                    }
+                                    else
+                                    {
+
+                                    }
+                                </tr>
+
+                            </tbody>
+
+                        }
+                    </table>
+                </div>
+
+
+                <!-- Community Members -->
+                <div id="members" class="tab-pane fade">
+                    <div class="row">
+                        <!-- Members -->
+                        <section class="pro-mem">
+                            <div class="container pb30">
+                                <div class="row">
+                                    @if (Model.c_usr.Count != 0)
+                                    {
+                                        for (var i = 0; i < Model.c_usr.Count; i++)
+                                        {
+                                            <div class="col-sm-3">
+                                                <div class="uou-block-6a" style="height: 250px">
+                                                    <img src="~/images/UserImages/@Model.c_usr[i].User.ImageUrl" style="height: 250px" alt="">
+
+                                                    <h6>@Model.c_usr[i].User.FirstName @Model.c_usr[i].User.LastName<span>UserName: @Model.c_usr[i].User.UserName</span></h6>
+
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <p>You have not added member to this community yet </p>
+                                    }
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
+
+                <!-- Contact -->
+                <div id="history" class="tab-pane fade">
+                    <div class="profile-main">
+                        <div class="profile-in">
+                            @foreach (var v in Model.fcom)
+                            {
+                                <table id="abc" width="80%">
+
+                                    <thead>
+
+                                        <tr>
+                                            <th>Form Title</th>
+                                            <th>Form About</th>
+                                            <th>End Date/Time</th>
+
+                                        </tr>
+                                    </thead>
+
+                                    @foreach (var t in Model.fcom)
+                                    {
+
+
+                                        <tbody>
+
+                                            <tr>
+                                                @if (DateTime.Now > t.QForms.Expiry_Time)
+                                                {
+
+                                                    <td>@t.QForms.FormTitle</td>
+                                                        <td>@t.QForms.FormDetail</td>
+                                                        <td>@t.QForms.Expiry_Time</td>
+                                                }
+                                                else
+                                                {
+
+                                                }
+                                            </tr>
+
+                                        </tbody>
+
+                                    }
+                                </table>
+
+
+                            }
+                        </div>
+                    </div>
+                </div>
+
+
+
             </div>
         </div>
+    }
+    else
+    {
+        <div class="col-md-8">
+            <div class="tab-content">
+
+                <!-- PROFILE -->
+                <div id="profile" class="tab-pane fade in active">
+                    <div class="profile-main">
+                        <h3>Active Forms</h3>
+                        <div class="profile-in">
+                            <p>You are not a member of this community</p>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div id="commForms" class="tab-pane fade">
+
+                    <p>You are not a member of this community</p>
+                 </div>
+
+                <div id="members" class="tab-pane fade">
+                    
+                    <p>You are not a member of this community</p>
+                </div>
+
+                <div id="history" class="tab-pane fade">
+
+                    <p>You are not a member of this community</p>
+
+                 </div>
+
+                </div>
+            </div>
+            
+     }
+
+
+            </div>
+
+        </div>
+
     </div>
-</div>

@@ -99,7 +99,7 @@
                             </li>
                             <li class="row">
                                 <h6 class="title col-xs-4">Manager</h6>
-                                <span class="subtitle col-xs-8">Khaleeq Alvi</span>
+                                <span class="subtitle col-xs-8">@Model.Community.CommunityAdmin</span>
                             </li>
                         </ul>
                     </div>
@@ -124,12 +124,12 @@
 
 
                     </div>
-
+                    @if (Model.IsMember)
+                    {
                     <!-- Community Forms -->
                     <div id="commForms" class="tab-pane fade">
 
-                        <!--JQ Grid-->
-
+                        
                     </div>
 
 
@@ -258,7 +258,9 @@
                             </div>
                         </div>
                     </div>
-
+                    }
+                    else
+                    { }
 
 
                 </div>

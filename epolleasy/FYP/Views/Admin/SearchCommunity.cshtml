@@ -1,0 +1,73 @@
+﻿@model FYP.ViewModel.AdminSearchCommunityViewModel
+
+@{
+    ViewBag.Title = "SearchCommunity";
+    Layout = "~/Views/Shared/_LayoutProject.cshtml";
+}
+
+<h2>SearchResult</h2>
+<a class="btn btn-primary" href="/admin/Index/"><i class="fa fa-arrow-left"></i>Back</a>
+
+
+@foreach (var item in Model.searchstr)
+{
+
+
+    <div class="row">
+
+        <div class="col-md-offset-3 col-md-2">
+
+            <!--logo-->
+            <img src="~/CommunityImages/@item.CommunityLogo" alt="#" class="thumbnail">
+
+
+        </div>
+
+        <div class="col-md-3">
+
+            @Html.DisplayFor(modelItem => item.CommunityName)
+            <br>
+            @item.CommunityUsers.Count() members
+            <br>
+            @Html.DisplayFor(modelItem => item.CommunityAbout)
+
+
+        </div>
+
+
+        <div class="col-md-1">
+
+
+            @foreach (var acom in Model.com)
+            {
+
+                if (acom == item)
+                {
+                    Model.a=1;
+                    @Html.ActionLink("Visit", "ViewDetails", new { id = item.CommunityID })
+                }
+                else
+                {
+
+                }
+            }
+            @if(Model.a == 1)
+            {
+                Model.a = 0;
+            }
+            else
+            {
+
+                @Html.ActionLink("Visit", "CommunitySearchResult", new { id = item.CommunityID })
+
+            }
+
+
+        </div>
+
+
+
+    </div>
+
+
+}

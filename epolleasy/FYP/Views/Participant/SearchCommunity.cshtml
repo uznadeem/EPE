@@ -1,16 +1,11 @@
 ﻿@model IEnumerable<FYP.Models.Community>
-
 @{
     ViewBag.Title = "Search Community";
     Layout = "~/Views/Shared/_LayoutProject.cshtml";
 }
-
 <h2>Results</h2>
-
 @foreach (var item in Model)
-{
-
-
+{   
     <div class="row">
 
         <div class="col-md-offset-3 col-md-2">
@@ -35,16 +30,10 @@
         <div class="col-md-1">
 
 
-            @Html.ActionLink("Visit", "Community", new { id = item.CommunityID })
-            @*<button class="btn btn-default">Visit</button>*@
-
-
+            @Html.ActionLink("Visit", "ParticipantViewDetail", new { id = item.CommunityID })
+            
         </div>
-
-
-
     </div>
-
-
+    
 }
 

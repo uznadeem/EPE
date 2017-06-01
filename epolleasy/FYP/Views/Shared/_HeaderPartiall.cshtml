@@ -1,0 +1,71 @@
+﻿@using FYP.Models
+
+
+
+@if (Request.IsAuthenticated)
+{
+    <!--Register User headerHeader-->
+    <nav class="nav">
+
+
+        <ul class="sf-menu">
+          @if (User.IsInRole("Participant"))
+          {
+             <li>
+                    
+                <div class="uou-block-1a blog">
+                    <div class="search"> <a href="#" class="toggle fa fa-search"></a>
+                
+                        <form action="/Participant/SearchCommunity" method="get">
+                    
+                            <input id="SearchString" name="SearchString" type="text" class="search-input" placeholder="Search ..."/>
+                            <input type="submit" value="">
+                        </form>
+
+                    </div>
+                </div>
+                
+                 
+            </li>
+
+            <li class="active"> <a href="/participant/index/"> <i class="fa fa-home"></i> </a> </li>
+
+            @*<li class="active"> <a href="#."> <i class="fa fa-bullhorn"></i> </a> </li>
+            <li class="active"> <a href="#."> <i class="fa fa-comments"></i> </a> </li>*@
+          }
+          else if (User.IsInRole("Admin"))
+          {
+            <li>
+
+                <div class="uou-block-1a blog">
+                    <div class="search">
+                        <a href="#" class="toggle fa fa-search"></a>
+
+                        <form action="/Admin/SearchCommunity" method="get">
+
+                            <input id="SearchString" name="SearchString" type="text" class="search-input" placeholder="Search ..." />
+                            <input type="submit" value="">
+                        </form>
+
+                    </div>
+                </div>
+
+
+            </li>
+
+            <li class="active"> <a href="/admin/index/"> <i class="fa fa-home"></i> </a> </li>
+
+            @*<li class="active"> <a href="#."> <i class="fa fa-bullhorn"></i> </a> </li>
+            <li class="active"> <a href="#."> <i class="fa fa-comments"></i> </a> </li>*@
+
+          }
+          else
+          {
+
+          }
+        </ul>
+    </nav>
+
+}
+
+

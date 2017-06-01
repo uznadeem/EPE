@@ -271,6 +271,7 @@
     <Compile Include="ViewModel\AdminApi\chekViewModel.cs" />
     <Compile Include="ViewModel\AdminApi\ChkvmViewModel.cs" />
     <Compile Include="ViewModel\AdminApi\CreatCommunityViewModel.cs" />
+    <Compile Include="ViewModel\AdminSearchCommunityViewModel.cs" />
     <Compile Include="ViewModel\CommunityMemberViewModel.cs" />
     <Compile Include="ViewModel\CommunityUserViewModel.cs" />
     <Compile Include="ViewModel\FormResultViewModel.cs" />
@@ -581,8 +582,10 @@
     <Content Include="Views\Participant\ParticipantViewDetail.cshtml" />
     <Content Include="Views\Participant\FormParticipate.cshtml" />
     <Content Include="Views\Participant\_UserAlreadyParticipateInForm.cshtml" />
-    <Content Include="Views\Shared\_HeaderPartial.cshtml" />
+    <Content Include="Views\Shared\_HeaderPartiall.cshtml" />
     <Content Include="Views\Admin\FormResult.cshtml" />
+    <Content Include="Views\Admin\SearchCommunity.cshtml" />
+    <Content Include="Views\Admin\CommunitySearchResult.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

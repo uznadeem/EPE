@@ -15,6 +15,8 @@ using System.Web.Helpers;
 
 namespace FYP.Controllers
 {
+    [Authorize]
+    [Authorize(Roles ="Admin")]
     public class AdminController : Controller
     {
         private readonly AdminService _as;
@@ -83,8 +85,42 @@ namespace FYP.Controllers
             await _as.DeleteCommunity(obj);
 
             return RedirectToAction("Index");
+
         }
-        
+
+        [HttpGet]
+        public async Task<ActionResult> CommunitySearchResult(int id)
+        {
+
+
+            var cm = await _as.CommunitySearchAsync(id);
+
+            return View(cm);
+
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> SearchCommunity(string searchString)
+        {
+            
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+
+                var communityQuery = await _as.SearchCommunityAsync(searchString);
+                //ViewBag.Membership = IsMember(UseriD, ViewBag.communityQuery).ToList();
+
+
+                return View(communityQuery);
+
+            }
+            
+
+            return HttpNotFound();
+
+        }
+
+
         public async Task<ActionResult> ViewDetails(int id)
         {
 
@@ -118,8 +154,10 @@ namespace FYP.Controllers
 
 
         [HttpPost]
-        public async Task<ActionResult> AddForm(int c_id, QForm qform,int ft,DateTime exp_t)
+        public async Task<ActionResult> AddForm(int c_id, QForm qform,int ft)
         {
+            var exp = System.DateTime.Now;
+            DateTime exp_t = qform.Expiry_Time;
             ViewBag.id = c_id;
             if (qform.FormTitle==null)
             {
@@ -132,6 +170,12 @@ namespace FYP.Controllers
                 ModelState.AddModelError("", "Expiry datetime required");
                 return View(qform);
             }
+            else if(qform.Expiry_Time <= exp)
+            {
+                ModelState.AddModelError("","Expiry time is invalid");
+                return View(qform);
+            }
+
            
             var p = await _as.AddFormAsync(c_id, qform,ft);
 
@@ -139,6 +183,7 @@ namespace FYP.Controllers
 
         }
 
+        [HttpGet]
         public ActionResult AddQuestion(int c_id, int qf_id,int ft)
         {
 
@@ -158,7 +203,7 @@ namespace FYP.Controllers
             if (ft == 1)
             {
 
-                if (Multiple_Answer == null || q_obj == null)
+                if (Multiple_Answer.Length==0 || q_obj.QuestionString == null)
                 {
 
                     ModelState.AddModelError("QEr", "Atleast one answer is required");

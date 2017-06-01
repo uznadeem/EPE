@@ -12,6 +12,9 @@ using System.Threading.Tasks;
 
 namespace FYP.Controllers
 {
+    [Authorize]
+    [Authorize(Roles ="Participant")]
+        
     public class ParticipantController : Controller
     {
 
@@ -54,7 +57,7 @@ namespace FYP.Controllers
         //    return db.CommunityUsers.Any(u => u.UserID == UseriD && u.CommunityID == CommID);
         //}
 
-
+        [HttpGet]
         public async Task<ActionResult> SearchCommunity(string searchString)
         {
 
@@ -108,7 +111,7 @@ namespace FYP.Controllers
             await _ps.joinCommunityAsync(CommID);
 
 
-            return RedirectToAction("Community", new { id = CommID });
+            return RedirectToAction("ParticipantViewDetail", new { id = CommID });
         }
 
 
@@ -123,7 +126,7 @@ namespace FYP.Controllers
             await _ps.leaveCommunityAsync(CommID);
 
 
-            return RedirectToAction("Community", new { id = CommID });
+            return RedirectToAction("ParticipantViewDetail", new { id = CommID });
         }
 
 

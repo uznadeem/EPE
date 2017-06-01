@@ -12,5 +12,6 @@ namespace FYP.ViewModel
         public IEnumerable<FormCommunity> fcom { get; set; }
         public IList<CommunityUser> c_usr { get; set; }
         public IEnumerable<ApplicationUser> Au { get; set; }
+        public bool IsMember { get; set; }
     }
 }
