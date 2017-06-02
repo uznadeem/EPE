@@ -17,7 +17,14 @@ namespace epolleasy.Views
 
         private async void Button_OnClicked(object sender, EventArgs e)
         {
+            await Navigation.PushModalAsync(new Dashboard());
+        }
+
+        private async void SignupButton_OnClicked(object sender, EventArgs e)
+        {
             await Navigation.PushModalAsync(new RegisterPage());
         }
+
+        
     }
 }

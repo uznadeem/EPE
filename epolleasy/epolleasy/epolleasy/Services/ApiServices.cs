@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using epolleasy.Models;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace epolleasy.Services
 {
@@ -62,9 +63,40 @@ namespace epolleasy.Services
 
             var response = await client.SendAsync(request);
 
-            var content = await response.Content.ReadAsStringAsync();
+            var jwt = await response.Content.ReadAsStringAsync();
 
-            Debug.WriteLine(content);
+            JObject jwtDynamic = JsonConvert.DeserializeObject<dynamic>(jwt);
+
+            var accessToken = jwtDynamic.Value<string>("access_token"); //variable for acsess_token
+
+            Debug.WriteLine(jwt);
+
+            //if (!string.IsNullOrEmpty(accessToken))
+            //{
+            //    return response.IsSuccessStatusCode;
+            //}
+            //else
+            //{
+            //    return response.IsSuccessStatusCode;
+            //}
+
+
+        }
+
+
+
+        public async Task<Dashboard> GetDashboard(string accessToken)
+        {
+            var client = new HttpClient();
+
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer",accessToken);
+
+            var json = await client.GetStringAsync("http://epolleasy.azurewebsites.net/api/AdminApi");
+
+            var myDashboard = JsonConvert.DeserializeObject<Dashboard>(json);
+
+            return myDashboard;
+
         }
 
     }

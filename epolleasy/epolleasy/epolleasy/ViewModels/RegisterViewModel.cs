@@ -9,7 +9,7 @@ using Xamarin.Forms;
 
 namespace epolleasy.ViewModels
 {
-    public class RegisterViewModel
+    public class RegisterViewModel : ContentPage
     {
         ApiServices _apiServices = new ApiServices();
 
@@ -43,6 +43,9 @@ namespace epolleasy.ViewModels
                     var isSuccess = await _apiServices.RegisterAsync(FirstName,LastName,UserName,Email,Password,ConfirmPassword,UserRole,Gender,BirthDate);
 
                     Message = isSuccess ? "Registered Successfully" : "Retry Later";
+
+                    await DisplayAlert("Alert", Message, "OK");
+
                 });
             }
         }

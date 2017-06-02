@@ -17,6 +17,8 @@
     <Entry Text="{Binding Password}" IsPassword="True" Placeholder="Password"/>
   
     <Button Command="{Binding LoginCommand}" Text="Login"/>
+    
+    <Button Text="Go to Dashboard" Clicked="Button_OnClicked"></Button>
   
 
     
@@ -24,7 +26,7 @@
       <Label Text="Forgot Password?" TextColor="White" HorizontalTextAlignment="Center"/>
     </Grid>
 
-    <Button Text="Signup" Clicked="Button_OnClicked"/>
+    <Button Text="Signup" Clicked="SignupButton_OnClicked"/>
   
 
 </StackLayout>
