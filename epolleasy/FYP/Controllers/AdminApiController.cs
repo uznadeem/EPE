@@ -58,11 +58,12 @@ namespace FYP.Controllers
         [ActionName("DeleteCommunity")]
         public async Task<string> DeleteCommunity(Community com)
         {
+            var a = com.CommunityID;
             if (com == null)
             {
                 return "empty";
             }
-            await _as.DeleteCommunity(com);
+            await _as.DeleteCommunity(a);
             return "deleted";
         }
 

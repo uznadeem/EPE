@@ -48,7 +48,7 @@
 
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             @using(Html.BeginForm("ViewDetails", "Admin", new { id = ViewBag.Id }, FormMethod.Post))
                             {
                                 @Html.AntiForgeryToken()
@@ -213,6 +213,12 @@
 
                                                         <h6>@Model.c_usr[i].User.FirstName @Model.c_usr[i].User.LastName<span>UserName: @Model.c_usr[i].User.UserName</span></h6>
 
+                                                        @*<a class="btn btn-primary" href="/admin/RemoveMember/@Model.c_usr[i].UserID/@Model.comm.CommunityID/"><i class="fa fa-remove"></i>Remove</a>*@
+
+                                                        <a href="@Url.Action("RemoveMember", "Admin",new {uid = Model.c_usr[i].UserID , cid=Model.comm.CommunityID })"><i class="fa fa-remove"></i>Remove</a>
+                                                       
+                                                         @*@Html.ActionLink("Remove", "RemoveMember","Admin", new { id = Model.c_usr[i].UserID })*@
+                                                       @* @Html.Raw(Html.ActionLink("Remove", "RemoveMember", "Admin", new { uid = Model.c_usr[i].UserID, cid = Model.comm.CommunityID }, null))*@
                                                     </div>
                                                 </div>
                                             }
@@ -292,7 +298,6 @@
             maximumSelectionSize: 20,
 
             width:150
-
         });
 
     });

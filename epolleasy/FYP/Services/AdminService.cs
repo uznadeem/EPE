@@ -91,6 +91,25 @@ namespace FYP.Services
             
         }
 
+        public async Task RemoveMemberAsync(string uid,int cid)
+        {
+
+           // var us = await _db.Users.Where(u=>u.UserName.Equals(uname)).FirstOrDefaultAsync();
+            var a = await _db.CommunityUsers.Where(u=>u.UserID.Equals(uid)).FirstOrDefaultAsync();
+            _db.CommunityUsers.Remove(a);
+            await _db.SaveChangesAsync();
+
+            var fcom = await _db.FormsCommunity.Where(u => u.CommunityID.Equals(cid)).ToArrayAsync();
+
+            foreach(var c in fcom)
+            { 
+                var b = await _db.FormUsers.Where(t=>t.UserID.Equals(uid) && t.QFormID.Equals(c.QFormID)).FirstOrDefaultAsync();
+                _db.FormUsers.Remove(b);
+                await _db.SaveChangesAsync();
+
+            }
+        }
+
         public async Task<Community> CommunitySearchAsync(int id)
         {
 
@@ -144,13 +163,13 @@ namespace FYP.Services
 
         }
 
-        public async Task DeleteCommunity(Community obj)
+        public async Task DeleteCommunity(int id)
         {
 
-            var v = await _db.Communities.Where(a => a.CommunityID == obj.CommunityID).FirstOrDefaultAsync();
-            var t = await _db.FormsCommunity.Where(a => a.CommunityID == obj.CommunityID).ToListAsync();
+            var v = await _db.Communities.Where(a => a.CommunityID == id).FirstOrDefaultAsync();
+            var t = await _db.FormsCommunity.Where(a => a.CommunityID == id).ToListAsync();
 
-            var cu = await _db.CommunityUsers.Where(g => g.CommunityID.Equals(obj.CommunityID)).ToListAsync();
+            var cu = await _db.CommunityUsers.Where(g => g.CommunityID.Equals(id)).ToListAsync();
 
             if (t.Count != 0)
             {
@@ -261,8 +280,13 @@ namespace FYP.Services
             qform.Creation_Time = System.DateTime.Now;
             qform.FormType = ft;
             _db.QForms.Add(qform);
-
+            
             await _db.SaveChangesAsync();
+
+            var a = await _db.CommunityUsers.Where(p => p.CommunityID.Equals(c_id)).ToArrayAsync();
+
+            FormUser fu = new FormUser();
+
 
             //form community data_entry//
 
@@ -275,6 +299,16 @@ namespace FYP.Services
             await _db.SaveChangesAsync();
 
             var qf_id = qform.QFormID;
+
+            foreach (var b in a)
+            {
+                fu.UserID = b.UserID;
+                fu.QFormID = qf_id;
+                _db.FormUsers.Add(fu);
+                await _db.SaveChangesAsync();
+            }
+
+
 
             return qf_id;
 

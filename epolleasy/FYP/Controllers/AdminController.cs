@@ -71,18 +71,18 @@ namespace FYP.Controllers
             return RedirectToAction("ViewDetails", new { id = objcom.CommunityID });
         }
 
+        //public async Task<ActionResult> Delete(int id)
+        //{
+        //    var v = await _as.EditCommunity(id);
+        //    return View(v);
+        //}
+
+
+        
         public async Task<ActionResult> Delete(int id)
         {
-            var v = await _as.EditCommunity(id);
-            return View(v);
-        }
 
-
-        [HttpPost]
-        public async Task<ActionResult> Delete(Community obj)
-        {
-
-            await _as.DeleteCommunity(obj);
+            await _as.DeleteCommunity(id);
 
             return RedirectToAction("Index");
 
@@ -143,6 +143,14 @@ namespace FYP.Controllers
             }
 
             return RedirectToAction("ViewDetails", new { id = id });
+        }
+
+        //[HttpDelete]
+        public async Task<ActionResult> RemoveMember(string uid,int cid)
+        {
+
+            await _as.RemoveMemberAsync(uid,cid);
+            return RedirectToAction("ViewDetails",new {id=cid});
         }
 
         [HttpGet]
