@@ -67,18 +67,18 @@
  
                         <tr>	<td>Name</td> <td>@Model.appuser.FirstName @Model.appuser.LastName</td> <td>Communities</td> <td>@Model.Com.Count</td>	</tr>
 
-                        <tr>	<td>Username</td> <td>@Model.appuser.UserName</td> <td>Total Forms</td> <td>@Model.fcom.Count</td>	</tr>
+                        <tr>	<td>Username</td> <td>@Model.appuser.UserName</td> <td>Total Forms</td> <td>@Model.sealed_fom.Count</td>	</tr>
 
-                        <tr>	<td>Account Type</td> <td>@Model.appuser.UserName</td> <td>Active Forms</td> <td>@Model.activeform</td>	</tr>
+                        <tr>	<td>Account Type</td> <td>@Model.appuser.UserName</td> <td>Active Forms</td> <td>@Model.active_fom.Count</td>	</tr>
 					
 					
                     </table>
 
                     <!-- Nav Tabs -->
                         <ul class="nav nav-tabs">
-                            <li class="active"><a data-toggle="tab" href="#AcForms">Active Forms (@Model.activeform)</a></li>
+                            <li class="active"><a data-toggle="tab" href="#AcForms">Active Forms (@Model.active_fom)</a></li>
                             <li><a data-toggle="tab" href="#comm">Communities (@Model.Com.Count)</a></li>
-                            <li><a data-toggle="tab" href="#sforms">Sealed Forms (@Model.sealedform)</a></li>
+                            <li><a data-toggle="tab" href="#sforms">Sealed Forms (@Model.sealed_fom)</a></li>
                         </ul>
 
                         <!--Tabs Content-->
@@ -99,10 +99,8 @@
                                         </div>
                                         <div class="folow-persons">
                                             <ul>
-                                                @for (var i = 0; i < Model.qf.Count; i++)
+                                                @for (var i = 0; i < Model.active_fom.Count; i++)
                                                 {
-                                                    if (Model.fcom[i].QForms.Expiry_Time > System.DateTime.Now)
-                                                    {
                                                         <li>
 
                                                             <div class="row">
@@ -116,31 +114,26 @@
                                                                         <div class="avatar"> <img src="images/sm-avatar.jpg" alt=""> </div>
 
                                                                         <!-- Form Title -->
-                                                                        <h6>@Model.fcom[i].QForms.FormTitle</h6>
+                                                                        <h6>@Model.active_fom[i].QForms.FormTitle</h6>
 
                                                                         <!-- Form About -->
-                                                                        <span>@Model.fcom[i].QForms.FormDetail</span>
+                                                                        <span>@Model.active_fom[i].QForms.FormDetail</span>
                                                                     </div>
 
                                                                 </div>
 
                                                                 <!-- Form Community -->
-                                                                <div class="col-xs-3 n-p-r n-p-l"> <span>@Model.fcom[i].Community.CommunityName</span> </div>
+                                                                <div class="col-xs-3 n-p-r n-p-l"> <span>@Model.active_fom[i].Community.CommunityName</span> </div>
 
 
                                                                 <!-- Total Members -->
-                                                                <div class="col-xs-3 n-p-r"> <span>@Model.fcom[i].Community.CommunityUsers.Count</span></div>
+                                                                <div class="col-xs-3 n-p-r"> <span>@Model.active_fom[i].Community.CommunityUsers.Count</span></div>
 
                                                                 <!-- Response Received -->
-                                                                <div class="col-xs-2 n-p-r n-p-l"> <span>@Model.fcom[i].QForms.FormUser.Count</span> </div>
+                                                                <div class="col-xs-2 n-p-r n-p-l"> <span>@Model.active_fom[i].QForms.FormUser.Count</span> </div>
 
                                                             </div>
                                                         </li>
-                                                    }
-                                                    else
-                                                    {
-
-                                                    }
                                                 }
                                             </ul>
                                         </div>
@@ -282,10 +275,8 @@
                                         </div>
                                         <div class="folow-persons">
                                             <ul>
-                                                @for (var i = 0; i < Model.qf.Count; i++)
+                                                @for (var i = 0; i < Model.sealed_fom.Count; i++)
                                                 {
-                                                    if (Model.fcom[i].QForms.Expiry_Time < System.DateTime.Now)
-                                                    {
                                                         <li>
 
                                                             <div class="row">
@@ -299,33 +290,28 @@
                                                                         <div class="avatar"> <img src="images/sm-avatar.jpg" alt=""> </div>
 
                                                                         <!-- Form Title -->
-                                                                        <h6>@Model.fcom[i].QForms.FormTitle</h6>
+                                                                        <h6>@Model.sealed_fom[i].QForms.FormTitle</h6>
 
                                                                         <!-- Form About -->
-                                                                        <span>@Model.fcom[i].QForms.FormDetail</span>
+                                                                        <span>@Model.sealed_fom[i].QForms.FormDetail</span>
                                                                     </div>
 
                                                                 </div>
 
                                                                 <!-- Form Community -->
-                                                                <div class="col-xs-3 n-p-r n-p-l"> <span>@Model.fcom[i].Community.CommunityName</span> </div>
+                                                                <div class="col-xs-3 n-p-r n-p-l"> <span>@Model.sealed_fom[i].Community.CommunityName</span> </div>
 
 
                                                                 <!-- Total Members -->
-                                                                <div class="col-xs-3 n-p-r"> <span>@Model.fcom[i].Community.CommunityUsers.Count</span></div>
+                                                                <div class="col-xs-3 n-p-r"> <span>@Model.sealed_fom[i].Community.CommunityUsers.Count</span></div>
 
                                                                 <!-- Response Received -->
                                                                 @*<div class="col-xs-2 n-p-r n-p-l"> <span>@Model.fcom[i].QForms.FormUser.Count</span> </div>*@
                                                                 <!--View Form-->
-                                                                <div class="col-xs-2 n-p-r n-p-l"> @Html.ActionLink("View", "FormResult", new { controller = "Admin", c_id = Model.fcom[i].CommunityID, id = Model.fcom[i].QFormID }) </div>
+                                                                <div class="col-xs-2 n-p-r n-p-l"> @Html.ActionLink("View", "FormResult", new { controller = "Admin", c_id = Model.sealed_fom[i].CommunityID, id = Model.sealed_fom[i].QFormID }) </div>
 
                                                             </div>
                                                         </li>
-                                                    }
-                                                    else
-                                                    {
-
-                                                    }
                                                 }
                                             </ul>
                                         </div>
