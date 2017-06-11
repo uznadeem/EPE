@@ -30,8 +30,10 @@ namespace FYP.Services
         {
 
             var us = await _db.Users.Where(u => u.UserName == HttpContext.Current.User.Identity.Name).SingleOrDefaultAsync();
-            var comlst = await _db.CommunityUsers.Include(x => x.Community).Where(u => u.UserID == us.Id).ToListAsync();
-
+            //var comlst = await _db.CommunityUsers.Include(x => x.Community).Where(u => u.UserID == us.Id).ToListAsync();
+            var com = await (from c in _db.CommunityUsers where c.UserID.Equals(us.Id) select c.Community).ToListAsync();
+           // var public_com = await _db.Communities.Where(u=>u.PrivacyID==1).ToListAsync();
+            //var final_com = com.ToList().Union(public_com).ToList(); 
             var a = System.DateTime.Now;
             //var wf = await (from fc in _db.FormsCommunity join cu in _db.CommunityUsers on fc.CommunityID equals cu.CommunityID select new {frm = fc.QForms}).ToListAsync();
 
@@ -41,15 +43,31 @@ namespace FYP.Services
 
             var qf = await (from cu in _db.CommunityUsers join fc in _db.FormsCommunity on cu.CommunityID equals fc.CommunityID where (cu.UserID.Equals(us.Id)) select fc).ToListAsync();
 
+            //IList<FormCommunity>pfs = await (from p in _db.FormsCommunity where p.Community.PrivacyID == 1 && p.QForms.Expiry_Time < a select p).ToListAsync();
+
+            //IList<FormCommunity> pfa = await (from p in _db.FormsCommunity where p.Community.PrivacyID == 1 && p.QForms.Expiry_Time > a select p).ToListAsync();
+
+            var activeform = await (from c in _db.CommunityUsers join p in _db.FormsCommunity on c.CommunityID equals p.CommunityID where c.UserID == us.Id && p.QForms.Expiry_Time > a select p).ToListAsync();
+
+             var sealedform = await (from c in _db.CommunityUsers join p in _db.FormsCommunity on c.CommunityID equals p.CommunityID where c.UserID == us.Id && p.QForms.Expiry_Time < a select p).ToListAsync();
+
+
             ProfileDataViewModel pd = new ProfileDataViewModel();
             pd.UserT = us;
-            pd.CommunitiesList = comlst;
+            pd.CommunitiesList = com;
             pd.fc = qf;
 
-            pd.activeform = await (from c in _db.FormUsers where c.UserID == us.Id && c.QForm.Expiry_Time > a select c.QForm).CountAsync();
+            // pd.activeform = await (from c in _db.CommunityUsers join p in _db.FormsCommunity on c.CommunityID equals p.CommunityID where ((c.UserID == us.Id || p.Community.PrivacyID== 1) && p.QForms.Expiry_Time > a) select p.QForms).ToListAsync();
 
-            pd.sealedform = await (from c in _db.FormUsers where c.UserID == us.Id && c.QForm.Expiry_Time < a select c.QForm).CountAsync();
+            // pd.sealedform = await (from c in _db.CommunityUsers join p in _db.FormsCommunity on c.CommunityID equals p.CommunityID where c.UserID == us.Id && p.QForms.Expiry_Time < a select p.QForms).ToListAsync();
 
+            //pd.sealedform = pfs.ToList().Union(sealedform).ToList();
+
+            //pd.activeform = pfa.ToList().Union(activeform).ToList();
+
+            pd.activeform = activeform;
+
+            pd.sealedform = sealedform;
 
             return pd;
 
@@ -211,6 +229,21 @@ namespace FYP.Services
                 
             }
 
-        
+        public async Task<FormResultViewModel> FormResultAsync(int c_id, int id)
+        {
+
+            var qu = await _db.Questions.Where(u => u.QFormID.Equals(id)).ToListAsync();
+            var ft = await (from a in _db.QForms where a.QFormID == id select a.FormType).FirstOrDefaultAsync();
+            FormResultViewModel fr = new FormResultViewModel();
+
+            fr.Ques = qu;
+            fr.qf_id = id;
+            fr.comid = c_id;
+            fr.ft = ft;
+            return fr;
+
         }
+
+
+    }
     }

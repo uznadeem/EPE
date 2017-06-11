@@ -59,9 +59,9 @@
 
                         <!-- Nav Tabs -->
                         <ul class="nav nav-tabs">
-                            <li class="active"><a data-toggle="tab" href="#AcForms">Active Forms (@Model.activeform)</a></li>
+                            <li class="active"><a data-toggle="tab" href="#AcForms">Active Forms (@Model.activeform.Count)</a></li>
                             <li><a data-toggle="tab" href="#comm">Communities(@Model.CommunitiesList.Count)</a></li>
-                            <li><a data-toggle="tab" href="#sforms">Sealed Forms (@Model.sealedform)</a></li>
+                            <li><a data-toggle="tab" href="#sforms">Sealed Forms (@Model.sealedform.Count)</a></li>
                         </ul>
 
                         <!-- Tab Content -->
@@ -81,10 +81,8 @@
                                         </div>
                                         <div class="folow-persons">
                                             <ul>
-                                                @for (var i = 0; i < Model.fc.Count; i++)
+                                                @for (var i = 0; i < Model.activeform.Count; i++)
                                                 {
-                                                    if (Model.fc[i].QForms.Expiry_Time > System.DateTime.Now)
-                                                    {
                                                         <li>
 
                                                             <div class="row">
@@ -98,31 +96,27 @@
                                                                         <div class="avatar"> <img src="images/sm-avatar.jpg" alt=""> </div>
 
                                                                         <!-- Form Title -->
-                                                                        <h6>@Model.fc[i].QForms.FormTitle</h6>
+                                                                        <h6>@Model.activeform[i].QForms.FormTitle</h6>
 
                                                                         <!-- Form About -->
-                                                                        <span>@Model.fc[i].QForms.FormDetail</span>
+                                                                        <span>@Model.activeform[i].QForms.FormDetail</span>
                                                                     </div>
 
                                                                 </div>
 
                                                                 <!-- Form Community -->
-                                                                <div class="col-xs-3 n-p-r n-p-l"> <span>@Model.fc[i].Community.CommunityName</span> </div>
+                                                                <div class="col-xs-3 n-p-r n-p-l"> <span>@Model.activeform[i].Community.CommunityName</span> </div>
 
 
                                                                 <!-- Total Members -->
-                                                                <div class="col-xs-3 n-p-r"> <span>@Model.fc[i].Community.CommunityUsers.Count</span></div>
+                                                                <div class="col-xs-3 n-p-r"> <span>@Model.activeform[i].Community.CommunityUsers.Count</span></div>
 
                                                                 <!-- Response Received -->
-                                                                <div class="col-xs-2 n-p-r n-p-l"> <span>@Model.fc[i].QForms.FormUser.Count</span> </div>
+                                                                <div class="col-xs-2 n-p-r n-p-l"> <span>@Model.activeform[i].QForms.FormUser.Count</span> </div>
 
                                                             </div>
                                                         </li>
-                                                    }
-                                                    else
-                                                    {
-
-                                                    }
+                                                    
                                                 }
                                             </ul>
                                         </div>
@@ -192,23 +186,23 @@
                                                                 <div class="fol-name">
 
                                                                     <!-- COMMUNITY Logo -->
-                                                                    <div class="avatar"> <img src="~/CommunityImages/@item.Community.CommunityLogo" alt=""> </div>
+                                                                    <div class="avatar"> <img src="~/CommunityImages/@item.CommunityLogo" alt=""> </div>
 
                                                                     <!-- COMMUNITY Title -->
-                                                                    <h6>@item.Community.CommunityName</h6>
+                                                                    <h6>@item.CommunityName</h6>
 
                                                                     <!-- COMMUNITY About -->
-                                                                    <span>@item.Community.CommunityAbout</span>
+                                                                    <span>@item.CommunityAbout</span>
                                                                 </div>
 
                                                             </div>
 
                                                             <!-- Members -->
-                                                            <div class="col-xs-2 n-p-r n-p-l"> <span>@item.Community.CommunityUsers.Count()</span> </div>
+                                                            <div class="col-xs-2 n-p-r n-p-l"> <span>@item.CommunityUsers.Count()</span> </div>
 
 
                                                             <!-- Total Forms -->
-                                                            <div class="col-xs-2 n-p-r"> <span>@item.Community.FormsCommunity.Count</span></div>
+                                                            <div class="col-xs-2 n-p-r"> <span>@item.FormsCommunity.Count</span></div>
 
                                                             <!-- Active Forms -->
                                                             <div class="col-xs-2 n-p-r n-p-l"> <span></span> </div>
@@ -254,10 +248,8 @@
                                         </div>
                                         <div class="folow-persons">
                                             <ul>
-                                                @for (var i = 0; i < Model.fc.Count; i++)
+                                                @for (var i = 0; i < Model.sealedform.Count; i++)
                                                 {
-                                                    if (Model.fc[i].QForms.Expiry_Time < System.DateTime.Now)
-                                                    {
                                                         <li>
 
                                                             <div class="row">
@@ -271,33 +263,29 @@
                                                                         <div class="avatar"> <img src="images/sm-avatar.jpg" alt=""> </div>
 
                                                                         <!-- Form Title -->
-                                                                        <h6>@Model.fc[i].QForms.FormTitle</h6>
+                                                                        <h6>@Model.sealedform[i].QForms.FormTitle</h6>
 
                                                                         <!-- Form About -->
-                                                                        <span>@Model.fc[i].QForms.FormDetail</span>
+                                                                        <span>@Model.sealedform[i].QForms.FormDetail</span>
                                                                     </div>
 
                                                                 </div>
 
                                                                 <!-- Form Community -->
-                                                                <div class="col-xs-3 n-p-r n-p-l"> <span>@Model.fc[i].Community.CommunityName</span> </div>
+                                                                <div class="col-xs-3 n-p-r n-p-l"> <span>@Model.sealedform[i].Community.CommunityName</span> </div>
 
 
                                                                 <!-- Total Members -->
-                                                                <div class="col-xs-3 n-p-r"> <span>@Model.fc[i].Community.CommunityUsers.Count</span></div>
+                                                                <div class="col-xs-3 n-p-r"> <span>@Model.sealedform[i].Community.CommunityUsers.Count</span></div>
 
                                                                 <!-- Response Received -->
                                                                 @*<div class="col-xs-2 n-p-r n-p-l"> <span>@Model.fcom[i].QForms.FormUser.Count</span> </div>*@
                                                                 <!--View Form-->
-                                                                <div class="col-xs-2 n-p-r n-p-l"> @Html.ActionLink("View", "FormResult", new { controller = "Admin", c_id = Model.fc[i].CommunityID, id = Model.fc[i].QFormID }) </div>
+                                                                <div class="col-xs-2 n-p-r n-p-l"> @Html.ActionLink("View", "PFormResult", new { controller = "Participant", c_id = Model.fc[i].CommunityID, id = Model.fc[i].QFormID }) </div>
 
                                                             </div>
                                                         </li>
-                                                    }
-                                                    else
-                                                    {
-
-                                                    }
+                                                    
                                                 }
                                             </ul>
                                         </div>

@@ -60,6 +60,17 @@ namespace FYP.Services
             return abc;
         }
 
+        ///for api create community//
+        public async Task CreateCommunity_temp_Async(Community obj_com)
+        {
+            obj_com.CommunityAdmin = HttpContext.Current.User.Identity.Name;
+
+            _db.Communities.Add(obj_com);
+
+            await _db.SaveChangesAsync();
+            
+        }
+
 
         public async Task<IList> CreateCommunityAsync()
         {
@@ -85,11 +96,7 @@ namespace FYP.Services
                  _db.Communities.Add(objcom);
                 
                  await _db.SaveChangesAsync();
-            //if (ModelState.IsValid)
-            //{
-
-            //return RedirectToAction("Index", "Admin");
-            //}
+            
             
         }
 
@@ -101,15 +108,15 @@ namespace FYP.Services
             _db.CommunityUsers.Remove(a);
             await _db.SaveChangesAsync();
 
-            var fcom = await _db.FormsCommunity.Where(u => u.CommunityID.Equals(cid)).ToArrayAsync();
+            //var fcom = await _db.FormsCommunity.Where(u => u.CommunityID.Equals(cid)).ToArrayAsync();
 
-            foreach(var c in fcom)
-            { 
-                var b = await _db.FormUsers.Where(t=>t.UserID.Equals(uid) && t.QFormID.Equals(c.QFormID)).FirstOrDefaultAsync();
-                _db.FormUsers.Remove(b);
-                await _db.SaveChangesAsync();
+            //foreach(var c in fcom)
+            //{ 
+            //    var b = await _db.FormUsers.Where(t=>t.UserID.Equals(uid) && t.QFormID.Equals(c.QFormID)).FirstOrDefaultAsync();
+            //    _db.FormUsers.Remove(b);
+            //    await _db.SaveChangesAsync();
 
-            }
+            //}
         }
 
         public async Task<Community> CommunitySearchAsync(int id)

@@ -197,6 +197,37 @@ namespace FYP.Controllers
             
         }
 
+        public ActionResult ResultChart(int qid)
+        {
+            ApplicationDbContext db = new ApplicationDbContext();
+
+            var group = db.Answers.Where(a => a.QuestionID.Equals(qid)).Select(x => new { x.AnswerStatement, x.AnsCount }).AsEnumerable();
+
+            //var group = await _as.ResultChartAsync(qid);
+            new Chart(width: 400, height: 200).AddSeries(
+
+                chartType: "column",
+                xValue: group, xField: "AnswerStatement",
+                yValues: group, yFields: "AnsCount").Write();
+            return null;
+            //return View(new QuestionAndAnswerViewModel {
+            //    Quest = b ,
+            //    Answ  = ans
+
+            //});
+            // }
+
+        }
+
+
+
+        public async Task<ActionResult> PFormResult(int c_id, int id)
+        {
+            var grp = await _ps.FormResultAsync(c_id, id);
+
+            return View(grp);
+        }
+
 
 
     }

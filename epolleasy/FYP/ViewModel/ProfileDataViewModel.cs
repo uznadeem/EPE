@@ -10,10 +10,11 @@ namespace FYP.ViewModel
     {
 
         public ApplicationUser UserT { get; set; }
-        public List<CommunityUser> CommunitiesList { get; set; }
+        public List<Community> CommunitiesList { get; set; }
         public List<FormCommunity> fc { get; set; }
-        public int activeform { get; set; }
-        public int sealedform { get; set; }
+        public IList<FormCommunity> activeform { get; set; }
+        //public int sealedform { get; set; }
+        public IList<FormCommunity> sealedform { get; set; }
 
     }
 

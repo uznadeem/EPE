@@ -1,0 +1,34 @@
+﻿@model FYP.ViewModel.FormResultViewModel
+
+@{
+    ViewBag.Title = "PFormResult";
+    Layout = "~/Views/Shared/_LayoutProject.cshtml";
+}
+
+<h2>FormResult</h2>
+
+
+<a class="btn btn-primary" href="/Participant/Index"><i class="fa fa-arrow-left"></i></a>
+
+
+
+<div class="container">
+
+    @if (Model.Ques.Count == 0)
+    {
+        <p>Form is Empty </p>
+
+    }
+    else
+    {
+
+        for (var i = 0; i < Model.Ques.Count; i++)
+        {
+            <p>@Model.Ques[i].QuestionString </p>
+            <img src="@Url.Action("ResultChart",new {qid = Model.Ques[i].QuestionID})" alt="SimpleChart" />
+            <br />
+        }
+
+    }
+
+</div>

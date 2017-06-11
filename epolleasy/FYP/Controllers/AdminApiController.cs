@@ -9,6 +9,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Helpers;
 using System.Web.Http;
 
@@ -47,7 +48,8 @@ namespace FYP.Controllers
         //put
         //api/adminapi/editcommunity
         [HttpPut]
-        [ActionName("EditCommunity")]
+        //[ActionName("EditCommunity")]
+        [Route("api/AdminApi/EditCommunity")]
         public async Task<string> EditCommunity(Community community)
         {
             await _as.PEditCommunity(community);
@@ -55,7 +57,8 @@ namespace FYP.Controllers
         }
 
         [HttpDelete]
-        [ActionName("DeleteCommunity")]
+        //[ActionName("DeleteCommunity")]
+        [Route("api/AdminApi/DeleteCommunity")]
         public async Task<string> DeleteCommunity(Community com)
         {
             var a = com.CommunityID;
@@ -84,6 +87,20 @@ namespace FYP.Controllers
         //    return Ok();
 
         //}
+
+        [HttpPost]
+        //[ActionName("AddCommunity")]
+        [Route("api/AdminApi/AddCommunity")]
+        public async Task<IHttpActionResult> AddCommunity(Community com)
+        {
+            
+           await _as.CreateCommunity_temp_Async(com);
+
+            return Ok();
+
+        }
+
+
         [HttpGet]
        // [ActionName("GetViewDetail")]
         [Route("api/AdminApi/GetViewDetail/{cid}")]
@@ -95,10 +112,7 @@ namespace FYP.Controllers
 
         //post//
         [HttpPost]
-        //  [ActionName("PViewDetail")]
-
         [Route("api/AdminApi/PViewDetail/{vdvm}")]
-
         public async Task<string> PViewDetail(ApiViewDetailViewModel vdvm)
         {
             var cid = vdvm.cid;
@@ -130,7 +144,6 @@ namespace FYP.Controllers
         //}
         //post
         [HttpPost]
-        //[ActionName("AddForm")]
         [Route("api/AdminApi/AddFormViewModel/{afvm}")]
 
         public async Task<int> AddForm(AddFormViewModel afvm)
