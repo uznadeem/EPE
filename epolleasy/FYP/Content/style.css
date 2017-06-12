@@ -2855,7 +2855,7 @@ CANVAS PAGE STYLE
 }
 @media (min-width: 768px) {
 .modal-dialog {
-	width: 1170px;
+	width: 500px;   
 }
 }
 .modal-block-tabs {

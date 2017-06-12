@@ -31,8 +31,8 @@ namespace FYP.Services
 
             var us = await _db.Users.Where(u => u.UserName == HttpContext.Current.User.Identity.Name).SingleOrDefaultAsync();
             //var comlst = await _db.CommunityUsers.Include(x => x.Community).Where(u => u.UserID == us.Id).ToListAsync();
-            var com = await (from c in _db.CommunityUsers where c.UserID.Equals(us.Id) select c.Community).ToListAsync();
-           // var public_com = await _db.Communities.Where(u=>u.PrivacyID==1).ToListAsync();
+            var com = await (from c in _db.CommunityUsers where c.UserID.Equals(us.Id) && c.Community.PrivacyID==2 select c.Community).ToListAsync();
+            var public_com = await _db.Communities.Where(u=>u.PrivacyID==1).ToListAsync();
             //var final_com = com.ToList().Union(public_com).ToList(); 
             var a = System.DateTime.Now;
             //var wf = await (from fc in _db.FormsCommunity join cu in _db.CommunityUsers on fc.CommunityID equals cu.CommunityID select new {frm = fc.QForms}).ToListAsync();
@@ -50,13 +50,14 @@ namespace FYP.Services
             var activeform = await (from c in _db.CommunityUsers join p in _db.FormsCommunity on c.CommunityID equals p.CommunityID where c.UserID == us.Id && p.QForms.Expiry_Time > a select p).ToListAsync();
 
              var sealedform = await (from c in _db.CommunityUsers join p in _db.FormsCommunity on c.CommunityID equals p.CommunityID where c.UserID == us.Id && p.QForms.Expiry_Time < a select p).ToListAsync();
-
+            var co = public_com.Count + com.Count ;
 
             ProfileDataViewModel pd = new ProfileDataViewModel();
             pd.UserT = us;
             pd.CommunitiesList = com;
             pd.fc = qf;
-
+            pd.public_com = public_com;
+            pd.com_count = co;
             // pd.activeform = await (from c in _db.CommunityUsers join p in _db.FormsCommunity on c.CommunityID equals p.CommunityID where ((c.UserID == us.Id || p.Community.PrivacyID== 1) && p.QForms.Expiry_Time > a) select p.QForms).ToListAsync();
 
             // pd.sealedform = await (from c in _db.CommunityUsers join p in _db.FormsCommunity on c.CommunityID equals p.CommunityID where c.UserID == us.Id && p.QForms.Expiry_Time < a select p.QForms).ToListAsync();

@@ -5,26 +5,169 @@
 <a class="btn btn-primary" href="/admin/ViewDetails/@Model.comid/"><i class="fa fa-arrow-left"></i></a>
 
 <h2>Form Data</h2>
-@*<a class="btn btn-primary" href="/admin/ViewDetails/"><i class="fa fa-arrow-left"></i>Back</a>*@
+<div class="compny-profile">
+
+    <!-- Profile Company Content -->
+    <div class="profile-company-content" data-bg-color="fff">
+        <div class="container">
+            
+                <div class="row">
+
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#ColmChart">Column Chart</a></li>
+                        <li><a data-toggle="tab" href="#pieChart">Pie Chart</a></li>
+                        <li><a data-toggle="tab" href="#lineChart">Line Chart</a></li>
+                        <li><a data-toggle="tab" href="#barChart">Bar Chart</a></li>
+                        <li><a data-toggle="tab" href="#AreaChart">Area Chart</a></li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div id="ColmChart" class="tab-pane fade in active">
+                            <div class="net-work-in">
+
+                                <div class="container">
+
+                                    @if (Model.Ques.Count == 0)
+                                    {
+                                        <h6>Form is Empty Click Here to add Question @Html.ActionLink("AddQuestion", "AddQuestion", new { controller = "Admin", c_id = Model.comid, qf_id = Model.qf_id, ft = Model.ft }) </h6>
+
+                                    }
+                                    else
+                                    {
+
+                                        for (var i = 0; i < Model.Ques.Count; i++)
+                                        {
+                                            <h6>@Model.Ques[i].QuestionString </h6>
+                                            <img src="@Url.Action("ResultChart",new {qid = Model.Ques[i].QuestionID})" alt="SimpleChart" />
+                                            <br />
+                                        }
+
+                                    }
+
+                                </div>
+                            
+                            
+                            </div>
+                       </div>
+
+                        <div id="pieChart" class="tab-pane fade">
+                            <div class="net-work-in">
+
+                                <div class="container">
+
+                                    @if (Model.Ques.Count == 0)
+                                    {
+                                        <h6>Form is Empty Click Here to add Question @Html.ActionLink("AddQuestion", "AddQuestion", new { controller = "Admin", c_id = Model.comid, qf_id = Model.qf_id, ft = Model.ft }) </h6>
+
+                                    }
+                                    else
+                                    {
+
+                                        for (var i = 0; i < Model.Ques.Count; i++)
+                                        {
+                                            <h6>@Model.Ques[i].QuestionString </h6>
+                                            <img src="@Url.Action("PieChart",new {qid = Model.Ques[i].QuestionID})" alt="SimpleChart" />
+                                            <br />
+                                        }
+
+                                    }
+
+                                </div>
 
 
-<div class="container">
+                            </div>
+                        </div>
+                        <!---line-->
+                        <div id="lineChart" class="tab-pane fade">
+                            <div class="net-work-in">
 
-    @if (Model.Ques.Count == 0)
-    {
-        <p>Form is Empty Click Here to add Question @Html.ActionLink("AddQuestion", "AddQuestion", new { controller = "Admin", c_id = Model.comid, qf_id = Model.qf_id, ft = Model.ft}) </p>
+                                <div class="container">
 
-    }
-    else
-    {
+                                    @if (Model.Ques.Count == 0)
+                                    {
+                                        <h6>Form is Empty Click Here to add Question @Html.ActionLink("AddQuestion", "AddQuestion", new { controller = "Admin", c_id = Model.comid, qf_id = Model.qf_id, ft = Model.ft }) </h6>
 
-        for (var i = 0; i < Model.Ques.Count; i++)
-        {
-            <p>@Model.Ques[i].QuestionString </p> 
-            <img src="@Url.Action("ResultChart",new {qid = Model.Ques[i].QuestionID})" alt="SimpleChart" />
-            <br />
-        }
+                                    }
+                                    else
+                                    {
 
-    }
+                                        for (var i = 0; i < Model.Ques.Count; i++)
+                                        {
+                                            <h6>@Model.Ques[i].QuestionString </h6>
+                                            <img src="@Url.Action("LineChart",new {qid = Model.Ques[i].QuestionID})" alt="SimpleChart" />
+                                            <br />
+                                        }
 
+                                    }
+
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                        <!--bar-->
+                        <div id="barChart" class="tab-pane fade">
+                            <div class="net-work-in">
+
+                                <div class="container">
+
+                                    @if (Model.Ques.Count == 0)
+                                    {
+                                        <h6>Form is Empty Click Here to add Question @Html.ActionLink("AddQuestion", "AddQuestion", new { controller = "Admin", c_id = Model.comid, qf_id = Model.qf_id, ft = Model.ft }) </h6>
+
+                                    }
+                                    else
+                                    {
+
+                                        for (var i = 0; i < Model.Ques.Count; i++)
+                                        {
+                                            <h6>@Model.Ques[i].QuestionString </h6>
+                                            <img src="@Url.Action("barChart",new {qid = Model.Ques[i].QuestionID})" alt="SimpleChart" />
+                                            <br />
+                                        }
+
+                                    }
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <!--Area-->
+
+                        <div id="AreaChart" class="tab-pane fade">
+                            <div class="net-work-in">
+
+                                <div class="container">
+
+                                    @if (Model.Ques.Count == 0)
+                                    {
+                                        <h6>Form is Empty Click Here to add Question @Html.ActionLink("AddQuestion", "AddQuestion", new { controller = "Admin", c_id = Model.comid, qf_id = Model.qf_id, ft = Model.ft }) </h6>
+
+                                    }
+                                    else
+                                    {
+
+                                        for (var i = 0; i < Model.Ques.Count; i++)
+                                        {
+                                            <h6>@Model.Ques[i].QuestionString </h6>
+                                            <img src="@Url.Action("AreaChart",new {qid = Model.Ques[i].QuestionID})" alt="SimpleChart" />
+                                            <br />
+                                        }
+
+                                    }
+
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+
+                    </div>
+              </div>
+        </div>
+    </div>
 </div>

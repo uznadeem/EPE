@@ -71,18 +71,19 @@ namespace FYP.Controllers
             return RedirectToAction("ViewDetails", new { id = objcom.CommunityID });
         }
 
-        //public async Task<ActionResult> Delete(int id)
-        //{
-        //    var v = await _as.EditCommunity(id);
-        //    return View(v);
-        //}
+        public ActionResult Delete(int id)
+        {
+            ViewBag.Id = id;
+            //var v = await _as.EditCommunity(id);
+            return View();
+        }
 
 
-        
-        public async Task<ActionResult> Delete(int id)
+        [HttpPost]
+        public async Task<ActionResult> Delete(int cid,int a)
         {
 
-            await _as.DeleteCommunity(id);
+            await _as.DeleteCommunity(cid);
 
             return RedirectToAction("Index");
 
@@ -340,7 +341,80 @@ namespace FYP.Controllers
             // }
 
         }
+
+
+        //pie//
+        public ActionResult PieChart(int qid)
+        {
+            ApplicationDbContext db = new ApplicationDbContext();
+
+            var group = db.Answers.Where(a => a.QuestionID.Equals(qid)).Select(x => new { x.AnswerStatement, x.AnsCount }).AsEnumerable();
+
+            new Chart(width: 400, height: 200).AddSeries(
+
+                chartType: "pie",
+                xValue: group, xField: "AnswerStatement",
+                yValues: group, yFields: "AnsCount").Write();
+            return null;
+            
+
+        }
+
+        //line
+
+        public ActionResult LineChart(int qid)
+        {
+            ApplicationDbContext db = new ApplicationDbContext();
+
+            var group = db.Answers.Where(a => a.QuestionID.Equals(qid)).Select(x => new { x.AnswerStatement, x.AnsCount }).AsEnumerable();
+
+            new Chart(width: 400, height: 200).AddSeries(
+
+                chartType: "line",
+                xValue: group, xField: "AnswerStatement",
+                yValues: group, yFields: "AnsCount").Write();
+            return null;
+
+
+        }
         
+        //bar//
+
+        public ActionResult barChart(int qid)
+        {
+            ApplicationDbContext db = new ApplicationDbContext();
+
+            var group = db.Answers.Where(a => a.QuestionID.Equals(qid)).Select(x => new { x.AnswerStatement, x.AnsCount }).AsEnumerable();
+
+            new Chart(width: 400, height: 200).AddSeries(
+
+                chartType: "bar",
+                xValue: group, xField: "AnswerStatement",
+                yValues: group, yFields: "AnsCount").Write();
+            return null;
+
+
+        }
+
+        //Area//
+
+        public ActionResult AreaChart(int qid)
+        {
+            ApplicationDbContext db = new ApplicationDbContext();
+
+            var group = db.Answers.Where(a => a.QuestionID.Equals(qid)).Select(x => new { x.AnswerStatement, x.AnsCount }).AsEnumerable();
+
+            new Chart(width: 400, height: 200).AddSeries(
+
+                chartType: "Area",
+                xValue: group, xField: "AnswerStatement",
+                yValues: group, yFields: "AnsCount").Write();
+            return null;
+
+
+        }
+
+
 
         public async Task<ActionResult> FormResult(int c_id, int id)
         {
@@ -349,9 +423,7 @@ namespace FYP.Controllers
             return View(grp);
         }
 
-
-
-
+      
 
 
     }

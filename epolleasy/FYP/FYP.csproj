@@ -431,6 +431,7 @@
     <Content Include="Scripts\CommunityAdder.js" />
     <Content Include="Scripts\create_com_popup.js" />
     <Content Include="Scripts\Datatable.js" />
+    <Content Include="Scripts\DeletePopup.js" />
     <Content Include="Scripts\gmap3.min.js" />
     <Content Include="Scripts\i18n\grid.locale-ar.js" />
     <Content Include="Scripts\i18n\grid.locale-bg.js" />

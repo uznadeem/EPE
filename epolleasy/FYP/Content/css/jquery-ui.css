@@ -489,8 +489,8 @@ button.ui-button::-moz-focus-inner {
 }
 .ui-dialog {
 	position: absolute;
-	top: 0;
-	left: 0;
+	top: 300px;
+	left: 400px;
 	padding: .2em;
 	outline: 0;
 }

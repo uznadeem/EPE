@@ -181,76 +181,68 @@
 
                                             </div>
                                         </div>
-
-                                        <!-- Tittle -->
                                         <div class="tittle">
                                             <ul class="row">
-
-                                                <li class="col-xs-1"> <span></span> </li>
-                                                <li class="col-xs-3"> <span>Community Name</span> </li>
+                                                <li class="col-xs-4"> <span>Community Name</span> </li>
                                                 <li class="col-xs-2"> <span>Members</span> </li>
                                                 <li class="col-xs-2"> <span>Forms</span> </li>
-                                               @* <li class="col-xs-2 "> <span>Active</span> </li>*@
-                                                <li class="col-xs-2"> <span></span> </li>
+                                                <li class="col-xs-2 n-p-r n-p-l"> <span>Action</span> </li>
                                             </ul>
                                         </div>
 
-                                        <!-- Tittle -->
-                                        <div class="folow-persons">
-                                            <ul>
-                                                
-                                                @foreach (var item in Model.Com)
-                                                {
+                                            <!-- Tittle -->
+                                            <div class="folow-persons">
+                                                <ul>
+
+                                                    @foreach (var item in Model.Com)
+                                                    {
                                                             <!-- COMMUNITY -->
-                                                    <li>
-                                                        <div class="row">
-                                                            <div class="col-xs-1">
-                                                                <!-- COMMUNITY TITLE -->
+                                                        <li>
+                                                            <div class="row">
+                                                                <div class="col-xs-1">
+                                                                    <!-- COMMUNITY TITLE -->
+                                                                    <div class="fol-name">
+
+                                                                        <!-- COMMUNITY Logo -->
+                                                                        <div class="avatar"> <img src="~/CommunityImages/@item.CommunityLogo" alt=""> </div>
+                                                                    </div>
+                                                                </div>
+
                                                                 <div class="fol-name">
+                                                                    <div class="col-xs-3">
+                                                                        <!-- COMMUNITY Title -->
+                                                                        <h6>@item.CommunityName</h6>
 
-                                                                    <!-- COMMUNITY Logo -->
-                                                                    <div class="avatar"> <img src="~/CommunityImages/@item.CommunityLogo" alt=""> </div>
-                                                                </div>
-                                                            </div>
-                                                            
-                                                            <div class="fol-name">
-                                                                <div class="col-xs-3">
-                                                                    <!-- COMMUNITY Title -->
-                                                                    <h6>@item.CommunityName</h6>
+                                                                        <!-- COMMUNITY About -->
+                                                                        <span>@item.CommunityAbout</span>
+                                                                    </div>
 
-                                                                    <!-- COMMUNITY About -->
-                                                                    <span>@item.CommunityAbout</span>
                                                                 </div>
 
-                                                            </div>
-
-                                                            <!-- Members -->
-                                                            <div class="col-xs-2"> <span>@item.CommunityUsers.Count()</span> </div>
+                                                                <!-- Members -->
+                                                                <div class="col-xs-2"> <span>@item.CommunityUsers.Count()</span> </div>
 
 
-                                                            <!-- Total Forms -->
-                                                            <div class="col-xs-2"> <span>@item.FormsCommunity.Count</span></div>
+                                                                <!-- Total Forms -->
+                                                                <div class="col-xs-2"> <span>@item.FormsCommunity.Count</span></div>
 
-                                                            <!-- Active Forms -->
-                                                            @*<div class="col-xs-2"> <span></span> </div>*@
+                                                                <div class="col-xs-2">
 
-                                                            <div class="col-xs-2">
+                                                                    @Html.ActionLink("Go", "ViewDetails", new { controller = "Admin", id = @item.CommunityID })
 
-                                                                @Html.ActionLink("Go", "ViewDetails", new { controller = "Admin", id = @item.CommunityID })
+                                                                </div>
 
                                                             </div>
+                                                        </li>
 
-                                                        </div>
-                                                    </li>
-
-                                                }
+                                                    }
 
 
-                                            </ul>
+                                                </ul>
 
 
+                                            </div>
                                         </div>
-                                    </div>
                                 </div>
 
 
@@ -269,7 +261,7 @@
                                                 <li class="col-xs-4"> <span>Title</span> </li>
                                                 <li class="col-xs-3"> <span>Community</span> </li>
                                                 <li class="col-xs-3"> <span>Total Members</span> </li>
-                                                @*<li class="col-xs-2 n-p-r n-p-l"> <span>Response</span> </li>*@
+                                                <li class="col-xs-2 n-p-r n-p-l"> <span>Response</span> </li>
                                                 <li class="col-xs-2 n-p-r n-p-l"> <span>Result</span> </li>
                                             </ul>
                                         </div>
@@ -334,61 +326,4 @@
         </div>
     </div>
 </div>
-@*<h5>hello World</h5>
-    <h2>Time For the Result</h2>
-    <img src="@Url.Action("ResultChart")" alt="SimpleChart" />*@
-
-@*<script>
-
-            $(document).ready(function () {
-
-                $('.compop').on('click', 'a.popup', function (e) {
-                    e.preventDefault();
-                    OpenPopup($(this).attr('href'));
-                })
-                function OpenPopup(pageUrl) {
-                    var $pageContent = $('<div/>');
-                    $pageContent.load(pageUrl, function () {
-                        $('#popupForm', $pageContent).removeData('validator');
-                        $('#popupForm', $pageContent).removeData('unobtrusiveValidation');
-                        $.validator.unobtrusive.parse('form');
-
-                    });
-
-                    $dialog = $('<div class="popupWindow" style="overflow:auto"></div>')
-                              .html($pageContent)
-                              .dialog({
-                                  draggable: false,
-                                  autoOpen: false,
-                                  resizable: false,
-                                  model: true,
-                                  title: 'Popup Dialog',
-                                  height: 550,
-                                  width: 600,
-                                  close: function () {
-                                      $dialog.dialog('destroy').remove();
-                                  }
-                              })
-
-                    $('.popupWindow').on('submit', '#popupForm', function (e) {
-                        var url = $('#popupForm')[0].action;
-                        $.ajax({
-                            type: "POST",
-                            url: url,
-                            data: $('#popupForm').serialize(),
-                            success: function (data) {
-                                if (data.status) {
-                                    $dialog.dialog('close');
-                                    //oTable.ajax.reload();
-                                }
-                            }
-                        })
-
-                        e.preventDefault();
-                    })
-                    $dialog.dialog('open');
-                }
-            })
-
-    </script>*@
 <script src="~/Scripts/create_com_popup.js"></script>

@@ -1,8 +1,8 @@
 ﻿@model FYP.Models.Community
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_LayoutProject.cshtml";
 }
-<h2>Edit007</h2>
+<h2>EditCommunity</h2>
 <a class="btn btn-primary" href="/admin/ViewDetails/@Model.CommunityID/"><i class="fa fa-arrow-left"></i>Back</a>
 
 @using (Html.BeginForm("edit", "admin", FormMethod.Post))

@@ -1,4 +1,4 @@
-﻿@using Microsoft.AspNet.Identity
+﻿@*@using Microsoft.AspNet.Identity*@
 
 @model FYP.ViewModel.ProfileDataViewModel
 
@@ -60,7 +60,7 @@
                         <!-- Nav Tabs -->
                         <ul class="nav nav-tabs">
                             <li class="active"><a data-toggle="tab" href="#AcForms">Active Forms (@Model.activeform.Count)</a></li>
-                            <li><a data-toggle="tab" href="#comm">Communities(@Model.CommunitiesList.Count)</a></li>
+                            <li><a data-toggle="tab" href="#comm">Communities(@Model.com_count)</a></li>
                             <li><a data-toggle="tab" href="#sforms">Sealed Forms (@Model.sealedform.Count)</a></li>
                         </ul>
 
@@ -126,7 +126,6 @@
                                 </div>
                             </div>
 
-                            <!-- Followers -->
                             <div id="comm" class="tab-pane fade">
 
                                 <div class="net-work-in">
@@ -139,98 +138,179 @@
                                         <div class="head">
                                             <div class="row">
 
-                                                <div class="col-sm-4">
-
+                                                <div class="col-sm-10">
+                                                    <ul class="nav nav-tabs">
+                                                        <li class="active"><a data-toggle="tab" href="#pucomm">Public Communities (@Model.public_com.Count)</a></li>
+                                                        <li><a data-toggle="tab" href="#prcomm">Private Communities(@Model.CommunitiesList.Count)</a></li>
+                                                    </ul>
                                                 </div>
 
-
-                                                <div class="col-sm-4">
+                                               
+                                                <div class="col-sm-2">
                                                     <form>
                                                         <input type="search" placeholder="Search">
                                                         <button type="submit"><i class="fa fa-search"></i></button>
                                                     </form>
                                                 </div>
-                                                <div class="col-sm-4">
+                                                @*<div class="col-sm-3">
                                                     <select>
                                                         <option>Alphabetical</option>
                                                         <option>Date Created</option>
                                                         <option>Latest First</option>
                                                     </select>
-                                                </div>
+                                                </div>*@
 
                                             </div>
                                         </div>
 
-                                        <!-- Tittle -->
-                                        <div class="tittle">
-                                            <ul class="row">
-                                                <li class="col-xs-4"> <span>Community Name</span> </li>
-                                                <li class="col-xs-2"> <span>Members</span> </li>
-                                                <li class="col-xs-2"> <span>Forms</span> </li>
-                                                @*<li class="col-xs-2 n-p-r n-p-l"> <span>Active</span> </li>*@
-                                                <li class="col-xs-2 n-p-r n-p-l"> <span>Action</span> </li>
-                                            </ul>
-                                        </div>
+                                        
+                                        <div class="tab-content">
+                                            <div id="pucomm" class="tab-pane active">
 
-                                        <!-- Tittle -->
-                                        <div class="folow-persons">
-                                            <ul>
+                                                <div class="tittle">
+                                                    <ul class="row">
+                                                        <li class="col-xs-4"> <span>Community Name</span> </li>
+                                                        <li class="col-xs-2"> <span>Members</span> </li>
+                                                        <li class="col-xs-2"> <span>Forms</span> </li>
+                                                        <li class="col-xs-2 n-p-r n-p-l"> <span>Action</span> </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="folow-persons">
+                                                    <ul>
 
-                                                @foreach (var item in Model.CommunitiesList)
-                                                {
-                                                    <!-- COMMUNITY -->
-                                                    <li>
-                                                        <div class="row">
-                                                            <div class="col-xs-4">
-                                                                <!-- COMMUNITY TITLE -->
-                                                                <div class="fol-name">
+                                                        @if (Model.public_com.Count!=0)
+                                                        {
+                                                            foreach (var item in Model.public_com)
+                                                            {
+                                                            <!-- COMMUNITY -->
+                                                            <li>
+                                                                <div class="row">
+                                                                    <div class="col-xs-4">
+                                                                        <!-- COMMUNITY TITLE -->
+                                                                        <div class="fol-name">
 
-                                                                    <!-- COMMUNITY Logo -->
-                                                                    <div class="avatar"> <img src="~/CommunityImages/@item.CommunityLogo" alt=""> </div>
+                                                                            <!-- COMMUNITY Logo -->
+                                                                            <div class="avatar"> <img src="~/CommunityImages/@item.CommunityLogo" alt=""> </div>
 
-                                                                    <!-- COMMUNITY Title -->
-                                                                    <h6>@item.CommunityName</h6>
+                                                                            <!-- COMMUNITY Title -->
+                                                                            <h6>@item.CommunityName</h6>
 
-                                                                    <!-- COMMUNITY About -->
-                                                                    <span>@item.CommunityAbout</span>
+                                                                            <!-- COMMUNITY About -->
+                                                                            <span>@item.CommunityAbout</span>
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                    <!-- Members -->
+                                                                    <div class="col-xs-2 n-p-r n-p-l"> <span>@item.CommunityUsers.Count()</span> </div>
+
+
+                                                                    <!-- Total Forms -->
+                                                                    <div class="col-xs-2 n-p-r"> <span>@item.FormsCommunity.Count</span></div>
+
+                                                                    <div class="col-xs-2">
+
+                                                                        @Html.ActionLink("Go", "ParticipantViewDetail", new { controller = "Participant", id = @item.CommunityID })
+
+                                                                    </div>
+
                                                                 </div>
+                                                            </li>
 
-                                                            </div>
-
-                                                            <!-- Members -->
-                                                            <div class="col-xs-2 n-p-r n-p-l"> <span>@item.CommunityUsers.Count()</span> </div>
-
-
-                                                            <!-- Total Forms -->
-                                                            <div class="col-xs-2 n-p-r"> <span>@item.FormsCommunity.Count</span></div>
-
-                                                            <!-- Active Forms -->
-                                                            <div class="col-xs-2 n-p-r n-p-l"> <span></span> </div>
-
-                                                            <div class="col-xs-2">
-
-                                                                @Html.ActionLink("Go", "ParticipantViewDetail", new { controller = "Participant", id = @item.CommunityID })
-
-                                                            </div>
-
-                                                        </div>
-                                                    </li>
-
-                                                }
+                                                        }
+                                                        }
+                                                        else
+                                                        {
+                                                            <text>There is no public community yet</text>
+                                                        }
 
 
-                                            </ul>
+                                                    </ul>
 
 
+                                                </div>
+
+
+
+
+                                            </div>
+
+                                            <div id="prcomm" class="tab-pane fade">
+
+                                                <div class="tittle">
+                                                    <ul class="row">
+                                                        <li class="col-xs-4"> <span>Community Name</span> </li>
+                                                        <li class="col-xs-2"> <span>Members</span> </li>
+                                                        <li class="col-xs-2"> <span>Forms</span> </li>
+                                                        <li class="col-xs-2 n-p-r n-p-l"> <span>Action</span> </li>
+                                                    </ul>
+                                                </div>
+
+                                                <div class="folow-persons">
+                                                    <ul>
+
+                                                        @foreach (var item in Model.CommunitiesList)
+                                                        {
+                                                        <!-- COMMUNITY -->
+                                                            <li>
+                                                                <div class="row">
+                                                                    <div class="col-xs-4">
+                                                                        <!-- COMMUNITY TITLE -->
+                                                                        <div class="fol-name">
+
+                                                                            <!-- COMMUNITY Logo -->
+                                                                            <div class="avatar"> <img src="~/CommunityImages/@item.CommunityLogo" alt=""> </div>
+
+                                                                            <!-- COMMUNITY Title -->
+                                                                            <h6>@item.CommunityName</h6>
+
+                                                                            <!-- COMMUNITY About -->
+                                                                            <span>@item.CommunityAbout</span>
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                    <!-- Members -->
+                                                                    <div class="col-xs-2 n-p-r n-p-l"> <span>@item.CommunityUsers.Count()</span> </div>
+
+
+                                                                    <!-- Total Forms -->
+                                                                    <div class="col-xs-2 n-p-r"> <span>@item.FormsCommunity.Count</span></div>
+
+                                                                    <!-- Active Forms -->
+                                                                    <div class="col-xs-2 n-p-r n-p-l"> <span></span> </div>
+
+                                                                    <div class="col-xs-2">
+
+                                                                        @Html.ActionLink("Go", "ParticipantViewDetail", new { controller = "Participant", id = @item.CommunityID })
+
+                                                                    </div>
+
+                                                                </div>
+                                                            </li>
+
+                                                        }
+
+
+                                                    </ul>
+
+
+                                                </div>
+
+
+
+                                            </div>
+                                       </div>
+
+                                        
                                         </div>
-                                    </div>
                                 </div>
 
 
 
                             </div>
 
-
+                            <!--///////////////////////////////////////////////////////////-->
 
                             <div id="sforms" class="tab-pane fade">
 

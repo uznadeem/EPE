@@ -1,27 +1,28 @@
-﻿@*@model FYP.Models.Community
+﻿@*@model FYP.Models.Community*@
 
 @{
     Layout = null;
 }
 
-<a class="btn btn-primary" href="/admin/ViewDetails/@Model.CommunityID/"><i class="fa fa-arrow-left"></i>Back</a>
+<div class="container">
+    @using (Html.BeginForm("Delete", "admin", new { cid = ViewBag.Id, a = 0, id = "popupForm" }, FormMethod.Post))
+    {
 
+        <text>Are you sure you want to delete this Community??</text>
+        
+        <br/>
 
-@using (Html.BeginForm("Delete", "admin", FormMethod.Post))
-{
-    
-        @Html.HiddenFor(a => a.CommunityID)
-        <div class="form-group">
-            <label>CommunityName</label>
-            <p>@Model.CommunityName</p>
-        </div>
+        <div class="row">
 
-        <div class="form-group">
-            <label>Community Domain</label>
-            <p>@Model.CommunityDomain</p>
-        </div>
+            <div class="col-md-2">
+                <button class="btn btn-primary" type="submit">Yes </button>
+            </div>
 
-        <div>
-        <input type="submit" value="Delete" />
-    </div>
-}*@
+            <div class="col-md-2">
+                <a href="/Admin/ViewDetails/@ViewBag.Id/" class="btn btn-primary">No</a>
+            </div>  
+      </div>
+    }
+
+</div>
+@*<script src="~/Scripts/create_com_popup.js"></script>*@
