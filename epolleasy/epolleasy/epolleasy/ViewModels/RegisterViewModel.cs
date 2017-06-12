@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using epolleasy.Helpers;
 using epolleasy.Services;
 using Xamarin.Forms;
 
@@ -41,6 +42,10 @@ namespace epolleasy.ViewModels
                 return new Command(async () =>
                 {
                     var isSuccess = await _apiServices.RegisterAsync(FirstName,LastName,UserName,Email,Password,ConfirmPassword,UserRole,Gender,BirthDate);
+
+
+                    Settings.Username = UserName;
+                    Settings.Password = Password;
 
                     Message = isSuccess ? "Registered Successfully" : "Retry Later";
 

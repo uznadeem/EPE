@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:epolleasy.ViewModels;assembly=epolleasy"
+             x:Class="epolleasy.Views.TabActiveForms">
+
+
+  <ContentPage.BindingContext>
+        <viewModels:DashboardViewModel />
+    </ContentPage.BindingContext>
+
+
+    <StackLayout>
+
+        <Entry Text="{Binding AccessToken}"/>
+
+        <Button Command="{Binding GetDashboard}" Text="Show Communities"/>
+
+        <ListView ItemsSource="{Binding UserDashboard.Com}"
+                  HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout>
+                            <Label Text="{Binding CommunityName}"/>
+                            <Label Text="{Binding CommunityUsers.Count}"/>
+                            <Label Text="{Binding FormsCommunity.Count}"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+        </ListView>
+
+    </StackLayout>
+
+
+
+</ContentPage>

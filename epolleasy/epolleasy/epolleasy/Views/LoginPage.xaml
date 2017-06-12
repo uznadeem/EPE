@@ -16,10 +16,11 @@
   
     <Entry Text="{Binding Password}" IsPassword="True" Placeholder="Password"/>
   
-    <Button Command="{Binding LoginCommand}" Text="Login"/>
-    
+    <Button Command="{Binding LoginCommand}" Text="Login" Clicked="Button_OnClicked"/>
+
+    <!--
     <Button Text="Go to Dashboard" Clicked="Button_OnClicked"></Button>
-  
+    -->
 
     
     <Grid Padding="0,30,0,0">

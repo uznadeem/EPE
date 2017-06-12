@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using epolleasy.Annotations;
+using epolleasy.Helpers;
 using epolleasy.Models;
 using epolleasy.Services;
 using Xamarin.Forms;
@@ -19,11 +20,14 @@ namespace epolleasy.ViewModels
         ApiServices _apiServices = new ApiServices();
         private Dashboard _userDashboard;
 
-        public string AccessToken { get; set; }
+        //public string AccessToken { get; set; }
 
         public Dashboard UserDashboard
         {
-            get { return _userDashboard; }
+            get
+            {
+                return _userDashboard;
+            }
             set
             {
                 _userDashboard = value;
@@ -35,12 +39,36 @@ namespace epolleasy.ViewModels
         {
             get
             {
-             return   new Command(async () =>
+             return new Command(async () =>
              {
-                 UserDashboard = await _apiServices.GetDashboard(AccessToken);
+                 var accessToken = Settings.AccessToken;
+                 UserDashboard = await _apiServices.GetDashboard(accessToken);
              });
             }
+
         }
+
+
+        
+
+
+        public ICommand LogoutCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    Settings.AccessToken = string.Empty;
+                    //Debug.WriteLine(Settings.Username);
+                    Settings.Username = string.Empty;
+                    //Debug.WriteLine(Settings.Password);
+                    Settings.Password = string.Empty;
+
+                    // navigate to LoginPage
+                });
+            }
+        }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 

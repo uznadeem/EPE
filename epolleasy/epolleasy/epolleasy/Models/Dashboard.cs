@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace epolleasy.Models
 {
-    
+
     public class User
     {
         public List<object> Claims { get; set; }
@@ -108,7 +108,8 @@ namespace epolleasy.Models
         public string CommunityAdmin { get; set; }
     }
 
-    
+
+
     public class Appuser
     {
         public List<object> Claims { get; set; }
@@ -134,7 +135,7 @@ namespace epolleasy.Models
         public string UserName { get; set; }
     }
 
-
+    
     public class Community
     {
         public List<CommunityUser> CommunityUsers { get; set; }
@@ -149,8 +150,8 @@ namespace epolleasy.Models
         public string CommunityAdmin { get; set; }
     }
 
-
-    public class Fcom
+    
+    public class ActiveFom
     {
         public Community Community { get; set; }
         public QForms QForms { get; set; }
@@ -159,28 +160,12 @@ namespace epolleasy.Models
         public int CommunityID { get; set; }
     }
 
-    public class Qf
-    {
-        public List<FormUser> FormUser { get; set; }
-        public List<Question> Question { get; set; }
-        public int QFormID { get; set; }
-        public string FormDetail { get; set; }
-        public string FormTitle { get; set; }
-        public string FormOwner { get; set; }
-        public int FormType { get; set; }
-        public string Creation_Time { get; set; }
-        public string Expiry_Time { get; set; }
-    }
-    
     public class Dashboard
     {
         public List<Com> Com { get; set; }
         public Appuser appuser { get; set; }
-        public List<Fcom> fcom { get; set; }
-        public List<Qf> qf { get; set; }
-        public int activeform { get; set; }
-        public int sealedform { get; set; }
+        public List<ActiveFom> active_fom { get; set; }
+        public List<object> sealed_fom { get; set; }
     }
-
 
 }

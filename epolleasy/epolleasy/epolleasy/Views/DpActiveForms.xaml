@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:epolleasy.ViewModels;assembly=epolleasy"
+             x:Class="epolleasy.Views.DpActiveForms">
+  
+  
+    <ContentPage.BindingContext>
+        <viewModels:DashboardViewModel />
+    </ContentPage.BindingContext>
+
+  <!--
+    <ContentPage.ToolbarItems>
+      <ToolbarItem Text="Logout" Command="{Binding LogoutCommand}" Clicked="MenuItem_OnClicked"/>
+    </ContentPage.ToolbarItems>
+  -->
+
+    <StackLayout>
+
+
+        <Button Command="{Binding GetDashboard}" Text="Show Forms"/>
+
+        <ListView ItemsSource="{Binding UserDashboard.active_fom}"
+                  HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout>
+                            <Label Text="{Binding QForms.FormTitle}"/>
+                            <Label Text="{Binding QForms.FormDetail}"/>
+                            <Label Text="{Binding Community.CommunityName}"/>
+                            <Label Text="{Binding QForms.FormUser}"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+        </ListView>
+
+    </StackLayout>
+
+
+</ContentPage>

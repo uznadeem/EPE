@@ -45,7 +45,7 @@ namespace epolleasy.Services
         }
 
 
-        public async Task LoginAsync(string userName, string password)
+        public async Task<string> LoginAsync(string userName, string password)
         {
             var keyValues = new List<KeyValuePair<string, string>>
             {
@@ -70,6 +70,8 @@ namespace epolleasy.Services
             var accessToken = jwtDynamic.Value<string>("access_token"); //variable for acsess_token
 
             Debug.WriteLine(jwt);
+
+            return accessToken;
 
             //if (!string.IsNullOrEmpty(accessToken))
             //{
