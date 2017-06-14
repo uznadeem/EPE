@@ -186,6 +186,7 @@
                                                 <li class="col-xs-4"> <span>Community Name</span> </li>
                                                 <li class="col-xs-2"> <span>Members</span> </li>
                                                 <li class="col-xs-2"> <span>Forms</span> </li>
+                                                <li class="col-xs-2"> <span>Privacy</span> </li>
                                                 <li class="col-xs-2 n-p-r n-p-l"> <span>Action</span> </li>
                                             </ul>
                                         </div>
@@ -226,6 +227,15 @@
                                                                 <!-- Total Forms -->
                                                                 <div class="col-xs-2"> <span>@item.FormsCommunity.Count</span></div>
 
+                                                                @if (item.PrivacyID == 1)
+                                                                {
+                                                                    <div class="col-xs-2"> <span>Public</span> </div>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <div class="col-xs-2"> <span>Private</span> </div>
+                                                                }
+                                                                
                                                                 <div class="col-xs-2">
 
                                                                     @Html.ActionLink("Go", "ViewDetails", new { controller = "Admin", id = @item.CommunityID })

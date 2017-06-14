@@ -157,13 +157,74 @@ namespace FYP.Controllers
         [HttpGet]
         public ActionResult AddForm(int id)
         {
+            char[] arrayd = new char[11];
+            char[] arrayt = new char[9];
+            //var datm = (System.DateTime.Now).ToString();
+            var datm = Convert.ToDateTime(System.DateTime.Now).ToString("dd-MM-yyyy HH:mm:ss tt");
+            int j = 0, p = 0;
+            foreach (var d in datm)
+            {
+                if (d == '/')
+                {
+                    arrayd[j++] = '-';
+                }
+
+                else if (d == ' ')
+                {
+                    arrayd[j] = 'T';
+                    break;
+                }
+                else
+                {
+
+                    arrayd[j++] = d;
+
+                }
+
+            }
+
+            int counter = 0;
+            int i = 0;
+            foreach (var t in datm)
+            {
+                if (t == ' ')
+                {
+                    counter = counter + 1;
+                    i = 1;
+                }
+                else if (i == 1 && counter==1)
+                {
+                    arrayt[p++] = t;
+                }
+                else if(t == 'A' || t=='a')
+                {
+                    arrayt[p]='Z';
+                    break;
+                }
+                else if(t=='P' || t=='p')
+                {
+
+                    arrayt[p] = 'Z';
+                    break;
+                }
+                else
+                {
+
+                }
+            }
+
+            string de = new string(arrayd);
+            string tm = new string(arrayt);
+            ViewBag.date = de;
+            ViewBag.time = tm;
+
             ViewBag.id = id;
             return View();
         }
 
 
         [HttpPost]
-        public async Task<ActionResult> AddForm(int c_id, QForm qform,int ft)
+        public async Task<ActionResult> AddForm(int c_id, QForm qform,int ft,DateTime exp_time)
         {
             var exp = System.DateTime.Now;
             DateTime exp_t = qform.Expiry_Time;

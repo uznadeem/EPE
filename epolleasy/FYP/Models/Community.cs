@@ -17,7 +17,7 @@ namespace FYP.Models
         [Required]
         public string CommunityName { get; set; }
 
-        [Required]
+       
         public string CommunityDomain { get; set; }
 
         public string CommunityAbout { get; set; }
@@ -25,7 +25,7 @@ namespace FYP.Models
         public string CommunityLogo { get; set; }
         
         //privacyLevel Foreign Key
-        
+       [Required] 
         public int PrivacyID { get; set; }
 
         //username of admin as foreign key

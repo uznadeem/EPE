@@ -24,6 +24,7 @@ namespace FYP.Models
         public DateTime Creation_Time { get; set; }
 
         [Required]
+ 
         [DataType(DataType.DateTime)]
         public DateTime Expiry_Time { get; set; }
         

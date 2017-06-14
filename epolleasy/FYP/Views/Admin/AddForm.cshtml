@@ -1,81 +1,171 @@
 ﻿@model FYP.Models.QForm
 @{
     ViewBag.Title = "AddForm";
-    Layout = "~/Views/Shared/_LayoutProject.cshtml";
+    Layout = null;
 }
-<a class="btn btn-primary" href="/admin/ViewDetails/@ViewBag.id/"><i class="fa fa-arrow-left"></i>Back</a>
 
-<h2>AddForm</h2>
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800,300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <!-- Style Sheet -->
+    <link rel="stylesheet" href="~/Content/owl.carousel.css">
+    <link rel="stylesheet" href="~/Content/main-style.css">
+    <link rel="stylesheet" href="~/Content/style.css">
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+
+</head>
+
+<body>
+    <div id="main-wrapper">
+
+        <div class="box-shadow-for-ui">
+            <div class="uou-block-2b">
+                <div class="container">
+
+                    <div class="row">
+
+                        <div class="col-lg-2">
+                            <a href="#" class="logo"><img src="~/images/applogo.png" alt=""></a> <a href="#" class="mobile-sidebar-button mobile-sidebar-toggle"><span></span></a>
 
 
-@using (Html.BeginForm("AddForm", "admin", new { c_id = ViewBag.id }, FormMethod.Post))
-{
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="form-group">
-        <label>Form Title*</label>
-        @Html.TextBoxFor(a => a.FormTitle, new { @class = "form-control" })
-        @Html.ValidationMessageFor(a => a.FormTitle)
-    </div>
-    <div class="form-group">
-        <label>Form Detail</label>
-        @Html.TextBoxFor(a => a.FormDetail, new { @class = "form-control" })
-        @Html.ValidationMessageFor(a => a.FormDetail)
-    </div>
-    <div class="form-group">
-        
-        <div class="row">
+                        </div>
 
-            <div class="col-md-2">
-                <label>Select Form Type *</label>
+
+                        <div class="col-lg-7 pull-right">
+
+                            <nav class="nav">
+
+
+                                <ul class="sf-menu">
+                                    <li>
+
+                                        <div class="uou-block-1a blog">
+                                            <div class="search">
+                                                <a href="#" class="toggle fa fa-search"></a>
+
+                                                <form action="/Admin/SearchCommunity" method="get">
+
+                                                    <input id="SearchString" name="SearchString" type="text" class="search-input" placeholder="Search ..." />
+                                                    <input type="submit" value="">
+                                                </form>
+
+                                            </div>
+                                        </div>
+
+
+                                    </li>
+
+                                    <li class="active"> <a href="/admin/index/"> <i class="fa fa-home"></i> </a> </li>
+
+                                  </ul>
+
+                             </nav>
+                        </div>
+
+
+                    </div>
+
+
+                </div>
             </div>
-            <div class="col-md-4">
-                @Html.DropDownList("ft", new List<SelectListItem>
+            <!-- end .uou-block-2b -->
+        </div>
+
+        <a class="btn btn-primary" href="/admin/ViewDetails/@ViewBag.id/"><i class="fa fa-arrow-left"></i>Back</a>
+
+        <h3>AddForm</h3>
+
+        <div class="container">
+            @using (Html.BeginForm("AddForm", "admin", new { c_id = ViewBag.id }, FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary("", new { @class = "text-danger" })
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label>Form Title*</label>
+                        </div>
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(a => a.FormTitle, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(a => a.FormTitle)
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label>Form Detail</label>
+                        </div>
+                        <div class="col-md-6">
+                            @Html.TextAreaFor(a => a.FormDetail, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(a => a.FormDetail)
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+
+                    <div class="row">
+
+                        <div class="col-md-2">
+                            <label>Select Form Type *</label>
+                        </div>
+                        <div class="col-md-4">
+                            @Html.DropDownList("ft", new List<SelectListItem>
                 {
                     new SelectListItem{ Text="Poll ", Value = "1" },
                     new SelectListItem{ Text="Frequency", Value = "2" },
                 })
-            </div>
-        </div>
-        
-    </div>
-        <div class="form-control ">
-           @*@Html.LabelFor(m => m.Expiry_Time, new { @class = "col-md-2 control-label" })*@
-            <div class="col-md-2">
-                <label>Expiry Time*</label>
-            </div>
-            <div class="col-md-4">
-                @*<input type="text" name="datepicker"/>*@
-                @*@Html.TextBoxFor(m => m.Expiry_Time, "{0:MM/dd/yyyy HH:mm:ss}", new { @class = "form-control",id="datepicker"})*@
-             
-                   @Html.TextBoxFor(m => m.Expiry_Time, "{0:MM/dd/yyyy HH:mm:ss}", new { @class = "form-control",type="datetime-local", name="abc" })
-                
-                 @Html.ValidationMessageFor(a => a.Expiry_Time)
-            </div>
-        </div>
-        <br/>
-        <br/>
-        <br/>
-        <button class="btn btn-primary" type="submit">Create</button>
+                        </div>
+                    </div>
 
-}
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <label>Expiry Time*</label>
+                    </div>
+                    <div class="col-md-9">
 
-@*<script type="text/javascript">
-    $(document).ready(function () {
-        $("#datepicker").datepicker
-            ({
-                startDate: '12/30/2016', //syntax nai yaad
-                //endDate: '',
-                dateFormat: 'mm/dd/yy',
-                //showStatus: true,
-                showWeeks: true,
-                //highlightWeek: true,
-                numberOfMonths: 1
-                //showAnim: "scale",
-                //showOptions: {
-                  //  origin: ["top", "left"]
-                //}
+                        <div class="form-group">
+                            <div class="input-group date form_datetime col-md-6" data-date="@ViewBag.date@ViewBag.time" data-date-format="dd mm yyyy - HH:ii p" data-link-field="dtp_input1" name="exp_time">
+                                <input class="form-control" size="16" type="text" value="" readonly name="exp_time">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                            </div>
+                            <input type="hidden" id="dtp_input1" value="" /><br />
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+
+                <br />
+                <br />
+                <br />
+                <button class="btn btn-primary" type="submit">Create</button>
+
+            }
+        </div>
+        <script src="~/Scripts/jquery-1.8.3.min.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>
+        <script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+        <script src="~/Scripts/bootstrap-datetimepicker.fr.js"></script>
+        <script type="text/javascript">
+            $('.form_datetime').datetimepicker({
+                //language:  'fr',
+                startDate: "@ViewBag.date@ViewBag.time",
+                weekStart: 1,
+                //format:"dd/mm/yyyy hh:mm:ss p",
+                todayBtn: 1,
+                autoclose: 1,
+                todayHighlight: 1,
+                startView: 2,
+                forceParse: 0,
+                showMeridian: 1
             });
-    });
-</script>
-@Scripts.Render("~/bundles/jqueryval")*@
+        </script>
+        @* @Scripts.Render("~/bundles/jqueryval")*@
+</body>
