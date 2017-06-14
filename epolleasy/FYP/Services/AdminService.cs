@@ -294,7 +294,7 @@ namespace FYP.Services
 
             var a = await _db.CommunityUsers.Where(p => p.CommunityID.Equals(c_id)).ToArrayAsync();
 
-            FormUser fu = new FormUser();
+            //FormUser fu = new FormUser();
 
 
             //form community data_entry//
@@ -309,13 +309,13 @@ namespace FYP.Services
 
             var qf_id = qform.QFormID;
 
-            foreach (var b in a)
-            {
-                fu.UserID = b.UserID;
-                fu.QFormID = qf_id;
-                _db.FormUsers.Add(fu);
-                await _db.SaveChangesAsync();
-            }
+            //foreach (var b in a)
+            //{
+            //    fu.UserID = b.UserID;
+            //    fu.QFormID = qf_id;
+            //    _db.FormUsers.Add(fu);
+            //    await _db.SaveChangesAsync();
+            //}
 
 
 

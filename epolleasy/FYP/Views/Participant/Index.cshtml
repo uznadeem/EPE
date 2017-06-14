@@ -277,9 +277,7 @@
                                                                     <!-- Total Forms -->
                                                                     <div class="col-xs-2 n-p-r"> <span>@item.FormsCommunity.Count</span></div>
 
-                                                                    <!-- Active Forms -->
-                                                                    <div class="col-xs-2 n-p-r n-p-l"> <span></span> </div>
-
+                                                                  
                                                                     <div class="col-xs-2">
 
                                                                         @Html.ActionLink("Go", "ParticipantViewDetail", new { controller = "Participant", id = @item.CommunityID })
@@ -361,7 +359,7 @@
                                                                 <!-- Response Received -->
                                                                 @*<div class="col-xs-2 n-p-r n-p-l"> <span>@Model.fcom[i].QForms.FormUser.Count</span> </div>*@
                                                                 <!--View Form-->
-                                                                <div class="col-xs-2 n-p-r n-p-l"> @Html.ActionLink("View", "PFormResult", new { controller = "Participant", c_id = Model.fc[i].CommunityID, id = Model.fc[i].QFormID }) </div>
+                                                                <div class="col-xs-2 n-p-r n-p-l"> @Html.ActionLink("View", "PFormResult", new { controller = "Participant", c_id = Model.sealedform[i].CommunityID, id = Model.sealedform[i].QFormID }) </div>
 
                                                             </div>
                                                         </li>

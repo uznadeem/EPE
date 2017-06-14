@@ -1,17 +1,13 @@
 ﻿
 using FYP.Models;
 using System;
-using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.IO;
-using System.Web.Hosting;
-using FYP.ViewModel;
 using System.Threading.Tasks;
 using FYP.Services;
 using System.Web.Helpers;
+
 
 namespace FYP.Controllers
 {
@@ -159,17 +155,12 @@ namespace FYP.Controllers
         {
             char[] arrayd = new char[11];
             char[] arrayt = new char[9];
-            //var datm = (System.DateTime.Now).ToString();
-            var datm = Convert.ToDateTime(System.DateTime.Now).ToString("dd-MM-yyyy HH:mm:ss tt");
+            var datm = Convert.ToDateTime(System.DateTime.Now).ToString("MM-dd-yyyy HH:mm:ss tt");
             int j = 0, p = 0;
             foreach (var d in datm)
             {
-                if (d == '/')
-                {
-                    arrayd[j++] = '-';
-                }
 
-                else if (d == ' ')
+                if (d == ' ')
                 {
                     arrayd[j] = 'T';
                     break;
@@ -224,10 +215,11 @@ namespace FYP.Controllers
 
 
         [HttpPost]
-        public async Task<ActionResult> AddForm(int c_id, QForm qform,int ft,DateTime exp_time)
+        public async Task<ActionResult> AddForm(int c_id, QForm qform,int ft,string exp_time)
         {
+            DateTime expire_time = Convert.ToDateTime(exp_time);
             var exp = System.DateTime.Now;
-            DateTime exp_t = qform.Expiry_Time;
+            qform.Expiry_Time = expire_time;
             ViewBag.id = c_id;
             if (qform.FormTitle==null)
             {
@@ -235,16 +227,16 @@ namespace FYP.Controllers
                 ModelState.AddModelError("", "Form title required");
                 return View(qform);
             }
-            else if(exp_t==null)
+            else if(exp_time==null)
             {
                 ModelState.AddModelError("", "Expiry datetime required");
                 return View(qform);
             }
-            else if(qform.Expiry_Time <= exp)
-            {
-                ModelState.AddModelError("","Expiry time is invalid");
-                return View(qform);
-            }
+            //else if(qform.Expiry_Time <= exp)
+            //{
+            //    ModelState.AddModelError("","Expiry time is invalid");
+            //    return View(qform);
+            //}
 
            
             var p = await _as.AddFormAsync(c_id, qform,ft);

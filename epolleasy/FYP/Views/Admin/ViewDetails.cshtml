@@ -144,7 +144,7 @@
                     <!-- PROFILE -->
                     <div id="profile" class="tab-pane fade in active">
                         <div class="profile-main">
-                            <h3>Active Forms</h3>
+                          
                             <div class="profile-in">
 
                             </div>
@@ -264,7 +264,7 @@
                                                         <td>@t.QForms.FormTitle</td>
                                                         <td>@t.QForms.FormDetail</td>
                                                         <td>@t.QForms.Expiry_Time</td>
-                                                        <td>@Html.ActionLink("Go", "FormResult", new { controller = "Admin", id = @t.QFormID })</td>
+                                                        <td>@Html.ActionLink("Go", "FormResult", new { controller = "Admin", c_id=@t.CommunityID ,id = @t.QFormID })</td>
                                                     }
                                                     else
                                                     {

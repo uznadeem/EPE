@@ -104,7 +104,7 @@ namespace FYP.Controllers
         public async Task<bool> CheckUserFormParticipation(int id)
         {
             int n = -1;
-            var p = await _ps.CheckUserParticipationAsync();
+            var p = await _ps.CheckUserParticipationAsync(id);
 
             for (var i = 0; i < p.Fu.Count; i++)
             {

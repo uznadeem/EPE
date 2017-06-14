@@ -173,9 +173,9 @@ namespace FYP.Services
             return vd;
         }
 
-        public async Task<FormUserViewModel> CheckUserParticipationAsync()
+        public async Task<FormUserViewModel> CheckUserParticipationAsync(int id)
         {
-            var fu = await _db.FormUsers.ToListAsync();
+            var fu = await _db.FormUsers.Where(a=>a.QFormID.Equals(id)).ToListAsync();
             var u = await _db.Users.Where(c => c.UserName.Equals(HttpContext.Current.User.Identity.Name)).FirstOrDefaultAsync();
             FormUserViewModel vm = new FormUserViewModel();
 

@@ -182,11 +182,11 @@ namespace FYP.Controllers
         public async Task<bool> CheckUserFormParticipation(int id)
         {
             int n=-1;
-            var p = await _ps.CheckUserParticipationAsync();
-
+            var p = await _ps.CheckUserParticipationAsync(id);
+            var usid = p.au.Id;
             for(var i = 0; i < p.Fu.Count; i++)
             {
-                if (p.Fu[i].QFormID.Equals(id) && p.Fu[i].UserID.Equals(p.au.Id))
+                if (p.Fu[i].QFormID.Equals(id) && p.Fu[i].UserID.Equals(usid))
                 {
                    return true;
                 }
