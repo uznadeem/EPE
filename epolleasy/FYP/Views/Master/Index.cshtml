@@ -1,0 +1,107 @@
+﻿@using Microsoft.AspNet.Identity
+@model FYP.ViewModel.Master.DashboardViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutProject.cshtml";
+}
+
+<div class="compny-profile">
+
+    <!-- Profile Company Content -->
+    <div class="profile-company-content" data-bg-color="fff">
+        <div class="container">
+            <div class="row">
+
+                <!-- SIDE BAR -->
+                <div class="col-md-4">
+                    <!-- Company Information -->
+                    <div class="sidebar">
+                        @*<h5 class="main-title">@Model.appuser.UserName</h5>*@
+                        @*<div class="sidebar-thumbnail"> <img src="~/images/UserImages/@Model.appuser.ImageUrl" alt=""> </div>*@
+                        <div class="sidebar-information">
+                            <div class="profile-usermenu">
+                                <ul class="nav nav-links">
+                                    <li><a href="@Url.Action("Index", "Manage")"><i class="fa fa-cog"></i> Account Settings</a></li>
+                                    <li>
+                                        @using (Html.BeginForm("LogOff", "Home", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                                        {
+                                            @Html.AntiForgeryToken()
+
+                                            <a href="javascript:document.getElementById('logoutForm').submit()"><span class="fa fa-sign-out" aria-hidden="true"></span>Log off</a>
+
+
+                                            //<li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+
+                                        }
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Tab Content -->
+                <div class="col-md-8">
+
+                    <h2>  Master DashBoard</h2>
+
+
+                    <div class="network">
+
+
+                        <table class="table table-bordered">
+
+                            <tr>	<td>Name</td> <td>@Model.appuser.FirstName @Model.appuser.LastName</td></tr>
+
+                            <tr>	<td>Username</td> <td>@Model.appuser.UserName</td> </tr>
+
+                            <tr>	<td>Account Type</td> <td>@Model.appuser.UserRole</td></tr>
+
+
+                        </table>
+
+                        <!-- Nav Tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a data-toggle="tab" href="#user">User</a></li>
+                            <li><a data-toggle="tab" href="#comm">Communities</a></li>
+                        </ul>
+
+                        <!--Tabs Content-->
+                        <div class="tab-content">
+
+                            <!--Active Forms-->
+                            <div id="user" class="tab-pane fade in active">
+                                <div class="net-work-in">
+                                    <div class="main-mem">
+                                        <!-- Tittle -->
+                                        
+                                        <h4>Users</h4>
+                                        <br />
+
+                                        <img src="@Url.Action("WebUser")" alt="SimpleChart" />
+
+                                    
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="comm" class="tab-pane fade">
+                                <div class="net-work-in">
+                                    <div class="main-mem">
+                                        <!-- Tittle -->
+
+                                        <h4>Community</h4>
+                                        <img src="@Url.Action("TotalCommunities")" alt="SimpleChart" />
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+</div>

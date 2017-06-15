@@ -234,6 +234,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MasterController.cs" />
     <Compile Include="Controllers\ParticipantApiController.cs" />
     <Compile Include="Controllers\ParticipantController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -247,6 +248,10 @@
     <Compile Include="Migrations\201706132257005_upmigissue.cs" />
     <Compile Include="Migrations\201706132257005_upmigissue.Designer.cs">
       <DependentUpon>201706132257005_upmigissue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706142343124_superAdminm.cs" />
+    <Compile Include="Migrations\201706142343124_superAdminm.Designer.cs">
+      <DependentUpon>201706142343124_superAdminm.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -281,6 +286,7 @@
     <Compile Include="ViewModel\FormResultViewModel.cs" />
     <Compile Include="ViewModel\FormUserViewModel.cs" />
     <Compile Include="ViewModel\HomePageViewModel.cs" />
+    <Compile Include="ViewModel\Master\DashboardViewModel.cs" />
     <Compile Include="ViewModel\ParticipantApi\PApiFormParticipateViewModel.cs" />
     <Compile Include="ViewModel\ProfileDataViewModel.cs" />
     <Compile Include="ViewModel\PFormViewModel.cs" />
@@ -399,6 +405,7 @@
     <Content Include="images\sponsor_logo6.png" />
     <Content Include="images\user-bg.jpg" />
     <Content Include="images\UserImages\defaultImage.jpg" />
+    <Content Include="images\UserImages\Love.jpg" />
     <Content Include="img\avatar.png" />
     <Content Include="img\b-post-image.jpg" />
     <Content Include="img\blog-image-1.jpg" />
@@ -597,6 +604,7 @@
     <Content Include="Views\Admin\SearchCommunity.cshtml" />
     <Content Include="Views\Admin\CommunitySearchResult.cshtml" />
     <Content Include="Views\Participant\PFormResult.cshtml" />
+    <Content Include="Views\Master\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -628,6 +636,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706132257005_upmigissue.resx">
       <DependentUpon>201706132257005_upmigissue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706142343124_superAdminm.resx">
+      <DependentUpon>201706142343124_superAdminm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

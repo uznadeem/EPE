@@ -123,8 +123,27 @@ namespace FYP.Controllers
 
                 IdentityResult result = await UserManager.UpdateAsync(user);
 
-                
-              return RedirectToAction("Index" ,"Admin");
+              if(user.UserRole=="Admin")
+              { 
+                    return RedirectToAction("Index" ,"Admin");
+
+              }
+              else if(user.UserRole == "Participant")
+                {
+                    return RedirectToAction("Index", "Participant");
+
+                }
+              else if(user.UserRole == "Master")
+                 {
+
+                    return RedirectToAction("Index", "Master");
+
+                }
+              else
+                {
+                    
+                }
+
             }
             return View(user);
         }

@@ -3,6 +3,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin;
 using Owin;
+using System;
 
 [assembly: OwinStartupAttribute(typeof(FYP.Startup))]
 namespace FYP
@@ -22,8 +23,38 @@ namespace FYP
             var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
 
 
+            if (!roleManager.RoleExists("Master"))
+            {
+                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
+                role.Name = "Master";
+                roleManager.Create(role);
+
+
+                var user = new ApplicationUser();
+                user.UserName = "Tasmeer.Munir";
+                user.Email = "tasmeer.aspidentity@gmail.com";
+                user.FirstName = "TasmeerM";
+                user.LastName = "Munir";
+                string dob = "12/15/1995";
+                user.DOB = Convert.ToDateTime(dob);
+                user.UserRole = "Master";
+                user.Gender = "Male";
+                string userPwd = "ART909E057c";
+                user.EmailConfirmed = true;
+                var chkUser = UserManager.Create(user, userPwd);
+
+                if (chkUser.Succeeded)
+                {
+                    var result1 = UserManager.AddToRole(user.Id, "Master");
+
+                }
+
+
+
+            }
+
             // In Startup iam creating first Admin Role and creating a default Admin User    
-            if (!roleManager.RoleExists("Admin"))
+            else if (!roleManager.RoleExists("Admin"))
             {
 
                 // first we create Admin rool   
@@ -46,13 +77,14 @@ namespace FYP
 
                 //}
             }
-            if (!roleManager.RoleExists("Participant"))
+            else if (!roleManager.RoleExists("Participant"))
             {
                 var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
                 role.Name = "Participant";
                 roleManager.Create(role);
 
             }
+            else { }
 
         }
 

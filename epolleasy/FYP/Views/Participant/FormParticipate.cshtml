@@ -23,7 +23,7 @@
                  for (var j = 0; j < Model.Ques[i].Answer.Count(); j++)
                  {
                      @Html.RadioButtonFor(m => m.Ques[i].SelectedAnswerId, Model.Ques[i].Answer[j].AnswerID, new { id = "Question" + i.ToString() + "Answer" + j.ToString() })
-                     <label for="Ques@(i)Answer@(j)" title="Count:@Model.Ques[i].Answer[j].AnsCount">@Model.Ques[i].Answer[j].AnswerStatement</label>
+                     <label for="Ques@(i)Answer@(j)" title="Response So Far:@Model.Ques[i].Answer[j].AnsCount">@Model.Ques[i].Answer[j].AnswerStatement</label>
                  }
              }
 

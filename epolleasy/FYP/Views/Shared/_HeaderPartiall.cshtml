@@ -59,6 +59,30 @@
             <li class="active"> <a href="#."> <i class="fa fa-comments"></i> </a> </li>*@
 
           }
+          else if (User.IsInRole("Master"))
+          {
+
+            @*<li>
+
+                <div class="uou-block-1a blog">
+                    <div class="search">
+                        <a href="#" class="toggle fa fa-search"></a>
+
+                        <form action="/Admin/SearchCommunity" method="get">
+
+                            <input id="SearchString" name="SearchString" type="text" class="search-input" placeholder="Search ..." />
+                            <input type="submit" value="">
+                        </form>
+
+                    </div>
+                </div>
+
+
+            </li>*@
+
+            <li class="active"> <a href="/Master/index/"> <i class="fa fa-home"></i> </a> </li>
+
+          }
           else
           {
 

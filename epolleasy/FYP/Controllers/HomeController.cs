@@ -142,6 +142,13 @@ namespace FYP.Controllers
                     {
                         return RedirectToAction("Index", "Admin");
                     }
+
+                    else if(ViewBag.data=="Master")
+                    {
+
+                        return RedirectToAction("Index", "Master");
+
+                    }
                     else
                     {
 
