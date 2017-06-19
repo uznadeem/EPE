@@ -93,7 +93,8 @@ namespace FYP.Controllers
         [Route("api/AdminApi/AddCommunity")]
         public async Task<IHttpActionResult> AddCommunity(Community com)
         {
-            
+
+           
            await _as.CreateCommunity_temp_Async(com);
 
             return Ok();

@@ -31,6 +31,7 @@ namespace FYP.Services
 
         }
 
+        
 
         public async Task<CommunityUserViewModel> GetCommunitiesAsync()
         {
@@ -63,7 +64,9 @@ namespace FYP.Services
         ///for api create community//
         public async Task CreateCommunity_temp_Async(Community obj_com)
         {
-            obj_com.CommunityAdmin = HttpContext.Current.User.Identity.Name;
+
+            var value = HttpContext.Current.User.Identity.Name;
+            obj_com.CommunityAdmin = value;
 
             _db.Communities.Add(obj_com);
 

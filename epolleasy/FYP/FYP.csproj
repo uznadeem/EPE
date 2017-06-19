@@ -608,6 +608,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="SMS_Auth\" />
     <Folder Include="Views\Account\" />
     <Folder Include="Views\Values\" />
     <Folder Include="Views\WebApiConfig\" />

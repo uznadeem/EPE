@@ -46,11 +46,21 @@ namespace FYP
 
     public class SmsService : IIdentityMessageService
     {
-        public Task SendAsync(IdentityMessage message)
+        public async Task SendAsync(IdentityMessage message)
         {
-             // Plug in your SMS service here to send a text message.
-            return Task.FromResult(0);
-        }
+
+            string account_SID = ConfigurationManager.AppSettings["TwilioAccountSID"];
+            string auth_Token = ConfigurationManager.AppSettings["TwilioAuthToken"];
+
+            var Twilio = new TwilioRestClient(account_SID, auth_Token);
+
+            var Result = Twilio.SendMessage(ConfigurationManager.AppSettings["TwilioNumber"], message.Destination, message.Body);
+
+            //// Plug in your SMS service here to send a text message.
+            //return Task.FromResult(0);
+
+         
+    }
     }
 
     // Configure the application user manager used in this application. UserManager is defined in ASP.NET Identity and is used by the application.
