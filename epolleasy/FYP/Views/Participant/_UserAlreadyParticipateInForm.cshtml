@@ -1,2 +1,7 @@
-﻿<h3>You Have already Participated in this form</h3>
-@Html.ActionLink("Back","Index")
+﻿@{ 
+
+    Layout = "~/Views/Shared/_LayoutProject.cshtml";
+}
+
+<h3>You Have already Participated in this form</h3>
+<a href="/Participant/Index/" class="btn btn-primary"><i class="fa fa-arrow-left"></i>Back</a>

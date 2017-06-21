@@ -8,11 +8,10 @@
 
 <div class="container">
     
-    <p>@Html.ValidationMessage("QEr")</p>
     @using (Html.BeginForm("AddQuestion", "admin", new { c_id = ViewBag.c_id, qf_id = ViewBag.qf_id, ft = ViewBag.ft }, FormMethod.Post))
     {
         @Html.AntiForgeryToken()
-
+        @Html.ValidationSummary("", new { @class = "text-danger" })
 
         <div class="col-md-8">
             @*<div class="form-group col-md-12">
@@ -21,12 +20,14 @@
             <div class="col-md-8 form-group">
                 <h4>Enter Question Statement(*)</h4>
                  @Html.TextBoxFor(a => a.QuestionString)
-                @Html.ValidationMessageFor(a => a.QuestionString)
-                <div class="col-md-4">
+               @* @Html.ValidationMessageFor(a => a.QuestionString)*@
+                
+             </div>
+            <div class="row"></div>
+            <div class="col-md-4">
 
-                    <button class="btn btn-primary" type="submit" name="mul" value="More">Add</button>
-                </div>
-                </div>
+                <button class="btn btn-primary" type="submit" name="mul" value="More">Add</button>
+            </div>
             @if (ViewBag.ft==1)
             {
             <div class="col-md-12 form-group">

@@ -6,10 +6,11 @@
 }
 
 
-<div class="container">
-    @using (Html.BeginForm("create", "admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+<div class="popup container">
+    @using (Html.BeginForm("create", "admin", FormMethod.Post, new { enctype = "multipart/form-data"}))
     {
         @Html.AntiForgeryToken()
+        //@Html.ValidationSummary("", new { @class = "text-danger" })
         <div class="container">
             <div class="form-group">
                 <label>Community Name(*)</label>
@@ -29,15 +30,14 @@
             </div>
 
             <div class="form-group">
-                @Html.Label("Privacy Level", new { @class = "col-md-2 control-label" })
+                @Html.Label("Privacy Level(*)", new { @class = "col-md-2 control-label" })
                 <div class="col-md-10">
 
                     @Html.RadioButtonFor(m => m.PrivacyID, "1", new { @class = "radio-inline" })@Html.Label("Public")
                     @Html.RadioButtonFor(m => m.PrivacyID, "2", new { @class = "radio-inline" })@Html.Label("Private")
-
+                    @Html.ValidationMessageFor(m => m.PrivacyID)
                 </div>
             </div>
-
 
             <div class="form-group">
                 @Html.LabelFor(model => model.CommunityLogo, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -56,3 +56,4 @@
         </div>
     }
 </div>
+<script src="~/Scripts/create_com_popup.js"></script>

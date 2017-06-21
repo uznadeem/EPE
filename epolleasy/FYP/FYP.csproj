@@ -298,6 +298,7 @@
     <Content Include="CommunityImages\15977184_695734527259918_2571877226372801713_n.jpg" />
     <Content Include="CommunityImages\543183_291572334264106_872706370_n.jpg" />
     <Content Include="CommunityImages\abc.jpg" />
+    <Content Include="CommunityImages\comm_default.jpg" />
     <Content Include="CommunityImages\cricmom.jpg" />
     <Content Include="CommunityImages\dishcus.jpg" />
     <Content Include="CommunityImages\DSC_0159.jpg" />
@@ -516,11 +517,15 @@
     <None Include="Properties\PublishProfiles\epolleasy - FTP %283%29.pubxml" />
     <None Include="Properties\PublishProfiles\epolleasy - FTP %284%29.pubxml" />
     <None Include="Properties\PublishProfiles\epolleasy - FTP %285%29.pubxml" />
+    <None Include="Properties\PublishProfiles\epolleasy - FTP %286%29.pubxml" />
+    <None Include="Properties\PublishProfiles\epolleasy - FTP %287%29.pubxml" />
     <None Include="Properties\PublishProfiles\epolleasy - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\epolleasy - Web Deploy %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\epolleasy - Web Deploy %283%29.pubxml" />
     <None Include="Properties\PublishProfiles\epolleasy - Web Deploy %284%29.pubxml" />
     <None Include="Properties\PublishProfiles\epolleasy - Web Deploy %285%29.pubxml" />
+    <None Include="Properties\PublishProfiles\epolleasy - Web Deploy %286%29.pubxml" />
+    <None Include="Properties\PublishProfiles\epolleasy - Web Deploy %287%29.pubxml" />
     <None Include="Properties\PublishProfiles\epolleasy - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -605,6 +610,7 @@
     <Content Include="Views\Admin\CommunitySearchResult.cshtml" />
     <Content Include="Views\Participant\PFormResult.cshtml" />
     <Content Include="Views\Master\Index.cshtml" />
+    <Content Include="Views\Admin\RemoveMember.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

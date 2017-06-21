@@ -67,7 +67,7 @@ namespace FYP.Services
 
             var value = HttpContext.Current.User.Identity.Name;
             obj_com.CommunityAdmin = value;
-
+            obj_com.CommunityLogo = "comm_default.jpg";
             _db.Communities.Add(obj_com);
 
             await _db.SaveChangesAsync();
@@ -91,6 +91,11 @@ namespace FYP.Services
                 string path = HostingEnvironment.MapPath(Path.Combine("~/CommunityImages/", filename));
                 file.SaveAs(path);
                 objcom.CommunityLogo = filename;
+            }
+            else
+            {
+                objcom.CommunityLogo = "comm_default.jpg";
+                
             }
 
 

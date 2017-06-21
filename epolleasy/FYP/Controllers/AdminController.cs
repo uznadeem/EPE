@@ -45,6 +45,23 @@ namespace FYP.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(Community objcom, HttpPostedFileBase file)
         {
+            if(!ModelState.IsValid)
+            {
+                return View(objcom);
+            }
+
+            if(objcom.PrivacyID==0)
+            {
+
+                ModelState.AddModelError("", "Privacy Level required");
+                return View(objcom);
+            }
+
+            if(objcom.CommunityName==null)
+            {
+                ModelState.AddModelError("", "Community Name required");
+                return View(objcom);
+            }
             await _as.CreateCommunityPAsync(objcom, file);
             return RedirectToAction("Index", "Admin");
         }
@@ -142,8 +159,16 @@ namespace FYP.Controllers
             return RedirectToAction("ViewDetails", new { id = id });
         }
 
-        //[HttpDelete]
-        public async Task<ActionResult> RemoveMember(string uid,int cid)
+        [HttpGet]
+        public ActionResult RemoveMember(string uid, int cid)
+        {
+            ViewBag.uid = uid;
+            ViewBag.cid = cid;
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> RemoveMember(string uid,int cid,int a)
         {
 
             await _as.RemoveMemberAsync(uid,cid);
@@ -232,13 +257,13 @@ namespace FYP.Controllers
                 ModelState.AddModelError("", "Expiry datetime required");
                 return View(qform);
             }
-            //else if(qform.Expiry_Time <= exp)
-            //{
-            //    ModelState.AddModelError("","Expiry time is invalid");
-            //    return View(qform);
-            //}
+            else if (qform.Expiry_Time <= exp)
+            {
+                ModelState.AddModelError("", "Expiry time is invalid");
+                return View(qform);
+            }
 
-           
+
             var p = await _as.AddFormAsync(c_id, qform,ft);
 
             return RedirectToAction("AddQuestion", new { c_id = c_id, qf_id = p , ft = ft});

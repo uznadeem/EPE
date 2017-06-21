@@ -74,10 +74,9 @@
         </div>
 
         <a class="btn btn-primary" href="/admin/ViewDetails/@ViewBag.id/"><i class="fa fa-arrow-left"></i>Back</a>
-
-        <h3>AddForm</h3>
-
+        
         <div class="container">
+            <h2>AddForm</h2>
             @using (Html.BeginForm("AddForm", "admin", new { c_id = ViewBag.id }, FormMethod.Post))
             {
                 @Html.AntiForgeryToken()

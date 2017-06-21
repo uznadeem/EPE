@@ -102,11 +102,8 @@
                 <div class="sidebar">
                     <!--Column Heading-->
                     <h5 class="main-title">Community Details  </h5>
-                    @*   @Html.ActionLink("Edit", "Edit", new { id = Model.CommunityID }, new { @class= "popup" })*@
-                    <!--Community Logo-->
-                    <div class="sidebar-thumbnail"> <img src="~/CommunityImages/@Model.comm.CommunityLogo"> </div>
-
-                    <!--Information-->
+                    
+                    <div class="sidebar-thumbnail"> <img src="~/CommunityImages/@Model.comm.CommunityLogo" alt=""> </div>
                     <div class="sidebar-information">
                         <ul class="single-category">
                             <li class="row">
@@ -123,19 +120,19 @@
                             </li>
 
                         </ul>
+
                         <a class="btn btn-primary" href="/admin/Edit/@Model.comm.CommunityID"><i class="fa fa-edit"></i>Edit</a>
 
                         <br />
                         <div class="compop">
                             <a class="popup btn btn-primary" href="/admin/Delete/@Model.comm.CommunityID"><i class="fa fa-remove"></i>Delete</a>
-                         </div>
-
                         </div>
-                </div>
 
 
+                    </div>
 
-            </div>
+               </div>
+         </div>
 
             <!-- Tab Content -->
             <div class="col-md-8">
@@ -146,6 +143,10 @@
                         <div class="profile-main">
                           
                             <div class="profile-in">
+
+                                <div class="container">
+                                    
+                                </div>
 
                             </div>
                         </div>
@@ -216,8 +217,10 @@
 
                                                         @*<a class="btn btn-primary" href="/admin/RemoveMember/@Model.c_usr[i].UserID/@Model.comm.CommunityID/"><i class="fa fa-remove"></i>Remove</a>*@
 
-                                                        <a href="@Url.Action("RemoveMember", "Admin",new {uid = Model.c_usr[i].UserID , cid=Model.comm.CommunityID })"><i class="fa fa-remove"></i>Remove</a>
-                                                       
+                                                        <div class="compop">
+                                                            <a href="@Url.Action("RemoveMember", "Admin",new {uid = Model.c_usr[i].UserID , cid=Model.comm.CommunityID })" class="popup btn btn-primary"><i class="fa fa-remove"></i>Remove</a>
+
+                                                        </div>
                                                          @*@Html.ActionLink("Remove", "RemoveMember","Admin", new { id = Model.c_usr[i].UserID })*@
                                                        @* @Html.Raw(Html.ActionLink("Remove", "RemoveMember", "Admin", new { uid = Model.c_usr[i].UserID, cid = Model.comm.CommunityID }, null))*@
                                                     </div>

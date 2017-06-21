@@ -205,16 +205,26 @@ namespace FYP.Controllers
                     {
                         return RedirectToAction("Index", "Admin");
                     }
-                    else
+                    else if (model.ReturnUrl=="Participant")
                     {
 
                         return RedirectToAction("Index", "Participant");
                     }
+                    else if(model.ReturnUrl=="Master")
+                    {
+                        return RedirectToAction("Index", "Master");
+                        
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "Invalid code.");
+                    ModelState.AddModelError("", "Invalid code or code has expire");
                     return View(model);
             }
         }
