@@ -1306,7 +1306,7 @@ iframe {
 	border: none;
 }
 .banr-head input[type="email"], input[type="text"], input[type="password"] {
-	color: white;
+	color: #cecccc;
 }
 .home-pro .services ul {
 	margin: 0px;
