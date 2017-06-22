@@ -31,73 +31,76 @@
                                 <!-- TABS -->
                                 <div class="uou-tabs">
                                     <ul class="tabs">
-                                        <li><a href="#register">Register Now</a></li>
                                         <li class="active"><a href="#log-in">Member Login</a></li>
+                                        <li><a href="#register">Register Now</a></li>
+
                                     </ul>
 
                                     <!-- REGISTER -->
                                     <div class="content">
+                                        
+
                                         <div id="register">
-                                            @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                                            @using (Html.BeginForm("Index", "Home", FormMethod.Post, new {@class = "form-horizontal", role = "form"}))
                                             {
-                                                @Html.ValidationSummary("", new { @class = "text-danger" })
+                                                @Html.ValidationSummary("", new {@class = "text-danger"})
 
                                                 @Html.AntiForgeryToken()
-                                                
-                                                    @Html.TextBoxFor(m => m.Reg.FirstName, new { PlaceHolder = "First Name" })
-                                                    @Html.TextBoxFor(m => m.Reg.LastName, new { PlaceHolder = "Last Name" })
-                                                
-                                                    @Html.TextBoxFor(m => m.Reg.UserName, new { PlaceHolder = "Username" })
-                                                    @Html.TextBoxFor(m => m.Reg.Email, new { PlaceHolder = "Email Address" })
+
+                                                @Html.TextBoxFor(m => m.Reg.FirstName, new {PlaceHolder = "First Name"})
+                                                @Html.TextBoxFor(m => m.Reg.LastName, new {PlaceHolder = "Last Name"})
+
+                                                @Html.TextBoxFor(m => m.Reg.UserName, new {PlaceHolder = "Username"})
+                                                @Html.TextBoxFor(m => m.Reg.Email, new {PlaceHolder = "Email Address"})
 
 
-                                                    @Html.PasswordFor(m => m.Reg.Password, new { PlaceHolder = "Password" })
-                                                    @Html.PasswordFor(m => m.Reg.ConfirmPassword, new { PlaceHolder = "Confirm Password" })
-    
-                                                
-                                                    @Html.Label("Birthday", new { @class = "col-md-4" })
-                                                    @Html.TextBoxFor(m => m.Reg.DOB, new { @class= "date" , type="date"})
+                                                @Html.PasswordFor(m => m.Reg.Password, new {PlaceHolder = "Password"})
+                                                @Html.PasswordFor(m => m.Reg.ConfirmPassword, new {PlaceHolder = "Confirm Password"})
+
+
+                                                @Html.Label("Birthday", new {@class = "col-md-4"})
+                                                @Html.TextBoxFor(m => m.Reg.DOB, new {@class = "date", type = "date"})
 
 
                                                 <div class="form-group">
-                                                    @Html.LabelFor(m=>m.Reg.Gender, new { @class = "col-md-4" })
-                                                    @Html.RadioButtonFor(m => m.Reg.Gender, "Male", new { @class = "radio-inline form-control" })@Html.Label("Male")
-                                                    @Html.RadioButtonFor(m => m.Reg.Gender, "Female", new { @class = "radio-inline form-control" })@Html.Label("Female")
+                                                    @Html.LabelFor(m => m.Reg.Gender, new {@class = "col-md-4"})
+                                                    @Html.RadioButtonFor(m => m.Reg.Gender, "Male", new {@class = "radio-inline form-control"})@Html.Label("Male")
+                                                    @Html.RadioButtonFor(m => m.Reg.Gender, "Female", new {@class = "radio-inline form-control"})@Html.Label("Female")
                                                 </div>
 
-                                               <div class="form-group">
-                                                    @Html.Label("User Role", new { @class = "col-md-4" })
-                                                    @Html.RadioButtonFor(m => m.Reg.UserRole, "Admin", new { @class = "radio-inline form-control" })@Html.Label("Admin")
-                                                    @Html.RadioButtonFor(m => m.Reg.UserRole, "Participant", new { @class = "radio-inline form-control" })@Html.Label("Participant")
+                                                <div class="form-group">
+                                                    @Html.Label("User Role", new {@class = "col-md-4"})
+                                                    @Html.RadioButtonFor(m => m.Reg.UserRole, "Admin", new {@class = "radio-inline form-control"})@Html.Label("Admin")
+                                                    @Html.RadioButtonFor(m => m.Reg.UserRole, "Participant", new {@class = "radio-inline form-control"})@Html.Label("Participant")
                                                 </div>
-                                                
+
                                                 <div class="login-sec">
-                                                        <button type="submit">Register</button>
-                                                    </div>
+                                                    <button type="submit">Register</button>
+                                                </div>
 
                                             }
                                         </div>
 
                                         <!-- LOGIN -->
                                         <div id="log-in" class="active">
-                                            
-                                            @using (Html.BeginForm("Login", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+
+                                            @using (Html.BeginForm("Login", "Home", new {ReturnUrl = ViewBag.ReturnUrl}, FormMethod.Post, new {@class = "form-horizontal", role = "form"}))
                                             {
-                                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                                @Html.ValidationSummary(true, "", new {@class = "text-danger"})
 
                                                 @Html.AntiForgeryToken()
-                                                    
+
                                                 @Html.TextBoxFor(u => u.Log.Email, new {PlaceHolder = "Email Address"})
-                                                @Html.ValidationMessageFor(u => u.Log.Email, "", new { @class = "text-danger" })
-                                                    
-                                                
-                                                @Html.PasswordFor(u => u.Log.Password, new { PlaceHolder = "Password" })
-                                                @Html.ValidationMessageFor(u => u.Log.Password, "", new { @class = "text-danger" })
-                                                
-                                                
+                                                @Html.ValidationMessageFor(u => u.Log.Email, "", new {@class = "text-danger"})
+
+
+                                                @Html.PasswordFor(u => u.Log.Password, new {PlaceHolder = "Password"})
+                                                @Html.ValidationMessageFor(u => u.Log.Password, "", new {@class = "text-danger"})
+
+
                                                 <div class="login-sec">
                                                     <button type="submit">Login</button>
-                                                    
+
                                                 </div>
 
                                                 <div class="forget">
@@ -106,7 +109,7 @@
                                                         @*<div class="col-md-3">
                                                             @Html.ActionLink("Forgot?", "ForgotPassword")
                                                             </div>*@
-                                                    
+
 
                                             }
                                         </div>

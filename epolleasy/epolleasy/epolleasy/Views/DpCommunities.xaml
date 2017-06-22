@@ -8,12 +8,15 @@
         <viewModels:DashboardViewModel />
     </ContentPage.BindingContext>
 
+    <ContentPage.ToolbarItems>
+      <ToolbarItem Text="Add New" 
+                   Icon="add.png"
+                   Priority="0"
+                   Clicked="MenuItem_OnClicked"/>
+    </ContentPage.ToolbarItems>
+  
 
     <StackLayout>
-
-        <!--
-    <Entry Text="{Binding AccessToken}"/> 
-    -->
 
         <Button Command="{Binding GetDashboard}" Text="Show Communities"/>
 

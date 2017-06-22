@@ -160,6 +160,12 @@ namespace epolleasy.Models
         public int CommunityID { get; set; }
     }
 
+    public class PrivacyLevel
+    {
+        public string Name { get; set; }
+        public int Value { get; set; }
+    }
+
     public class Dashboard
     {
         public List<Com> Com { get; set; }

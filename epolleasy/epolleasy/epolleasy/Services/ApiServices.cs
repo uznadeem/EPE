@@ -7,6 +7,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using epolleasy.Models;
+using Microsoft.VisualBasic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -100,6 +101,21 @@ namespace epolleasy.Services
             return myDashboard;
 
         }
+
+        public async Task<bool> AddCommunity(Community community, string accessToken)
+        {
+            var client = new HttpClient();
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+
+            var json = JsonConvert.SerializeObject(community);
+            HttpContent content = new StringContent(json);
+            content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+            var response = await client.PostAsync("http://epolleasy.azurewebsites.net/Api/AdminApi/AddCommunity", content);
+
+            return response.IsSuccessStatusCode;
+        }
+
 
     }
 }

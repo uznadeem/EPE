@@ -1296,17 +1296,17 @@ iframe {
 .banr-head .login-sec .uou-tabs .tabs li a {
 	border: none;
 	padding: 15px 10px;
-	background: #30af91;
+	background: #333333;
 	color: white;
 }
 .banr-head .login-sec .uou-tabs .tabs li.active a {
-	background: none;
+	background: #30af91;
 }
 .banr-head .uou-tabs .content {
 	border: none;
 }
 .banr-head input[type="email"], input[type="text"], input[type="password"] {
-	color: black;
+	color: white;
 }
 .home-pro .services ul {
 	margin: 0px;

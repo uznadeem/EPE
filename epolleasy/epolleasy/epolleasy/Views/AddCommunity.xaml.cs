@@ -8,16 +8,11 @@ using Xamarin.Forms;
 
 namespace epolleasy.Views
 {
-    public partial class DpCommunities : ContentPage
+    public partial class AddCommunity : ContentPage
     {
-        public DpCommunities()
+        public AddCommunity()
         {
             InitializeComponent();
-        }
-
-        private async void MenuItem_OnClicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new AddCommunity());
         }
     }
 }

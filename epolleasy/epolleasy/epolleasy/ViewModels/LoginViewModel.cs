@@ -43,6 +43,7 @@ namespace epolleasy.ViewModels
                 });
             }
         }
+
         public LoginViewModel()
         {
             Username = Settings.Username;

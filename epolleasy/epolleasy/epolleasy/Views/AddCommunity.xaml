@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:epolleasy.ViewModels;assembly=epolleasy"
+             x:Class="epolleasy.Views.AddCommunity">
+
+    <ContentPage.BindingContext>
+      <viewModels:AddNewCommunityViewModel/>
+    </ContentPage.BindingContext>
+
+    <StackLayout VerticalOptions="Center">
+
+        <Entry Text="{Binding CommunityName}" Placeholder="Community Title"/>
+        <Entry Text="{Binding CommunityAbout}" Placeholder="About"/>
+
+      
+        <Picker Title="Privacy"
+                ItemsSource="{Binding Privacies}"
+                SelectedItem="{Binding Privacy}"
+                ItemDisplayBinding="{Binding Name}"/>
+      
+      
+        <Entry Text="{Binding CommunityDomain}" Placeholder="Domain Address"/>
+
+        <Button Command="{Binding AddCommand}"
+                Text="Add Community"/>
+
+    </StackLayout>
+  
+  
+</ContentPage>
