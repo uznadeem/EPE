@@ -17,6 +17,7 @@ namespace FYP.ViewModel
         public IList<FormCommunity> sealedform { get; set; }
         public IList<Community> public_com { get; set; }
         public int com_count { get; set; }
+        public int Tform { get; set; }
     }
 
 

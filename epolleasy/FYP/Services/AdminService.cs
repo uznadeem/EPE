@@ -47,10 +47,15 @@ namespace FYP.Services
             abc.appuser = await _db.Users.Where(u => u.UserName.Equals(value)).FirstOrDefaultAsync();
 
             //abc.fcom = await _db.FormsCommunity.Where(u => u.QForms.FormOwner.Equals(value)).ToListAsync();
-            abc.active_fom = await _db.FormsCommunity.Where(u => u.QForms.FormOwner.Equals(value) && u.QForms.Expiry_Time > a).ToListAsync();
+             var active_fom = await _db.FormsCommunity.Where(u => u.QForms.FormOwner.Equals(value) && u.QForms.Expiry_Time > a).ToListAsync();
 
-            abc.sealed_fom = await _db.FormsCommunity.Where(u => u.QForms.FormOwner.Equals(value) && u.QForms.Expiry_Time < a).ToListAsync();
+            var sealed_fom = await _db.FormsCommunity.Where(u => u.QForms.FormOwner.Equals(value) && u.QForms.Expiry_Time < a).ToListAsync();
 
+            int Tform = active_fom.Count + sealed_fom.Count;
+
+            abc.active_fom = active_fom;
+            abc.sealed_fom = sealed_fom;
+            abc.Tform = Tform;
             //abc.qf = await _db.QForms.Where(u => u.FormOwner.Equals(value)).ToListAsync();
 
             //abc.activeform = await (from c in _db.QForms where c.FormOwner == value && c.Expiry_Time > a select c).CountAsync();

@@ -52,12 +52,15 @@ namespace FYP.Services
              var sealedform = await (from c in _db.CommunityUsers join p in _db.FormsCommunity on c.CommunityID equals p.CommunityID where c.UserID == us.Id && p.QForms.Expiry_Time < a select p).ToListAsync();
             var co = public_com.Count + com.Count ;
 
+            int Tform = activeform.Count + sealedform.Count;
+
             ProfileDataViewModel pd = new ProfileDataViewModel();
             pd.UserT = us;
             pd.CommunitiesList = com;
             pd.fc = qf;
             pd.public_com = public_com;
             pd.com_count = co;
+            pd.Tform = Tform;
             // pd.activeform = await (from c in _db.CommunityUsers join p in _db.FormsCommunity on c.CommunityID equals p.CommunityID where ((c.UserID == us.Id || p.Community.PrivacyID== 1) && p.QForms.Expiry_Time > a) select p.QForms).ToListAsync();
 
             // pd.sealedform = await (from c in _db.CommunityUsers join p in _db.FormsCommunity on c.CommunityID equals p.CommunityID where c.UserID == us.Id && p.QForms.Expiry_Time < a select p.QForms).ToListAsync();

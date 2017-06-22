@@ -56,6 +56,17 @@
                     <h2>  Participant Dashboard</h2>
 
                     <div class="network">
+                        
+                        <table class="table table-bordered">
+
+                            <tr>	<td>Name</td> <td>@Model.UserT.FirstName @Model.UserT.LastName</td> <td>Communities</td> <td>@Model.com_count</td>	</tr>
+
+                            <tr>	<td>Username</td> <td>@Model.UserT.UserName</td> <td>Total Forms</td> <td>@Model.Tform</td></tr>
+
+                            <tr>	<td>Account Type</td> <td>@Model.UserT.UserRole</td> <td>Active Forms</td> <td>@Model.activeform.Count</td>	</tr>
+
+
+                        </table>
 
                         <!-- Nav Tabs -->
                         <ul class="nav nav-tabs">
