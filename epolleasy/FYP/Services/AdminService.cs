@@ -178,7 +178,7 @@ namespace FYP.Services
             var v = await _db.Communities.Where(a => a.CommunityID == objcom.CommunityID).FirstOrDefaultAsync();
             if (v != null)
             {
-                v.PrivacyID = objcom.PrivacyID;
+                //v.PrivacyID = objcom.PrivacyID;
                 v.CommunityName = objcom.CommunityName;
                 v.CommunityAbout = objcom.CommunityAbout;
                 await _db.SaveChangesAsync();
