@@ -10,7 +10,7 @@
 
 
         @Html.HiddenFor(a => a.CommunityID);
-    
+        @Html.ValidationSummary("", new { @class = "text-danger" })
         <div class="form-group">
             <label>Community Name</label>
             @Html.TextBoxFor(a => a.CommunityName, new { @class = "form-control" })
@@ -21,6 +21,16 @@
             @Html.TextBoxFor(a => a.CommunityAbout, new { @class = "form-control" })
             @Html.ValidationMessageFor(a => a.CommunityAbout)
         </div>
+
+        <div class="form-group">
+
+            <label>PrivacyID</label>
+            <br/>
+            @Html.RadioButtonFor(m => m.PrivacyID, "1", new { @class = "radio-inline" })@Html.Label("Public")
+            @Html.RadioButtonFor(m => m.PrivacyID, "2", new { @class = "radio-inline" })@Html.Label("Private")
+            @Html.ValidationMessageFor(m => m.PrivacyID)
+        </div>
+
         <div>
             <input type="submit" value="Save" />
         </div>
