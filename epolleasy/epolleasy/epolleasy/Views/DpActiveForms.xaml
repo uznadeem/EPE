@@ -9,6 +9,14 @@
         <viewModels:DashboardViewModel />
     </ContentPage.BindingContext>
 
+
+  <ContentPage.ToolbarItems>
+      <ToolbarItem Text="Add New"
+                   Icon="add.png"
+                   Priority="0"
+                   Clicked="MenuItem_AddForm"/>
+  </ContentPage.ToolbarItems>
+
   <!--
     <ContentPage.ToolbarItems>
       <ToolbarItem Text="Logout" Command="{Binding LogoutCommand}" Clicked="MenuItem_OnClicked"/>
@@ -21,7 +29,8 @@
         <Button Command="{Binding GetDashboard}" Text="Show Forms"/>
 
         <ListView ItemsSource="{Binding UserDashboard.active_fom}"
-                  HasUnevenRows="True">
+                  HasUnevenRows="True"
+                  ItemTapped="ListView_OnItemTapped">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

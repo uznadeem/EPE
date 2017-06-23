@@ -21,12 +21,13 @@
               <Button x:Name="BtnActiveForm" Text="Active Forms" Clicked="BtnActiveForm_OnClicked"></Button>
               <Button x:Name="BtnCommunity" Text="My Communities" Clicked="BtnCommunity_OnClicked"></Button>
               <Button x:Name="BtnHistory" Text="Sealed Forms" Clicked="BtnHistory_OnClicked"></Button>
-              <Label/> 
+              <Label/>
+
+              <!--
               <Button x:Name="BtnAddCommunity" Text="Add new Community" Clicked="BtnAddCommunity_OnClicked"></Button>
               <Button x:Name="BtnAddForm" Text="Add new Form" Clicked="BtnAddForm_OnClicked"></Button>
               <Label/>
 
-              <!--
               <Button x:Name="BtnAccountSettings" Text="Account Settings" Clicked="BtnAccountSettings_OnClicked"></Button>
               <Button x:Name="BtnProfileSettings" Text="Profile Settings" Clicked="BtnProfileSettings_OnClicked"></Button>
               -->

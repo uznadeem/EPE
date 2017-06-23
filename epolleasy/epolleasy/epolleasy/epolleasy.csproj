@@ -54,6 +54,12 @@
     <Compile Include="Views\AddCommunity.xaml.cs">
       <DependentUpon>AddCommunity.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\AddNewForm.xaml.cs">
+      <DependentUpon>AddNewForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CommunityMain.xaml.cs">
+      <DependentUpon>CommunityMain.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Dashboard.xaml.cs">
       <DependentUpon>Dashboard.xaml</DependentUpon>
     </Compile>
@@ -77,6 +83,9 @@
     </Compile>
     <Compile Include="Views\RegisterPage.xaml.cs">
       <DependentUpon>RegisterPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewActiveForm.xaml.cs">
+      <DependentUpon>ViewActiveForm.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -169,6 +178,24 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\AddCommunity.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\CommunityMain.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\ViewActiveForm.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\AddNewForm.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

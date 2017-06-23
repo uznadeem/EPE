@@ -19,5 +19,10 @@ namespace epolleasy.Views
         {
             await Navigation.PushAsync(new AddCommunity());
         }
+
+        private async void ListView_OnItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            await Navigation.PushAsync(new CommunityMain());
+        }
     }
 }

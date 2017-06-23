@@ -21,5 +21,15 @@ namespace epolleasy.Views
         {
             await Navigation.PushModalAsync(new LoginPage());
         }
+
+        private void ListView_OnItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            Navigation.PushAsync(new ViewActiveForm());
+        }
+
+        private void MenuItem_AddForm(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new AddNewForm());
+        }
     }
 }

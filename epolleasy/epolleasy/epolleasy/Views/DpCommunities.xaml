@@ -21,15 +21,23 @@
         <Button Command="{Binding GetDashboard}" Text="Show Communities"/>
 
         <ListView ItemsSource="{Binding UserDashboard.Com}"
-                  HasUnevenRows="True">
+                  HasUnevenRows="True"
+                  ItemTapped="ListView_OnItemTapped">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout>
                             <Label Text="{Binding CommunityName}"/>
+                          
+                            <StackLayout Orientation="Horizontal">
                             <Label Text="{Binding CommunityUsers.Count}"/>
-                            <Label Text="{Binding FormsCommunity.Count}"/>
-                        </StackLayout>
+                             <Label Text="Members"></Label> 
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                              <Label Text="{Binding FormsCommunity.Count}"/>
+                                <Label Text="Forms"></Label>
+                            </StackLayout>
+                       </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
